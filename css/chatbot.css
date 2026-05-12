@@ -1,0 +1,42 @@
+/* Chatbot Styles */
+#chatbot-container {
+  font-family: Arial, sans-serif;
+}
+
+#chatbot-container .botui-container {
+  height: 100%;
+  overflow-y: auto;
+}
+
+#chatbot-container .botui-message {
+  margin: 10px;
+}
+
+#chatbot-container .botui-message-content {
+  background: #f1f1f1;
+  padding: 8px 12px;
+  border-radius: 10px;
+  max-width: 80%;
+}
+
+#chatbot-container .botui-message-content.human {
+  background: #00d4ff;
+  color: white;
+  margin-left: auto;
+}
+
+#chatbot-container .botui-actions-text-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+#chatbot-container .botui-actions-text-submit {
+  display: none; /* Hide submit button, use Enter */
+}
+
+#chatbot-toggle:hover {
+  background: #0099cc;
+}
