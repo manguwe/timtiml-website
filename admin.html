@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel — TIMTIML by Anotida Manguwe</title>
+  <style>
+    :root {
+      --cyan: #00d4ff;
+      --green: #00ff9d;
+      --dark: #0a0e1a;
+      --card: #0f1628;
+      --card2: #141c35;
+      --border: rgba(0,212,255,0.15);
+      --text: #c8d8f0;
+      --muted: #5a7090;
+      --red: #ff6b35;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--dark);
+      color: var(--text);
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--cyan);
+      border-radius: 3px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 64px;
+      background: rgba(10, 14, 26, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 2rem 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 2rem;
+      color: #fff;
+    }
+
+    h1 span {
+      color: var(--cyan);
+    }
+
+    .admin-section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .admin-section h2 {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .auth-box {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .auth-box input {
+      flex: 1;
+      min-width: 250px;
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .auth-box input:focus {
+      border-color: var(--cyan);
+    }
+
+    button {
+      background: linear-gradient(90deg, var(--cyan), var(--green));
+      color: #000;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      letter-spacing: 0.5px;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    button.danger {
+      background: linear-gradient(90deg, var(--red), #ff8555);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .item-card {
+      background: var(--card2);
+      border: 1px solid rgba(0, 212, 255, 0.15);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .item-card h3 {
+      color: #fff;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .item-card p {
+      color: var(--muted);
+      margin: 0.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    .item-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+
+    .meta-item {
+      background: rgba(0, 212, 255, 0.05);
+      padding: 0.8rem;
+      border-radius: 6px;
+      border-left: 3px solid var(--cyan);
+    }
+
+    .meta-label {
+      color: var(--muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+    }
+
+    .meta-value {
+      color: #fff;
+      margin-top: 0.3rem;
+      font-family: 'Courier New', monospace;
+    }
+
+    .rating {
+      color: #ffd343;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0.5rem 0;
+    }
+
+    .status.pending {
+      background: rgba(255, 200, 0, 0.15);
+      color: #ffcc00;
+      border: 1px solid rgba(255, 200, 0, 0.3);
+    }
+
+    .status.approved {
+      background: rgba(0, 255, 157, 0.15);
+      color: var(--green);
+      border: 1px solid rgba(0, 255, 157, 0.3);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--muted);
+    }
+
+    .empty-state p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--cyan);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 80px 1rem 2rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .admin-section {
+        padding: 1.5rem;
+      }
+
+      .auth-box {
+        flex-direction: column;
+      }
+
+      .auth-box input {
+        min-width: unset;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo">TIMTIML</a>
+    <div style="color: var(--muted); font-size: 0.85rem;">Admin Panel</div>
+  </nav>
+
+  <div class="container">
+    <h1>🔐 Admin <span>Control Panel</span></h1>
+
+    <!-- Authentication Section -->
+    <div class="admin-section">
+      <h2>🔑 Authenticate</h2>
+      <div class="auth-box">
+        <input type="password" id="adminSecret" placeholder="Enter your ADMIN_SECRET" />
+        <button onclick="authenticateAdmin()">Unlock Panel</button>
+      </div>
+      <p style="color: var(--muted); font-size: 0.85rem; margin-top: 1rem;">
+        ℹ️ Enter your ADMIN_SECRET to access pending testimonials and payments
+      </p>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats hidden" id="statsSection">
+      <div class="stat-card">
+        <div class="stat-number" id="pendingTestisCount">0</div>
+        <div class="stat-label">Pending Testimonials</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="pendingPaymentsCount">0</div>
+        <div class="stat-label">Pending Payments</div>
+      </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="admin-section hidden" id="testimonialSection">
+      <h2>📝 Pending Testimonials</h2>
+      <button onclick="loadPendingTestimonials()" style="margin-bottom: 1rem;">↻ Refresh</button>
+      <div id="testimonialsTable"></div>
+    </div>
+
+    <!-- Payments Section -->
+    <div class="admin-section hidden" id="paymentSection">
+      <h2>💰 Pending Payments</h2>
+      <button onclick="loadPendingPayments()" style="margin-bottom: 1rem;">↻ Refresh</button>
+      <div id="paymentsTable"></div>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script>
+    let adminSecret = '';
+    let isAuthenticated = false;
+
+    function authenticateAdmin() {
+      adminSecret = document.getElementById('adminSecret').value.trim();
+      if (!adminSecret) {
+        alert('⚠️ Please enter your admin secret');
+        return;
+      }
+      isAuthenticated = true;
+      document.getElementById('adminSecret').style.borderColor = 'var(--green)';
+      document.getElementById('statsSection').classList.remove('hidden');
+      document.getElementById('testimonialSection').classList.remove('hidden');
+      document.getElementById('paymentSection').classList.remove('hidden');
+      loadPendingTestimonials();
+      loadPendingPayments();
+    }
+
+    async function loadPendingTestimonials() {
+      if (!isAuthenticated) return;
+
+      const res = await fetch('/api/testimonials', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'get_pending', secret: adminSecret })
+      });
+
+      if (!res.ok) {
+        alert('❌ Authentication failed. Check your ADMIN_SECRET');
+        isAuthenticated = false;
+        document.getElementById('statsSection').classList.add('hidden');
+        document.getElementById('testimonialSection').classList.add('hidden');
+        document.getElementById('paymentSection').classList.add('hidden');
+        return;
+      }
+
+      const data = await res.json();
+      const testis = data.testimonials || [];
+      document.getElementById('pendingTestisCount').textContent = testis.length;
+
+      if (testis.length === 0) {
+        document.getElementById('testimonialsTable').innerHTML =
+          '<div class="empty-state"><p>✅ No pending testimonials!</p></div>';
+        return;
+      }
+
+      const html = testis.map(t => `
+        <div class="item-card">
+          <h3>⭐ ${t.name}</h3>
+          <p><strong>Email:</strong> ${t.email}</p>
+          <p><strong>Service:</strong> ${t.service}</p>
+          <p><strong>Rating:</strong> <span class="rating">${'⭐'.repeat(t.stars)}</span></p>
+          <div class="meta-item">
+            <div class="meta-label">Feedback</div>
+            <div class="meta-value" style="font-style: italic; color: #c8d8f0;">"${t.text}"</div>
+          </div>
+          ${t.location ? `<p><strong>Location:</strong> ${t.location}</p>` : ''}
+          <div class="meta-item">
+            <div class="meta-label">Submitted</div>
+            <div class="meta-value">${new Date(t.submitted_at).toLocaleString()}</div>
+          </div>
+          <div class="button-group">
+            <button onclick="approveTestimonial('${t.id}')">✅ Approve</button>
+            <button class="danger" onclick="rejectTestimonial('${t.id}')">❌ Reject</button>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('testimonialsTable').innerHTML = html;
+    }
+
+    async function approveTestimonial(id) {
+      if (!confirm('Approve this testimonial?')) return;
+
+      const res = await fetch('/api/testimonials', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'approve', id, secret: adminSecret })
+      });
+
+      if (res.ok) {
+        alert('✅ Testimonial approved!');
+        loadPendingTestimonials();
+      } else {
+        alert('❌ Failed to approve');
+      }
+    }
+
+    async function rejectTestimonial(id) {
+      if (!confirm('Reject this testimonial?')) return;
+      alert('⚠️ Rejection feature coming soon');
+    }
+
+    async function loadPendingPayments() {
+      if (!isAuthenticated) return;
+
+      const res = await fetch('/api/payments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'get_pending', secret: adminSecret })
+      });
+
+      if (!res.ok) return;
+
+      const data = await res.json();
+      const payments = data.payments || [];
+      document.getElementById('pendingPaymentsCount').textContent = payments.length;
+
+      if (payments.length === 0) {
+        document.getElementById('paymentsTable').innerHTML =
+          '<div class="empty-state"><p>✅ No pending payments!</p></div>';
+        return;
+      }
+
+      const html = payments.map(p => `
+        <div class="item-card">
+          <h3>💳 ${p.name}</h3>
+          <div class="meta-item">
+            <div class="meta-label">Email</div>
+            <div class="meta-value">${p.email}</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Amount</div>
+            <div class="meta-value">${p.amount} ${p.currency}</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Reference Code</div>
+            <div class="meta-value">${p.ref_code}</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Phone</div>
+            <div class="meta-value">${p.phone || 'Not provided'}</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Received</div>
+            <div class="meta-value">${new Date(p.created_at).toLocaleString()}</div>
+          </div>
+          <div class="button-group">
+            <button onclick="approvePayment('${p.ref_code}')">✅ Verify Payment</button>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('paymentsTable').innerHTML = html;
+    }
+
+    async function approvePayment(refCode) {
+      if (!confirm('Verify this payment?')) return;
+
+      const res = await fetch('/api/payments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'approve', ref_code: refCode, secret: adminSecret })
+      });
+
+      if (res.ok) {
+        alert('✅ Payment verified!');
+        loadPendingPayments();
+      } else {
+        alert('❌ Failed to verify');
+      }
+    }
+  </script>
+</body>
+</html>
