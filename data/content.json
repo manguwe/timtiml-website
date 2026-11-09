@@ -1,0 +1,334 @@
+{
+ "hero": {
+  "tag": "ICT Student · Software Developer · Student Innovator",
+  "tagline": "Building ideas into practical technology solutions.",
+  "sub": "BSc ICT student at Eden University (Level 2.1) in Zambia, building practical software and growing towards a career in software engineering and cybersecurity."
+ },
+ "glance": [
+  {
+   "year": "Studying",
+   "title": "🎓 BSc ICT · Eden University",
+   "text": "Level 2.1, covering programming, databases, networks, digital electronics and software engineering."
+  },
+  {
+   "year": "Building",
+   "title": "💻 Practical software",
+   "text": "Campus Crib is live for students, and Student Hub, a retail point-of-sale system and AgriMobi AI are in development."
+  },
+  {
+   "year": "Exploring",
+   "title": "🔐 Security, cloud & AI",
+   "text": "Hands-on cybersecurity practice, networking labs, cloud deployment and AI-assisted solutions."
+  }
+ ],
+ "about": {
+  "paragraphs": [
+   "I am an Information and Communication Technology student at Eden University with a strong passion for software engineering, application development, cybersecurity, networking and emerging technologies.",
+   "I am interested in using technology to solve practical problems — building digital solutions that improve how individuals, students and businesses operate.",
+   "My journey combines academic learning, independent technical exploration, collaborative innovation and hands-on software development. Under my personal brand, <strong>timtiml</strong>, I keep looking for ways to turn ideas into working digital products.",
+   "My interests reach beyond programming into cybersecurity, network infrastructure, artificial intelligence, data engineering, cloud computing and technology entrepreneurship."
+  ],
+  "motto": "Learn. Build. Innovate. Repeat.",
+  "approach": [
+   "Continuous learning",
+   "Practical experimentation",
+   "Problem-solving",
+   "Collaboration",
+   "Innovation",
+   "Building functional solutions",
+   "Exploring emerging technologies"
+  ],
+  "philosophy": "I believe technology should solve real problems, and that the best way to learn is by building, experimenting and improving."
+ },
+ "education": {
+  "level": "Level 2.1",
+  "title": "Bachelor of Science in Information and Communication Technology",
+  "school": "Eden University",
+  "areas": [
+   "Object-Oriented Programming",
+   "Database Management Systems",
+   "Computer Networks",
+   "Digital Electronics",
+   "Software Engineering",
+   "Computer Systems and Information Technology"
+  ]
+ },
+ "skillGroups": [
+  {
+   "label": "Programming",
+   "items": [
+    "Java",
+    "Python"
+   ]
+  },
+  {
+   "label": "Web Development",
+   "items": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Responsive web applications",
+    "Progressive Web Applications"
+   ]
+  },
+  {
+   "label": "Databases",
+   "items": [
+    "PostgreSQL",
+    "MySQL",
+    "Supabase",
+    "Database design and management"
+   ]
+  },
+  {
+   "label": "Development Tools",
+   "items": [
+    "Visual Studio Code",
+    "PyCharm",
+    "Git",
+    "GitHub"
+   ]
+  },
+  {
+   "label": "Deployment & Infrastructure",
+   "items": [
+    "Vercel",
+    "Supabase",
+    "Cloud infrastructure exploration",
+    "VPS deployment exploration",
+    "Cloudflare technologies"
+   ]
+  },
+  {
+   "label": "Networking",
+   "items": [
+    "Cisco Packet Tracer",
+    "VLAN configuration",
+    "Switching and routing fundamentals",
+    "Network infrastructure"
+   ]
+  },
+  {
+   "label": "Cybersecurity",
+   "items": [
+    "Kali Linux",
+    "Parrot OS",
+    "OSINT fundamentals",
+    "Ethical hacking studies",
+    "Capture The Flag practice"
+   ]
+  },
+  {
+   "label": "Also Interested In",
+   "items": [
+    "UI/UX design",
+    "API integration",
+    "Authentication systems",
+    "Business process automation",
+    "Mobile application development"
+   ]
+  }
+ ],
+ "interests": [
+  "Software Engineering",
+  "Full-Stack Development",
+  "Cybersecurity",
+  "Network Security",
+  "Ethical Hacking",
+  "Data Engineering",
+  "Artificial Intelligence",
+  "Data Intelligence",
+  "Cloud Computing",
+  "Mobile Application Development",
+  "Technology Entrepreneurship"
+ ],
+ "career": {
+  "text": "I am particularly interested in combining software development and cybersecurity to create secure, useful and scalable technology solutions.",
+  "objective": "I am an ICT student who actively develops practical solutions, explores emerging technologies and takes part in innovation — continuously building towards a career in software engineering and cybersecurity."
+ },
+ "projectGroups": [
+  {
+   "id": "live",
+   "title": "✅ Developed & Live",
+   "projects": [
+    {
+     "icon": "🏠",
+     "status": "Live",
+     "title": "Campus Crib",
+     "role": "Project Lead / Developer",
+     "collaborator": "Taropafadzwanashe Kadurira",
+     "desc": "A student accommodation discovery platform that helps Eden University students find suitable off-campus accommodation. It addresses unreliable listings, inaccurate locations, high agent fees and the difficulty of reaching property owners.",
+     "features": [
+      "Accommodation listings with descriptions and pricing",
+      "Bedrooms and accommodation information",
+      "Property photographs and videos",
+      "Location and distance information",
+      "Landlord and student interactions",
+      "Administrative listing approval",
+      "Controlled access to exact property locations",
+      "Payment verification workflow"
+     ],
+     "meta": [
+      "Hosted on Vercel"
+     ],
+     "links": [
+      {
+       "label": "🚀 View Live",
+       "href": "https://campus-crib-seven.vercel.app/"
+      },
+      {
+       "label": "🐙 GitHub",
+       "href": "https://github.com/manguwe/Campus-Crib"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dev",
+   "title": "🛠️ Currently in Development",
+   "projects": [
+    {
+     "icon": "💰",
+     "status": "In development",
+     "title": "Student Hub (SH)",
+     "role": null,
+     "collaborator": null,
+     "desc": "An evolving student-focused financial management and productivity application that helps university students manage their personal finances.",
+     "features": [
+      "Budget tracking",
+      "Income and expenditure management",
+      "Financial summaries",
+      "Multiple currency support",
+      "Student profiles and reminders",
+      "Mobile-friendly experience",
+      "Optional account synchronisation",
+      "Potential premium features"
+     ],
+     "meta": [],
+     "links": [
+      {
+       "label": "🐙 GitHub",
+       "href": "https://github.com/manguwe/varsity-budget"
+      }
+     ]
+    },
+    {
+     "icon": "🧾",
+     "status": "In development",
+     "title": "Retail Point of Sale Management System",
+     "role": null,
+     "collaborator": null,
+     "desc": "A POS management system intended to support small retail businesses through digital sales processing, stock management, transaction recording and business reporting. Deployment is being planned.",
+     "features": [
+      "Shop and account management",
+      "Inventory management and product pricing",
+      "Sales recording with automatic transaction entries",
+      "Stock tracking",
+      "Customisable receipts",
+      "Sales summaries and business reports",
+      "Backend server infrastructure"
+     ],
+     "meta": [],
+     "links": []
+    },
+    {
+     "icon": "🌾",
+     "status": "In development",
+     "title": "AgriMobi AI",
+     "role": null,
+     "collaborator": null,
+     "desc": "An agricultural technology innovation exploring how artificial intelligence and mobile applications can help address agricultural challenges in Zambia and Zimbabwe, with attention to prediction accuracy and reliability.",
+     "features": [
+      "Agricultural decision support",
+      "Crop monitoring",
+      "Pest identification",
+      "Fall armyworm monitoring and prediction",
+      "AI-assisted agricultural insights"
+     ],
+     "meta": [],
+     "links": []
+    }
+   ]
+  },
+  {
+   "id": "planned",
+   "title": "🗓️ Planned",
+   "projects": [
+    {
+     "icon": "🎓",
+     "status": "Planned",
+     "title": "Eden University Examination Eligibility System",
+     "role": null,
+     "collaborator": null,
+     "desc": "A proposed academic administration platform that would automate examination eligibility verification using student information and payment records.",
+     "features": [
+      "Student profiles",
+      "QR-enabled student identification",
+      "Payment verification",
+      "Academic eligibility calculations",
+      "Administrative dashboards",
+      "Institutional system integration, subject to authorised access",
+      "Proposed payment thresholds: CAT 1 at 50%, CAT 2 at 75%, final examinations at 100%"
+     ],
+     "meta": [],
+     "links": []
+    }
+   ]
+  },
+  {
+   "id": "exploring",
+   "title": "🔭 Continuous Exploration",
+   "projects": [
+    {
+     "icon": "📱",
+     "status": "Exploring",
+     "title": "Mobile Application Development",
+     "role": null,
+     "collaborator": null,
+     "desc": "Ongoing learning towards building functional Android and iOS applications that address real-world challenges in education, business and everyday life.",
+     "features": [],
+     "meta": [],
+     "links": []
+    },
+    {
+     "icon": "🔐",
+     "status": "Exploring",
+     "title": "Cybersecurity Laboratories",
+     "role": null,
+     "collaborator": null,
+     "desc": "Continuous hands-on practice in Linux security environments, network security, ethical hacking fundamentals, OSINT, Capture The Flag challenges, network reconnaissance and security testing fundamentals.",
+     "features": [],
+     "meta": [],
+     "links": []
+    }
+   ]
+  }
+ ],
+ "quickAccess": [
+  {
+   "icon": "👤",
+   "title": "About Me",
+   "sub": "Background, education & skills",
+   "href": "/about"
+  },
+  {
+   "icon": "🚀",
+   "title": "Projects",
+   "sub": "What I've built and I'm building",
+   "href": "/projects"
+  },
+  {
+   "icon": "📄",
+   "title": "Documents",
+   "sub": "CV & certificates",
+   "href": "/documents"
+  },
+  {
+   "icon": "💬",
+   "title": "Contact",
+   "sub": "Get in touch",
+   "href": "/contact"
+  }
+ ]
+}
