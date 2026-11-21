@@ -1,5 +1,4 @@
 import { del, list, put } from '@vercel/blob';
-import { blobToken } from '@/lib/server/blob-token';
 
 /** Everything you upload from /admin is described by one of these. */
 export type ItemKind = 'gallery' | 'document' | 'profile' | 'cv';
@@ -35,7 +34,7 @@ const PREFIX = 'portfolio/manifest';
  * Every change writes a NEW file (random name) and removes the old one, so visitors never see a stale CDN copy.
  */
 async function readManifest(): Promise<{ manifest: Manifest; urls: string[] }> {
-  const { blobs } = await list({ prefix: PREFIX, limit: 100, token: blobToken() });
+  const { blobs } = await list({ prefix: PREFIX, limit: 100 });
   if (!blobs.length) return { manifest: { version: 1, items: [] }, urls: [] };
   const newest = [...blobs].sort((a, b) => +new Date(b.uploadedAt) - +new Date(a.uploadedAt))[0];
   const res = await fetch(newest.url, { cache: 'no-store' });
@@ -55,9 +54,8 @@ export async function updateItems(change: (items: PortfolioItem[]) => PortfolioI
     access: 'public',
     addRandomSuffix: true,
     contentType: 'application/json',
-    token: blobToken(),
   });
-  if (urls.length) await del(urls, { token: blobToken() }).catch(() => undefined);
+  if (urls.length) await del(urls).catch(() => undefined);
   return items;
 }
 

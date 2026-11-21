@@ -2,7 +2,6 @@ import { del } from '@vercel/blob';
 import { revalidatePath } from 'next/cache';
 import { updateItems } from '@/lib/portfolio';
 import { fail, isAdmin, json } from '@/lib/server/admin-auth';
-import { blobToken } from '@/lib/server/blob-token';
 
 export const runtime = 'nodejs';
 
@@ -46,7 +45,7 @@ export async function DELETE(req: Request) {
   try {
     let url: string | undefined;
     await updateItems((items) => items.filter((i) => (i.id === id ? ((url = i.url), false) : true)));
-    if (url) await del(url, { token: blobToken() }).catch(() => undefined);
+    if (url) await del(url).catch(() => undefined);
     revalidatePath('/', 'layout');
     return json({ ok: true });
   } catch {

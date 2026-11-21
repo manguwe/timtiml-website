@@ -3,7 +3,6 @@ import { revalidatePath } from 'next/cache';
 import { randomUUID } from 'node:crypto';
 import { updateItems, type DocCategory, type ItemKind, type PortfolioItem } from '@/lib/portfolio';
 import { fail, isAdmin, json } from '@/lib/server/admin-auth';
-import { blobToken, NO_STORAGE_MESSAGE } from '@/lib/server/blob-token';
 
 export const runtime = 'nodejs';
 
@@ -53,14 +52,11 @@ export async function POST(req: Request) {
   const note = clean(form.get('note'), 120);
   const category: DocCategory | null = kind === 'document' ? (clean(form.get('category'), 20) === 'certificate' ? 'certificate' : 'other') : null;
 
-  if (!blobToken()) return fail(503, NO_STORAGE_MESSAGE);
-
   try {
     const blob = await put(`portfolio/${kind}/${slug(file.name)}`, file, {
       access: 'public',
       addRandomSuffix: true,
       contentType: file.type,
-      token: blobToken(),
     });
     const item: PortfolioItem = {
       id: randomUUID(),
@@ -79,7 +75,7 @@ export async function POST(req: Request) {
       const keep = kind === 'profile' || kind === 'cv' ? items.filter((i) => (i.kind === kind ? (replaced.push(i.url), false) : true)) : items;
       return [item, ...keep];
     });
-    if (replaced.length) await del(replaced, { token: blobToken() }).catch(() => undefined);
+    if (replaced.length) await del(replaced).catch(() => undefined);
     revalidatePath('/', 'layout');
     return json({ ok: true, item });
   } catch {
