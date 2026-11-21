@@ -1,34 +1,40 @@
-# TIMTIML — personal portfolio
+# TIMTIML — personal CV website
 
-Anotida Manguwe's portfolio. **Next.js + React + TypeScript** on **Vercel**. No database, no email service, no accounts —
-the only thing that changes is what you upload on the **/admin** page.
+Anotida Manguwe's personal CV site. **Next.js + React + TypeScript** on **Vercel**. No database, no email service, no accounts.
+Everything visitors see can be edited from **/admin** — no code.
 
 ## What's on the site
 
-Home (with your profile picture) · About (bio, education, skills, interests) · Projects (live / in development / planned / exploring) · Gallery · Documents (CV & certificates) · Contact
+Home (profile picture, who I am, **what I offer**, latest updates) · About (bio, education, skills, interests, career) · Projects (live / in development / planned / exploring) · Journal (dated updates with pictures) · Gallery · Documents (certificates) · Contact · **CV** (built from the site and exportable as a PDF)
 
-## Updating the site WITHOUT touching code
+## Managing the site (no code)
 
-Open **`your-site.vercel.app/admin`**, log in with your password, and:
+Open **`your-site.vercel.app/admin`**, log in, and use the three tabs:
 
-| Do this | What happens on the site |
-|---|---|
-| Upload a **profile picture** | Replaces the "TIM timL" circle on the home page |
-| Upload a **CV** (PDF) | A **⬇ CV** button appears in the menu, and the CV shows on the Documents page |
-| Upload **gallery pictures** (several at once, with captions) | They appear on the Gallery page |
-| Upload **certificates / documents** | They appear on the Documents page (certificates also show on the home page) |
-| **Edit** a caption or **Delete** something | Changes the site straight away |
+**Website text** — edit every piece of text visitors read, then press **Save changes**:
+* *Home*: the line above your name, tagline, intro, the "Who I am" cards
+* *About*: biography, motto, how you work, interests, career direction
+* *Education & Skills*: change **Level 2.1 → 2.2**, add a qualification, add or remove skills and skill groups
+* *What I Offer*: the services you advertise (add, edit, reorder, delete)
+* *Projects*: change a project's **Status** (In development → Live) and it moves to the right section automatically; edit descriptions, features and links; add new projects; untick "Include in my CV" to leave one out of the CV
+* *Contact*: email, phone, WhatsApp number, GitHub, LinkedIn and other links (empty = hidden)
 
-Big phone photos are shrunk automatically in your browser before they upload. Documents can be up to 4 MB.
+**Journal** — post an update: title, date, what happened, and as many pictures as you like. Edit or delete posts any time. They show on the Journal page (newest first) and the latest three show on the home page.
+
+**Pictures & documents** — profile picture (replaces the "TIM timL" badge), gallery pictures with captions, and certificates / other documents (certificates also appear on the home page and in your CV).
+
+### Your CV
+
+There is nothing to upload. **/cv** is generated from the same content as the website, so whenever you edit the site, the CV is up to date. Press **Export as PDF** → in the print window choose **Save as PDF**. The CV includes: name and contact details, profile, education, technical skills, projects (the ones marked "Include in my CV"), certificates, interests and career objective.
 
 ## One-time setup (≈5 minutes)
 
-1. **Replace the old files.** In your GitHub repo delete everything old (`*.html`, `api/`, `css/`, `js/`, `requirements.txt`, `vercel.json`, `database_setup.sql`) and copy this project in.
-2. **Create file storage.** Vercel → your project → **Storage → Create → Blob → Connect to this project.** Vercel adds `BLOB_READ_WRITE_TOKEN` for you.
-3. **Set your admin password.** Vercel → **Settings → Environment Variables** → add `ADMIN_SECRET` = a password of 8+ characters.
-4. **Redeploy** (Deployments → ⋯ → Redeploy). Then visit `/admin`.
+1. **Vercel → your project → Storage → Create → Blob → Connect to this project.** (This is where your pictures and edits are saved.)
+2. **Settings → Environment Variables:** add `ADMIN_SECRET` = a password of 8+ characters.
+3. **Redeploy.** (Deployments → latest → ⋯ → Redeploy.) Environment changes only apply after a redeploy.
+4. Visit `/admin`. The green box at the top says **Storage is connected**. If it is red it tells you exactly what is missing.
 
-That's all. EmailJS, Supabase, Groq and every other service from the old site are gone — nothing to configure for them.
+The storage key can have any prefix (`BLOB_READ_WRITE_TOKEN`, `TIM_READ_WRITE_TOKEN` …) — the site finds it.
 
 ## Local development
 
@@ -40,17 +46,10 @@ npm run dev                    # http://localhost:3000
 
 Node 20.9+ is required.
 
-## Where the remaining text lives (only if you ever want to change it)
-
-| Change… | Edit |
-|---|---|
-| Hero text, bio, education, skills, interests, projects | `data/content.json` |
-| Phone, email, social links, contact form address | `lib/site.ts` |
-| Site colours / styles | `app/(site)/globals.css` |
-
 ## Good to know
 
-* Uploads are stored in Vercel Blob (a free tier is included). The list of what you uploaded is one small file kept next to your pictures.
-* The Contact form sends messages to your inbox through Formspree (the same one you already had) — nothing to set up.
-* Old links (lesson pages, `/pricing`, `/faq`, `/blog`, `/design`, `/web-dev`) redirect to the home page.
-* If you try `/admin` too many times with a wrong password it pauses for a few minutes.
+* Starting text lives in `data/content.json`. Once you save from the admin, your edited version is used instead.
+* Uploads are stored in Vercel Blob. Pictures are shrunk in your browser before uploading; documents can be up to 4 MB.
+* Anything typed in the admin is shown as plain text (never as code), links must start with `https://`, and over-long text is trimmed.
+* The Contact form sends to your inbox through Formspree (set in `lib/site.ts`).
+* The admin password is checked on the server; after 8 wrong attempts it pauses for 10 minutes.

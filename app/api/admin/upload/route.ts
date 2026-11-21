@@ -1,8 +1,9 @@
-import { put, del } from '@vercel/blob';
+import { put } from '@vercel/blob';
 import { revalidatePath } from 'next/cache';
 import { randomUUID } from 'node:crypto';
-import { updateItems, type DocCategory, type ItemKind, type PortfolioItem } from '@/lib/portfolio';
+import { deleteFiles, updateDoc, type DocCategory, type ItemKind, type PortfolioItem } from '@/lib/portfolio';
 import { fail, isAdmin, json } from '@/lib/server/admin-auth';
+import { blobToken, NO_STORAGE_MESSAGE } from '@/lib/server/blob-token';
 
 export const runtime = 'nodejs';
 
@@ -24,7 +25,7 @@ const ALLOWED: Record<ItemKind, string[]> = {
   gallery: IMAGES,
   profile: IMAGES,
   document: [...DOCS, ...IMAGES],
-  cv: DOCS,
+  post: IMAGES,
 };
 const KINDS = Object.keys(ALLOWED) as ItemKind[];
 
@@ -46,17 +47,20 @@ export async function POST(req: Request) {
   if (!KINDS.includes(kind)) return fail(400, 'Unknown upload type.');
   if (!(file instanceof File) || file.size === 0) return fail(400, 'Please choose a file.');
   if (file.size > MAX_BYTES) return fail(413, 'That file is too big (4 MB maximum). Compress it and try again.');
-  if (!ALLOWED[kind].includes(file.type)) return fail(415, kind === 'gallery' || kind === 'profile' ? 'Please upload a JPG, PNG, WebP or GIF picture.' : 'Please upload a PDF, Word, PowerPoint, Excel or image file.');
+  if (!ALLOWED[kind].includes(file.type)) return fail(415, kind === 'gallery' || kind === 'profile' || kind === 'post' ? 'Please upload a JPG, PNG, WebP or GIF picture.' : 'Please upload a PDF, Word, PowerPoint, Excel or image file.');
 
   const title = clean(form.get('title'), 100) || file.name.replace(/\.[^.]+$/, '').slice(0, 100);
   const note = clean(form.get('note'), 120);
   const category: DocCategory | null = kind === 'document' ? (clean(form.get('category'), 20) === 'certificate' ? 'certificate' : 'other') : null;
+
+  if (!blobToken()) return fail(503, NO_STORAGE_MESSAGE);
 
   try {
     const blob = await put(`portfolio/${kind}/${slug(file.name)}`, file, {
       access: 'public',
       addRandomSuffix: true,
       contentType: file.type,
+      token: blobToken(),
     });
     const item: PortfolioItem = {
       id: randomUUID(),
@@ -70,15 +74,16 @@ export async function POST(req: Request) {
       addedAt: new Date().toISOString(),
     };
     const replaced: string[] = [];
-    await updateItems((items) => {
-      // Profile picture and CV are single slots: a new upload replaces the old one.
-      const keep = kind === 'profile' || kind === 'cv' ? items.filter((i) => (i.kind === kind ? (replaced.push(i.url), false) : true)) : items;
-      return [item, ...keep];
+    await updateDoc((doc) => {
+      // The profile picture is a single slot: a new upload replaces the old one.
+      const keep = kind === 'profile' ? doc.items.filter((i) => (i.kind === 'profile' ? (replaced.push(i.url), false) : true)) : doc.items;
+      return { ...doc, items: [item, ...keep] };
     });
-    if (replaced.length) await del(replaced).catch(() => undefined);
+    await deleteFiles(replaced);
     revalidatePath('/', 'layout');
     return json({ ok: true, item });
-  } catch {
-    return fail(503, 'Could not save the file. Is Vercel Blob storage connected to this project?');
+  } catch (e) {
+    const detail = e instanceof Error ? ` (${e.message.slice(0, 160)})` : '';
+    return fail(503, `Could not save the file${detail}. Check Vercel → Storage: the Blob store must be connected to this project, then Redeploy.`);
   }
 }

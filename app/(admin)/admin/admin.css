@@ -351,3 +351,38 @@
 .empty-line { color: var(--muted); font-size: 0.85rem; padding: 0.5rem 0; }
 .admin-nav-label { color: var(--muted); font-size: 0.85rem; }
 
+
+/* ── Editor ── */
+.tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.2rem 0; }
+.tabs button { width: auto; padding: 9px 16px; background: var(--card2); color: var(--text); border: 1px solid var(--border); font-size: 0.8rem; }
+.tabs button.on { background: linear-gradient(90deg, var(--cyan), var(--green)); color: #000; border-color: transparent; }
+.subtabs { margin-top: 0; }
+.field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.9rem; }
+.field > label { font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cyan); font-weight: 700; }
+.field input, .field textarea, .field select, .picked input, .grid2 input, .grid2 select { background: var(--card2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; color: var(--text); font: inherit; font-size: 0.88rem; outline: none; width: 100%; }
+.field textarea { min-height: 90px; resize: vertical; line-height: 1.5; }
+.field input:focus, .field textarea:focus, .field select:focus { border-color: var(--cyan); }
+.field small { color: var(--muted); font-size: 0.72rem; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+.list-row { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; align-items: flex-start; }
+.list-row input, .list-row textarea { flex: 1; }
+.list-row button, .mini { width: auto; padding: 8px 12px; font-size: 0.75rem; }
+.mini.ghost, .tabs button.ghost { background: transparent; color: var(--cyan); border: 1px solid var(--border); }
+.edit-card { background: var(--card2); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+.edit-card-head { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem; flex-wrap: wrap; }
+.edit-card-head strong { color: #fff; font-size: 0.95rem; }
+.row-actions { display: flex; gap: 0.4rem; }
+.save-bar { position: sticky; bottom: 0; z-index: 5; background: rgba(10,14,26,0.95); border-top: 1px solid var(--border); padding: 0.9rem 0; margin-top: 1.5rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.save-bar button { width: auto; }
+.banner { border-radius: 8px; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 0.85rem; line-height: 1.6; }
+.banner.bad { background: rgba(255,107,53,0.12); border: 1px solid rgba(255,107,53,0.4); color: #ffb08f; }
+.banner.good { background: rgba(0,255,157,0.08); border: 1px solid rgba(0,255,157,0.3); color: var(--green); }
+.check { display: flex; gap: 0.5rem; align-items: center; font-size: 0.85rem; color: var(--text); margin-bottom: 0.9rem; }
+.check input { width: auto; }
+.post-thumbs { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 0.5rem 0 0.9rem; }
+.post-thumb { position: relative; width: 96px; height: 96px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+.post-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.post-thumb button { position: absolute; top: 3px; right: 3px; width: auto; padding: 2px 7px; font-size: 0.7rem; }
+@media (max-width: 700px) { .grid2 { grid-template-columns: 1fr; } .tabs button { flex: 1 1 auto; } }
+.admin-sub { color: #fff; font-size: 1rem; margin: 1.4rem 0 0.8rem; }
+.cv-link { color: var(--cyan); font-size: 0.8rem; align-self: center; margin-left: 0.5rem; text-decoration: none; }

@@ -1,16 +1,17 @@
 import type { Metadata } from 'next';
 import { GalleryGrid } from '@/components/site/GalleryGrid';
 import { Section, SectionHeader } from '@/components/site/Section';
-import { getPortfolio } from '@/lib/portfolio';
+import { getSite } from '@/lib/portfolio';
 
 export const metadata: Metadata = {
   title: 'Gallery',
-  description: 'Posters, flyers, designs and photos by Anotida Manguwe.',
+  description: 'Pictures and designs by Anotida Manguwe.',
   alternates: { canonical: '/gallery' },
 };
 
 export default async function GalleryPage() {
-  const { gallery } = await getPortfolio();
+  const { portfolio } = await getSite();
+  const { gallery } = portfolio;
   return (
     <Section id="gallery">
       <SectionHeader label="Showcase">My <span>Gallery</span></SectionHeader>

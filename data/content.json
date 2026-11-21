@@ -25,7 +25,7 @@
   "paragraphs": [
    "I am an Information and Communication Technology student at Eden University with a strong passion for software engineering, application development, cybersecurity, networking and emerging technologies.",
    "I am interested in using technology to solve practical problems — building digital solutions that improve how individuals, students and businesses operate.",
-   "My journey combines academic learning, independent technical exploration, collaborative innovation and hands-on software development. Under my personal brand, <strong>timtiml</strong>, I keep looking for ways to turn ideas into working digital products.",
+   "My journey combines academic learning, independent technical exploration, collaborative innovation and hands-on software development. Under my personal brand, **timtiml**, I keep looking for ways to turn ideas into working digital products.",
    "My interests reach beyond programming into cybersecurity, network infrastructure, artificial intelligence, data engineering, cloud computing and technology entrepreneurship."
   ],
   "motto": "Learn. Build. Innovate. Repeat.",
@@ -40,19 +40,21 @@
   ],
   "philosophy": "I believe technology should solve real problems, and that the best way to learn is by building, experimenting and improving."
  },
- "education": {
-  "level": "Level 2.1",
-  "title": "Bachelor of Science in Information and Communication Technology",
-  "school": "Eden University",
-  "areas": [
-   "Object-Oriented Programming",
-   "Database Management Systems",
-   "Computer Networks",
-   "Digital Electronics",
-   "Software Engineering",
-   "Computer Systems and Information Technology"
-  ]
- },
+ "education": [
+  {
+   "level": "Level 2.1",
+   "title": "Bachelor of Science in Information and Communication Technology",
+   "school": "Eden University",
+   "areas": [
+    "Object-Oriented Programming",
+    "Database Management Systems",
+    "Computer Networks",
+    "Digital Electronics",
+    "Software Engineering",
+    "Computer Systems and Information Technology"
+   ]
+  }
+ ],
  "skillGroups": [
   {
    "label": "Programming",
@@ -146,189 +148,186 @@
   "text": "I am particularly interested in combining software development and cybersecurity to create secure, useful and scalable technology solutions.",
   "objective": "I am an ICT student who actively develops practical solutions, explores emerging technologies and takes part in innovation — continuously building towards a career in software engineering and cybersecurity."
  },
- "projectGroups": [
+ "offers": {
+  "intro": "Here is what I can help with — get in touch to talk about your idea.",
+  "items": [
+   {
+    "icon": "💻",
+    "title": "Web & App Development",
+    "text": "Responsive websites and web applications built to solve a practical problem — from idea to a live, working product."
+   },
+   {
+    "icon": "🎨",
+    "title": "Graphic Design",
+    "text": "Posters, flyers and visual designs that communicate clearly and look professional."
+   },
+   {
+    "icon": "🧑‍💻",
+    "title": "Programming & Tech Help",
+    "text": "Patient help with programming, databases and IT concepts for students and beginners."
+   }
+  ]
+ },
+ "projects": [
   {
-   "id": "live",
-   "title": "✅ Developed & Live",
-   "projects": [
+   "icon": "🏠",
+   "status": "Live",
+   "title": "Campus Crib",
+   "role": "Project Lead / Developer",
+   "collaborator": "Taropafadzwanashe Kadurira",
+   "desc": "A student accommodation discovery platform that helps Eden University students find suitable off-campus accommodation. It addresses unreliable listings, inaccurate locations, high agent fees and the difficulty of reaching property owners.",
+   "features": [
+    "Accommodation listings with descriptions and pricing",
+    "Bedrooms and accommodation information",
+    "Property photographs and videos",
+    "Location and distance information",
+    "Landlord and student interactions",
+    "Administrative listing approval",
+    "Controlled access to exact property locations",
+    "Payment verification workflow"
+   ],
+   "meta": [
+    "Hosted on Vercel"
+   ],
+   "links": [
     {
-     "icon": "🏠",
-     "status": "Live",
-     "title": "Campus Crib",
-     "role": "Project Lead / Developer",
-     "collaborator": "Taropafadzwanashe Kadurira",
-     "desc": "A student accommodation discovery platform that helps Eden University students find suitable off-campus accommodation. It addresses unreliable listings, inaccurate locations, high agent fees and the difficulty of reaching property owners.",
-     "features": [
-      "Accommodation listings with descriptions and pricing",
-      "Bedrooms and accommodation information",
-      "Property photographs and videos",
-      "Location and distance information",
-      "Landlord and student interactions",
-      "Administrative listing approval",
-      "Controlled access to exact property locations",
-      "Payment verification workflow"
-     ],
-     "meta": [
-      "Hosted on Vercel"
-     ],
-     "links": [
-      {
-       "label": "🚀 View Live",
-       "href": "https://campus-crib-seven.vercel.app/"
-      },
-      {
-       "label": "🐙 GitHub",
-       "href": "https://github.com/manguwe/Campus-Crib"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "dev",
-   "title": "🛠️ Currently in Development",
-   "projects": [
-    {
-     "icon": "💰",
-     "status": "In development",
-     "title": "Student Hub (SH)",
-     "role": null,
-     "collaborator": null,
-     "desc": "An evolving student-focused financial management and productivity application that helps university students manage their personal finances.",
-     "features": [
-      "Budget tracking",
-      "Income and expenditure management",
-      "Financial summaries",
-      "Multiple currency support",
-      "Student profiles and reminders",
-      "Mobile-friendly experience",
-      "Optional account synchronisation",
-      "Potential premium features"
-     ],
-     "meta": [],
-     "links": [
-      {
-       "label": "🐙 GitHub",
-       "href": "https://github.com/manguwe/varsity-budget"
-      }
-     ]
+     "label": "🚀 View Live",
+     "href": "https://campus-crib-seven.vercel.app/"
     },
     {
-     "icon": "🧾",
-     "status": "In development",
-     "title": "Retail Point of Sale Management System",
-     "role": null,
-     "collaborator": null,
-     "desc": "A POS management system intended to support small retail businesses through digital sales processing, stock management, transaction recording and business reporting. Deployment is being planned.",
-     "features": [
-      "Shop and account management",
-      "Inventory management and product pricing",
-      "Sales recording with automatic transaction entries",
-      "Stock tracking",
-      "Customisable receipts",
-      "Sales summaries and business reports",
-      "Backend server infrastructure"
-     ],
-     "meta": [],
-     "links": []
-    },
-    {
-     "icon": "🌾",
-     "status": "In development",
-     "title": "AgriMobi AI",
-     "role": null,
-     "collaborator": null,
-     "desc": "An agricultural technology innovation exploring how artificial intelligence and mobile applications can help address agricultural challenges in Zambia and Zimbabwe, with attention to prediction accuracy and reliability.",
-     "features": [
-      "Agricultural decision support",
-      "Crop monitoring",
-      "Pest identification",
-      "Fall armyworm monitoring and prediction",
-      "AI-assisted agricultural insights"
-     ],
-     "meta": [],
-     "links": []
+     "label": "🐙 GitHub",
+     "href": "https://github.com/manguwe/Campus-Crib"
     }
-   ]
+   ],
+   "id": "campus-crib",
+   "inCv": true
   },
   {
-   "id": "planned",
-   "title": "🗓️ Planned",
-   "projects": [
+   "icon": "💰",
+   "status": "In development",
+   "title": "Student Hub (SH)",
+   "role": null,
+   "collaborator": null,
+   "desc": "An evolving student-focused financial management and productivity application that helps university students manage their personal finances.",
+   "features": [
+    "Budget tracking",
+    "Income and expenditure management",
+    "Financial summaries",
+    "Multiple currency support",
+    "Student profiles and reminders",
+    "Mobile-friendly experience",
+    "Optional account synchronisation",
+    "Potential premium features"
+   ],
+   "meta": [],
+   "links": [
     {
-     "icon": "🎓",
-     "status": "Planned",
-     "title": "Eden University Examination Eligibility System",
-     "role": null,
-     "collaborator": null,
-     "desc": "A proposed academic administration platform that would automate examination eligibility verification using student information and payment records.",
-     "features": [
-      "Student profiles",
-      "QR-enabled student identification",
-      "Payment verification",
-      "Academic eligibility calculations",
-      "Administrative dashboards",
-      "Institutional system integration, subject to authorised access",
-      "Proposed payment thresholds: CAT 1 at 50%, CAT 2 at 75%, final examinations at 100%"
-     ],
-     "meta": [],
-     "links": []
+     "label": "🐙 GitHub",
+     "href": "https://github.com/manguwe/varsity-budget"
     }
-   ]
+   ],
+   "id": "student-hub--sh",
+   "inCv": true
   },
   {
-   "id": "exploring",
-   "title": "🔭 Continuous Exploration",
-   "projects": [
-    {
-     "icon": "📱",
-     "status": "Exploring",
-     "title": "Mobile Application Development",
-     "role": null,
-     "collaborator": null,
-     "desc": "Ongoing learning towards building functional Android and iOS applications that address real-world challenges in education, business and everyday life.",
-     "features": [],
-     "meta": [],
-     "links": []
-    },
-    {
-     "icon": "🔐",
-     "status": "Exploring",
-     "title": "Cybersecurity Laboratories",
-     "role": null,
-     "collaborator": null,
-     "desc": "Continuous hands-on practice in Linux security environments, network security, ethical hacking fundamentals, OSINT, Capture The Flag challenges, network reconnaissance and security testing fundamentals.",
-     "features": [],
-     "meta": [],
-     "links": []
-    }
-   ]
+   "icon": "🧾",
+   "status": "In development",
+   "title": "Retail Point of Sale Management System",
+   "role": null,
+   "collaborator": null,
+   "desc": "A POS management system intended to support small retail businesses through digital sales processing, stock management, transaction recording and business reporting. Deployment is being planned.",
+   "features": [
+    "Shop and account management",
+    "Inventory management and product pricing",
+    "Sales recording with automatic transaction entries",
+    "Stock tracking",
+    "Customisable receipts",
+    "Sales summaries and business reports",
+    "Backend server infrastructure"
+   ],
+   "meta": [],
+   "links": [],
+   "id": "retail-point-of-sale-management-system",
+   "inCv": true
+  },
+  {
+   "icon": "🌾",
+   "status": "In development",
+   "title": "AgriMobi AI",
+   "role": null,
+   "collaborator": null,
+   "desc": "An agricultural technology innovation exploring how artificial intelligence and mobile applications can help address agricultural challenges in Zambia and Zimbabwe, with attention to prediction accuracy and reliability.",
+   "features": [
+    "Agricultural decision support",
+    "Crop monitoring",
+    "Pest identification",
+    "Fall armyworm monitoring and prediction",
+    "AI-assisted agricultural insights"
+   ],
+   "meta": [],
+   "links": [],
+   "id": "agrimobi-ai",
+   "inCv": true
+  },
+  {
+   "icon": "🎓",
+   "status": "Planned",
+   "title": "Eden University Examination Eligibility System",
+   "role": null,
+   "collaborator": null,
+   "desc": "A proposed academic administration platform that would automate examination eligibility verification using student information and payment records.",
+   "features": [
+    "Student profiles",
+    "QR-enabled student identification",
+    "Payment verification",
+    "Academic eligibility calculations",
+    "Administrative dashboards",
+    "Institutional system integration, subject to authorised access",
+    "Proposed payment thresholds: CAT 1 at 50%, CAT 2 at 75%, final examinations at 100%"
+   ],
+   "meta": [],
+   "links": [],
+   "id": "eden-university-examination-eligibility",
+   "inCv": true
+  },
+  {
+   "icon": "📱",
+   "status": "Exploring",
+   "title": "Mobile Application Development",
+   "role": null,
+   "collaborator": null,
+   "desc": "Ongoing learning towards building functional Android and iOS applications that address real-world challenges in education, business and everyday life.",
+   "features": [],
+   "meta": [],
+   "links": [],
+   "id": "mobile-application-development",
+   "inCv": false
+  },
+  {
+   "icon": "🔐",
+   "status": "Exploring",
+   "title": "Cybersecurity Laboratories",
+   "role": null,
+   "collaborator": null,
+   "desc": "Continuous hands-on practice in Linux security environments, network security, ethical hacking fundamentals, OSINT, Capture The Flag challenges, network reconnaissance and security testing fundamentals.",
+   "features": [],
+   "meta": [],
+   "links": [],
+   "id": "cybersecurity-laboratories",
+   "inCv": false
   }
  ],
- "quickAccess": [
-  {
-   "icon": "👤",
-   "title": "About Me",
-   "sub": "Background, education & skills",
-   "href": "/about"
-  },
-  {
-   "icon": "🚀",
-   "title": "Projects",
-   "sub": "What I've built and I'm building",
-   "href": "/projects"
-  },
-  {
-   "icon": "📄",
-   "title": "Documents",
-   "sub": "CV & certificates",
-   "href": "/documents"
-  },
-  {
-   "icon": "💬",
-   "title": "Contact",
-   "sub": "Get in touch",
-   "href": "/contact"
-  }
- ]
+ "contact": {
+  "email": "anotida30manguwe12@gmail.com",
+  "phone": "+260 768 648 291",
+  "whatsapp": "260768648291",
+  "location": "Zambia",
+  "github": "https://github.com/manguwe",
+  "linkedin": "https://www.linkedin.com/in/timtiml/",
+  "telegram": "https://t.me/timtiml",
+  "instagram": "https://instagram.com/timtiml",
+  "facebook": "https://www.facebook.com/anotida.manguwe.9",
+  "threads": "https://www.threads.net/@timtiml",
+  "whatsappChannel": "https://whatsapp.com/channel/0029VbAZUgU0lwgr2D5i3b1c"
+ }
 }

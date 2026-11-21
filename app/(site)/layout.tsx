@@ -3,7 +3,6 @@ import Script from 'next/script';
 import { Footer } from '@/components/site/Footer';
 import { Loader } from '@/components/site/Loader';
 import { Nav } from '@/components/site/Nav';
-import { getPortfolio } from '@/lib/portfolio';
 import { SITE } from '@/lib/site';
 import './extra.css'; // must stay BEFORE globals.css so the original stylesheet wins any tie
 import './globals.css';
@@ -44,8 +43,7 @@ export const metadata: Metadata = {
 // Runs before first paint so there is no dark→light flash when a visitor chose the light theme.
 const THEME_SCRIPT = `try{if(localStorage.getItem('timtiml-theme')==='light')document.body.classList.add('light')}catch(e){}`;
 
-export default async function SiteLayout({ children }: { children: React.ReactNode }) {
-  const { cv } = await getPortfolio();
+export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body suppressHydrationWarning>
@@ -54,7 +52,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
           <style>{`.fade-in{opacity:1!important;transform:none!important}#loader{display:none!important}`}</style>
         </noscript>
         <Loader />
-        <Nav cvUrl={cv?.url} />
+        <Nav />
         <main>{children}</main>
         <Footer />
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${SITE.gaId}`} strategy="afterInteractive" />

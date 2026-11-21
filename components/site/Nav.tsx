@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { NAV_LINKS } from '@/lib/site';
 
-export function Nav({ cvUrl }: { cvUrl?: string | null }) {
+export function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [light, setLight] = useState(false);
@@ -56,11 +56,9 @@ export function Nav({ cvUrl }: { cvUrl?: string | null }) {
         <button id="theme-toggle" className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme" title="Toggle theme">
           {light ? '☀️' : '🌙'}
         </button>
-        {cvUrl && (
-          <a id="cv-btn" className="cv-btn" href={cvUrl} target="_blank" rel="noopener noreferrer" title="Download CV">
-            ⬇ CV
-          </a>
-        )}
+        <Link id="cv-btn" className="cv-btn" href="/cv" title="View and export my CV">
+          📄 CV
+        </Link>
       </div>
       <button className="hamburger" id="hamburger" aria-label="Menu" aria-expanded={open} onClick={(e) => { e.stopPropagation(); setOpen((v) => !v); }}>
         <span /><span /><span />

@@ -1,6 +1,5 @@
-import { del } from '@vercel/blob';
 import { revalidatePath } from 'next/cache';
-import { updateItems } from '@/lib/portfolio';
+import { deleteFiles, updateDoc } from '@/lib/portfolio';
 import { fail, isAdmin, json } from '@/lib/server/admin-auth';
 
 export const runtime = 'nodejs';
@@ -18,8 +17,9 @@ export async function PATCH(req: Request) {
   const title = typeof b.title === 'string' ? b.title.trim().slice(0, 100) : undefined;
   const note = typeof b.note === 'string' ? b.note.trim().slice(0, 120) : undefined;
   try {
-    await updateItems((items) =>
-      items.map((i) =>
+    await updateDoc((doc) => ({
+      ...doc,
+      items: doc.items.map((i) =>
         i.id !== b.id
           ? i
           : {
@@ -29,7 +29,7 @@ export async function PATCH(req: Request) {
               category: i.kind === 'document' && (b.category === 'certificate' || b.category === 'other') ? b.category : i.category,
             },
       ),
-    );
+    }));
     revalidatePath('/', 'layout');
     return json({ ok: true });
   } catch {
@@ -44,8 +44,8 @@ export async function DELETE(req: Request) {
   if (!id) return fail(400, 'Bad request.');
   try {
     let url: string | undefined;
-    await updateItems((items) => items.filter((i) => (i.id === id ? ((url = i.url), false) : true)));
-    if (url) await del(url).catch(() => undefined);
+    await updateDoc((doc) => ({ ...doc, items: doc.items.filter((i) => (i.id === id && i.kind !== 'post' ? ((url = i.url), false) : true)) }));
+    if (url) await deleteFiles([url]);
     revalidatePath('/', 'layout');
     return json({ ok: true });
   } catch {

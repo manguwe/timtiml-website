@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Section, SectionHeader } from '@/components/site/Section';
-import { getPortfolio, type PortfolioItem } from '@/lib/portfolio';
+import { getSite, type PortfolioItem } from '@/lib/portfolio';
 
 export const metadata: Metadata = {
   title: 'Documents',
-  description: 'CV, certificates and other documents of Anotida Manguwe.',
+  description: 'Certificates and other documents of Anotida Manguwe.',
   alternates: { canonical: '/documents' },
 };
 
@@ -26,18 +27,14 @@ function Cards({ items }: { items: PortfolioItem[] }) {
 }
 
 export default async function DocumentsPage() {
-  const { cv, certificates, documents } = await getPortfolio();
-  const nothing = !cv && !certificates.length && !documents.length;
+  const { portfolio } = await getSite();
+  const { certificates, documents } = portfolio;
+  const nothing = !certificates.length && !documents.length;
   return (
     <Section id="documents">
-      <SectionHeader label="Papers">CV &amp; <span>Documents</span></SectionHeader>
+      <SectionHeader label="Papers">Certificates &amp; <span>Documents</span></SectionHeader>
+      <p className="gallery-lead">Looking for my CV? <Link href="/cv">View and export it as a PDF →</Link></p>
       {nothing && <p className="gallery-lead">Documents are coming soon — check back shortly. 📄</p>}
-      {cv && (
-        <>
-          <div className="cert-section-title">📋 Curriculum Vitae</div>
-          <Cards items={[cv]} />
-        </>
-      )}
       {certificates.length > 0 && (
         <>
           <div className="cert-section-title">📜 Certificates &amp; Credentials</div>
